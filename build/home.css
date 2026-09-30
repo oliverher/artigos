@@ -1,24 +1,22 @@
-.home-hero{background-image:var(--gradient-deep);color:#fff;padding:64px 24px 56px}
+.home-hero{background:#0f3d2a;color:#fff;padding:36px 24px 30px}
 .home-wrap{max-width:48rem;margin:0 auto}
-.home-eyebrow{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre)}
-.home-hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(2rem,5.5vw,2.6rem);line-height:1.15;margin-top:20px}
-@media(min-width:560px){.home-hero h1{white-space:nowrap}}
-.home-hero h1 span{background-image:var(--gradient-warm);-webkit-background-clip:text;background-clip:text;color:transparent}
-.home-hero p{margin-top:16px;color:rgba(255,255,255,.8);font-size:1.1rem}
-.home-hero .home-eyebrow{color:var(--ochre);margin-top:0;font-size:12px}
-.home-author{margin-top:24px;font-size:14px;color:rgba(255,255,255,.7)}
-.home-list{max-width:48rem;margin:0 auto;padding:32px 24px 64px;display:flex;flex-direction:column;gap:16px}
-.home-list h2{font-size:14px;font-weight:600;color:var(--muted-foreground);letter-spacing:.04em}
-.art{display:flex;gap:18px;align-items:stretch;text-decoration:none;color:var(--foreground);background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px;box-shadow:var(--shadow-soft);transition:transform .2s,border-color .2s,box-shadow .2s}
-.art:hover,.art:focus-visible{transform:translateY(-2px);border-color:var(--ochre);box-shadow:var(--shadow-lift);outline:none}
-.art img{flex:0 0 190px;width:190px;height:auto;min-height:130px;object-fit:cover;border-radius:10px}
-.art-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:4px 0}
-.art-tag{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--ochre)}
-.art-title{font-family:var(--font-display);font-size:1.3rem;line-height:1.25;font-weight:600}
-.art-desc{font-size:14px;line-height:1.5;color:var(--muted-foreground)}
-.art-stats{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted-foreground);margin-top:2px}
-.art-stats b{color:var(--primary);font-weight:600;font-size:15px}
-.art-go{align-self:center;padding:0 8px 0 4px;color:var(--primary);font-size:22px;transition:transform .2s}
-.art:hover .art-go{transform:translateX(4px);color:var(--ochre)}
-.home-foot{border-top:1px solid var(--border);background:var(--card);padding:28px 24px;font-size:14px;color:var(--muted-foreground)}
-@media(max-width:600px){.art{flex-direction:column}.art img{flex:none;width:100%;aspect-ratio:16/9}.art-go{display:none}}
+.home-eyebrow{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre)}
+.home-hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,5.2vw,2.5rem);line-height:1.15;margin-top:14px}
+@media(min-width:640px){.home-hero h1{white-space:nowrap}}
+.home-hero h1 span{color:var(--ochre)}
+.home-hero p{margin-top:12px;color:rgba(255,255,255,.85);font-size:.95rem;font-weight:500}
+.home-hero .home-eyebrow{margin-top:0;color:var(--ochre);font-size:12px;font-weight:500}
+.home-list{max-width:48rem;margin:0 auto;padding:22px 24px 56px;display:flex;flex-direction:column;gap:14px}
+.home-list h2{font-size:14px;font-weight:500;color:var(--muted-foreground)}
+.art{display:flex;gap:18px;align-items:center;text-decoration:none;color:var(--foreground);background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px 20px 10px 10px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.art:hover,.art:focus-visible{transform:translateY(-2px);border-color:var(--ochre);box-shadow:var(--shadow-soft);outline:none}
+.art-tile{flex:0 0 108px;height:108px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff}
+.art-tile svg{width:38px;height:38px}
+.art-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.art-tag{font-size:12px;letter-spacing:.1em;color:#b9791f}
+.art-title{font-family:var(--font-display);font-size:1.15rem;line-height:1.25;font-weight:600;color:#0f3d2a}
+.art-stats{display:flex;flex-wrap:wrap;gap:2px 14px;font-size:13px;color:var(--muted-foreground)}
+.art-stats b{color:#0f3d2a;font-weight:600}
+.art-go{color:#0f3d2a;font-size:20px;transition:transform .2s}
+.art:hover .art-go{transform:translateX(4px)}
+@media(max-width:520px){.art{gap:12px;padding-right:12px}.art-tile{flex-basis:72px;height:72px}.art-tile svg{width:28px;height:28px}.art-title{font-size:1rem}}
