@@ -41,7 +41,7 @@ nav = ('<nav class="sticky top-0 z-50 border-b border-border/60 bg-background/90
        '<a href="proposito-de-vida/" class="%s">Propósito de vida</a>'
        '<a href="mente-e-corpo/" class="%s">Mente e corpo</a>'
        '<a href="bpm-em-pmes/" class="%s">BPM em PMEs</a>'
-       '<a href="passaporte-pessoa-idosa/" class="%s">Pessoa idosa</a></div></nav>') % (pill, pill, pill, pill)
+       '<a href="passaporte-pessoa-idosa/" class="%s">Transformação de Serviço</a></div></nav>') % (pill, pill, pill, pill)
 home = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>Artigos de Carlos Hernane de Oliveira</title>'
