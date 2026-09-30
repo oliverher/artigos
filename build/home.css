@@ -1,0 +1,23 @@
+.home-hero{background-image:var(--gradient-deep);color:#fff;padding:64px 24px 56px}
+.home-wrap{max-width:48rem;margin:0 auto}
+.home-eyebrow{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre)}
+.home-hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.1;margin-top:20px}
+.home-hero h1 span{background-image:var(--gradient-warm);-webkit-background-clip:text;background-clip:text;color:transparent}
+.home-hero p{margin-top:16px;color:rgba(255,255,255,.8);font-size:1.1rem}
+.home-hero .home-eyebrow{color:var(--ochre);margin-top:0;font-size:12px}
+.home-author{margin-top:24px;font-size:14px;color:rgba(255,255,255,.7)}
+.home-list{max-width:48rem;margin:0 auto;padding:32px 24px 64px;display:flex;flex-direction:column;gap:16px}
+.home-list h2{font-size:14px;font-weight:600;color:var(--muted-foreground);letter-spacing:.04em}
+.art{display:flex;gap:18px;align-items:stretch;text-decoration:none;color:var(--foreground);background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px;box-shadow:var(--shadow-soft);transition:transform .2s,border-color .2s,box-shadow .2s}
+.art:hover,.art:focus-visible{transform:translateY(-2px);border-color:var(--ochre);box-shadow:var(--shadow-lift);outline:none}
+.art img{flex:0 0 190px;width:190px;height:auto;min-height:130px;object-fit:cover;border-radius:10px}
+.art-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:4px 0}
+.art-tag{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--ochre)}
+.art-title{font-family:var(--font-display);font-size:1.3rem;line-height:1.25;font-weight:600}
+.art-desc{font-size:14px;line-height:1.5;color:var(--muted-foreground)}
+.art-stats{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted-foreground);margin-top:2px}
+.art-stats b{color:var(--primary);font-weight:600;font-size:15px}
+.art-go{align-self:center;padding:0 8px 0 4px;color:var(--primary);font-size:22px;transition:transform .2s}
+.art:hover .art-go{transform:translateX(4px);color:var(--ochre)}
+.home-foot{border-top:1px solid var(--border);background:var(--card);padding:28px 24px;font-size:14px;color:var(--muted-foreground)}
+@media(max-width:600px){.art{flex-direction:column}.art img{flex:none;width:100%;aspect-ratio:16/9}.art-go{display:none}}

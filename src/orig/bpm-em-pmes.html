@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/styles-DBp-cSl-.css" data-precedence="default"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Inter+Tight:wght@400;500;600&amp;display=swap" data-precedence="default"/><title>Gestão por processos em PMEs: aplicação do frame-BPM em Goiás</title><meta name="author" content="Lovable"/><meta name="twitter:site" content="@Lovable"/><meta name="description" content="Análise do artigo sobre a aplicação de um framework de BPM em pequenas e médias empresas de Goiás, com tópicos, resultados e reflexões."/><meta property="og:title" content="Gestão por processos em PMEs: do método à transformação"/><meta property="og:description" content="Uma leitura visual e crítica do frame-BPM, seus resultados em Goiás e os desafios para sustentar a transformação."/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary_large_image"/><link rel="modulepreload" href="/assets/index-8CUfEUWm.js"/><link rel="modulepreload" href="/assets/bpm-em-pmes-BryhaDWO.js"/><link rel="modulepreload" href="/assets/utils-1yxa3YOX.js"/><link rel="modulepreload" href="/assets/figura-13.jpg.asset-DEkMSDUe.js"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<style>
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg) !important;
+		color: var(--badge-text) !important;
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow) !important;
+		font-size: 12px;
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+		transition: opacity var(--badge-transition-duration) var(--badge-transition-easing);
+	}
+
+	#lovable-badge.closing {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	#lovable-badge-cta {
+		display: flex;
+		align-items: baseline;
+		gap: var(--badge-gap);
+		box-sizing: border-box;
+		padding: 4px var(--badge-padding) 0;
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
+
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
+
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
+
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
+
+	#lovable-badge-text {
+		line-height: 1;
+	}
+
+	/* The wordmark baseline sits at y=12 of the 16px logo; an empty 12px box
+	   makes that the flex baseline so the text aligns to it on any system font. */
+	#lovable-badge-logo {
+		position: relative;
+		display: block;
+		width: 52px;
+		height: 12px;
+	}
+
+	#lovable-badge-logo svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
+
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
+
+	#lovable-badge-close:focus {
+		outline: none;
+	}
+
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
+
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
+
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge,
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
+
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
+</style>
+<script defer src="/~flock.js" data-proxy-url="/~api/analytics"></script><meta name="twitter:title" content="Gestão por processos em PMEs: do método à transformação"><meta name="twitter:description" content="Uma leitura visual e crítica do frame-BPM, seus resultados em Goiás e os desafios para sustentar a transformação."><meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_06g6z7rd079e9bd29b3654mcdy/86ce6df178e31b5fb2bcd616022ca40d_1790478160726.png"><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_06g6z7rd079e9bd29b3654mcdy/86ce6df178e31b5fb2bcd616022ca40d_1790478160726.png"></head><body><nav class="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur"><div class="mx-auto flex max-w-3xl items-center gap-2 overflow-x-auto px-6 py-3"><a href="/" class="shrink-0 rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary">Início</a><a href="/proposito-de-vida" class="shrink-0 rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary">Propósito de vida</a><a href="/mente-e-corpo" class="shrink-0 rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary">Mente e corpo</a><a class="shrink-0 rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary bg-primary text-primary-foreground hover:bg-primary" href="/bpm-em-pmes" data-status="active" aria-current="page">BPM em PMEs</a></div></nav><!--$--><div class="min-h-screen"><header class="relative overflow-hidden text-primary-foreground" style="background-image:var(--gradient-deep)"><div class="surface-paper absolute inset-0 opacity-30" aria-hidden="true"></div><div class="relative mx-auto max-w-3xl px-6 py-20 sm:py-28"><p class="text-xs font-semibold uppercase tracking-[0.2em] text-ochre">Pesquisa exploratória · Gestão por Processos</p><h1 class="mt-6 text-4xl leading-[1.1] font-semibold sm:text-5xl">Gestão por processos em <span class="text-gradient-warm">PMEs</span></h1><p class="mt-5 text-lg leading-relaxed text-primary-foreground/80">A aplicação do frame-BPM em empresas de Goiás — da ruptura dos silos ao desafio de sustentar a mudança.</p><p class="mt-8 text-sm text-primary-foreground/70">Carlos Hernane de Oliveira · Nivaldo Morais · Eliomar Araujo de Lima</p><div class="mt-6"><a href="/__l5e/assets-v1/ee52ee65-02da-47cf-943b-3c289b1c3b40/Framework_de_Gestao_de_Processos_para_PMEs_em_Goias.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-ochre px-6 py-3 text-sm font-semibold text-ochre-foreground shadow-lift transition-transform hover:-translate-y-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open h-4 w-4" aria-hidden="true"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg> Leia o Artigo na Íntegra</a><p class="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/70">Abre o PDF acadêmico completo em uma nova aba para leitura direta.</p></div><dl class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4"><div><dt class="font-display text-2xl text-ochre">265</dt><dd class="mt-1 text-xs uppercase tracking-wide text-primary-foreground/70">intervenções</dd></div><div><dt class="font-display text-2xl text-ochre">37</dt><dd class="mt-1 text-xs uppercase tracking-wide text-primary-foreground/70">empresas avaliadas</dd></div><div><dt class="font-display text-2xl text-ochre">83%</dt><dd class="mt-1 text-xs uppercase tracking-wide text-primary-foreground/70">micro, pequenas e médias</dd></div><div><dt class="font-display text-2xl text-ochre">&gt;84%</dt><dd class="mt-1 text-xs uppercase tracking-wide text-primary-foreground/70">percepção de valor</dd></div></dl></div></header><main class="mx-auto max-w-3xl px-6 py-16"><section aria-labelledby="resumo-bpm"><h2 id="resumo-bpm" class="text-2xl font-semibold">Do que trata o artigo</h2><p class="mt-4 leading-relaxed text-muted-foreground">O estudo analisa a aplicação de um framework simplificado para implementar Gestão de Processos de Negócio em empresas predominantemente instaladas em Goiás. Ele contrapõe a estrutura funcional à gestão ponta a ponta, descreve um ciclo de cinco fases e examina o valor percebido pelas organizações participantes.</p><p class="mt-4 leading-relaxed text-muted-foreground">A leitura também evidencia uma tensão central: o método foi bem assimilado, mas a continuidade das ações depende de liderança, envolvimento das equipes e maturidade organizacional.</p></section><section aria-labelledby="objetivos-bpm" class="mt-10 rounded-2xl border bg-secondary/50 p-7"><h2 id="objetivos-bpm" class="text-2xl font-semibold">Objetivos do artigo</h2><div class="mt-6"><h3 class="text-lg font-semibold text-ochre">Objetivo principal</h3><p class="mt-2 leading-relaxed text-muted-foreground">Analisar a aplicação e a assimilação de um framework para implementar BPM em pequenas e médias empresas, observando a efetividade percebida das ações de transformação.</p></div><div class="mt-6"><h3 class="text-lg font-semibold text-ochre">Objetivos secundários</h3><ul class="mt-3 space-y-2 text-muted-foreground"><li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sage"></span><span class="leading-relaxed">Distinguir a lógica funcional da organização orientada por processos.</span></li><li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sage"></span><span class="leading-relaxed">Apresentar as cinco fases do ciclo de implementação do frame-BPM.</span></li><li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sage"></span><span class="leading-relaxed">Avaliar assimilação e satisfação a partir de fatores críticos de sucesso.</span></li><li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sage"></span><span class="leading-relaxed">Identificar ganhos percebidos, barreiras e limites de continuidade nas PMEs.</span></li></ul></div></section><div class="mt-14 space-y-14"><section id="mudanca-de-lente" aria-labelledby="mudanca-de-lente-titulo"><div class="flex items-baseline gap-4"><span class="font-display text-3xl text-ochre">01</span><div><h2 id="mudanca-de-lente-titulo" class="text-2xl font-semibold">Da lógica funcional à visão por processos</h2><p class="mt-1 text-sm text-muted-foreground">A transformação começa quando a empresa deixa de enxergar apenas departamentos e passa a acompanhar o valor de ponta a ponta.</p></div></div><figure class="mt-6 overflow-hidden rounded-xl border bg-card shadow-[var(--shadow-soft)]"><img src="/__l5e/assets-v1/833c9b40-d76c-44c2-b43b-ef495900cd57/bpm-pmes-figura-3.jpg" alt="Comparação visual entre organização funcional e organização orientada por processos." loading="lazy" class="aspect-video w-full object-cover"/><figcaption class="border-t px-5 py-4 text-sm leading-relaxed text-muted-foreground">A visão funcional separa decisões, indicadores e sistemas; a visão por processos conecta equipes e mede o resultado entregue ao cliente.<span class="mt-1 block text-xs text-muted-foreground/80">Figura extraída da apresentação do artigo.</span></figcaption></figure><div class="mt-6 space-y-3"><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Romper os silos departamentais</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">A especialização funcional pode fragmentar o trabalho e criar competição interna.</p><p class="text-[15px] leading-relaxed text-muted-foreground">No modelo funcional, cada área tende a otimizar seus próprios resultados. A gestão por processos desloca o foco para o fluxo completo que atravessa diferentes funções até entregar um produto ou serviço.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Uma área eficiente não garante um processo eficiente quando o valor se perde nas passagens entre departamentos.</p></div></div></div></div><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Gerenciar valor de ponta a ponta</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">Tempo, custo, capacidade e qualidade passam a ser observados no processo completo.</p><p class="text-[15px] leading-relaxed text-muted-foreground">A abordagem interfuncional permite comparar desempenho, identificar gargalos e atribuir responsabilidades sem limitar a análise ao organograma.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">O cliente experimenta o resultado do fluxo inteiro, não a eficiência isolada de cada setor.</p></div></div></div></div><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Tecnologia como integração, não como finalidade</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">Sistemas apoiam a mudança quando conectam informações e decisões ao longo do fluxo de valor.</p><p class="text-[15px] leading-relaxed text-muted-foreground">O estudo situa tecnologia, competências e aprendizagem organizacional como recursos para assimilar mudanças. Implementar uma ferramenta sem rever o trabalho preserva a fragmentação existente.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Digitalizar um processo fragmentado pode apenas acelerar suas falhas.</p></div></div></div></div></div></section><section id="ciclo" aria-labelledby="ciclo-titulo"><div class="flex items-baseline gap-4"><span class="font-display text-3xl text-ochre">02</span><div><h2 id="ciclo-titulo" class="text-2xl font-semibold">O ciclo de implementação do frame-BPM</h2><p class="mt-1 text-sm text-muted-foreground">O método organiza a transformação em cinco fases encadeadas, do entendimento do negócio à execução das mudanças.</p></div></div><figure class="mt-6 overflow-hidden rounded-xl border bg-card shadow-[var(--shadow-soft)]"><img src="/__l5e/assets-v1/1e1b001f-aef7-497f-82df-d89766a2a3ca/bpm-pmes-figura-5.jpg" alt="Ciclo contínuo com as cinco fases do frame-BPM." loading="lazy" class="aspect-video w-full object-cover"/><figcaption class="border-t px-5 py-4 text-sm leading-relaxed text-muted-foreground">O frame-BPM percorre entendimento do negócio, modelagem AS-IS, análise, projeto TO-BE e transformação — uma sequência que deve voltar a alimentar novos ciclos.<span class="mt-1 block text-xs text-muted-foreground/80">Figura extraída da apresentação do artigo.</span></figcaption></figure><div class="mt-6 space-y-3"><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Começar pelo ganho central</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">A primeira fase alinha o projeto a um problema estratégico concreto.</p><p class="text-[15px] leading-relaxed text-muted-foreground">O entendimento do negócio reúne informações estratégicas, promove alinhamento, organiza o projeto e prepara as pessoas. Esse norte evita mapear processos sem uma finalidade reconhecível.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Sem um ganho central claro, o desenho do processo corre o risco de se tornar documentação sem decisão.</p></div></div></div></div><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Tornar visível o estado atual — AS-IS</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">A modelagem registra como o trabalho realmente acontece, incluindo suas interfaces e desvios.</p><p class="text-[15px] leading-relaxed text-muted-foreground">A notação de processos ajuda a expor etapas, papéis, informações e dependências. O mapa atual cria uma base compartilhada para discutir problemas antes de propor soluções.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Melhorar exige primeiro enxergar o trabalho real, não apenas o procedimento imaginado.</p></div></div></div></div><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Analisar antes de redesenhar</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">Gargalos, riscos, desperdícios e desconexões orientam o desenho futuro.</p><p class="text-[15px] leading-relaxed text-muted-foreground">Na análise são examinados os pontos críticos do fluxo. O projeto TO-BE transforma os achados em um processo futuro e a fase de transformação converte as propostas em planos acompanháveis.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Um processo futuro só é melhoria quando responde aos problemas demonstrados no processo atual.</p></div></div></div></div></div></section><section id="campo" aria-labelledby="campo-titulo"><div class="flex items-baseline gap-4"><span class="font-display text-3xl text-ochre">03</span><div><h2 id="campo-titulo" class="text-2xl font-semibold">A aplicação em empresas de Goiás</h2><p class="mt-1 text-sm text-muted-foreground">A pesquisa reuniu relatos de experiência e documentos de organizações que aplicaram ou aprenderam o método.</p></div></div><figure class="mt-6 overflow-hidden rounded-xl border bg-card shadow-[var(--shadow-soft)]"><img src="/__l5e/assets-v1/939d6855-87bb-4181-9821-adb8d6b1e637/bpm-pmes-figura-8.jpg" alt="Mapa de Goiás e síntese da amostra do estudo sobre o frame-BPM." loading="lazy" class="aspect-video w-full object-cover"/><figcaption class="border-t px-5 py-4 text-sm leading-relaxed text-muted-foreground">O campo empírico abrangeu 265 intervenções entre 2011 e 2017; 37 empresas responderam à avaliação, concentradas na região metropolitana de Goiânia.<span class="mt-1 block text-xs text-muted-foreground/80">Figura extraída da apresentação do artigo.</span></figcaption></figure><div class="mt-6 space-y-3"><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Um laboratório predominantemente formado por PMEs</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">83% das organizações participantes eram micro, pequenas ou médias empresas.</p><p class="text-[15px] leading-relaxed text-muted-foreground">A amostra concentrou empresas de serviços e varejo e 86,7% estavam na região metropolitana de Goiânia. Esse perfil aproxima o método das restrições práticas das organizações menores.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">A aderência local fortalece a utilidade prática do estudo, mas recomenda cautela ao generalizar seus resultados para outros contextos.</p></div></div></div></div><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Consultoria e capacitação como portas de entrada</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">64% das intervenções ocorreram por consultoria externa; as demais, por treinamento de equipes.</p><p class="text-[15px] leading-relaxed text-muted-foreground">As duas modalidades permitiram contato com o frame-BPM, mas a forma de apoio influencia a percepção sobre entregas, acompanhamento e capacidade de aplicação posterior.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Aprender um método e incorporá-lo à rotina são resultados diferentes.</p></div></div></div></div><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Resultados baseados em percepção</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">A avaliação utilizou respostas autodeclaradas e análise documental.</p><p class="text-[15px] leading-relaxed text-muted-foreground">Os resultados descrevem assimilação, satisfação e valor percebido. Eles são relevantes para avaliar aceitação e uso, mas não equivalem a uma medição experimental independente do desempenho das empresas.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Percepção positiva é evidência de aceitação; não deve ser confundida com prova causal de ganho econômico.</p></div></div></div></div></div></section><section id="resultados" aria-labelledby="resultados-titulo"><div class="flex items-baseline gap-4"><span class="font-display text-3xl text-ochre">04</span><div><h2 id="resultados-titulo" class="text-2xl font-semibold">Valor percebido e ganhos relatados</h2><p class="mt-1 text-sm text-muted-foreground">A simplicidade favoreceu a assimilação do método e a identificação de melhorias concretas.</p></div></div><div class="mt-6 space-y-3"><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Assimilação acima de 84%</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">Mais de 84% dos respondentes relataram percepção de valor na apropriação do frame-BPM.</p><p class="text-[15px] leading-relaxed text-muted-foreground">O artigo atribui parte dessa aceitação à simplicidade e à agilidade do método diante da complexidade comum em modelos corporativos mais extensos.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Para uma PME, um método aplicável pode ser mais valioso do que um modelo sofisticado difícil de sustentar.</p></div></div></div></div><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Satisfação elevada com o apoio consultivo</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">O índice de satisfação parcial ou completa superou 94% entre empresas apoiadas por consultoria.</p><p class="text-[15px] leading-relaxed text-muted-foreground">Os relatos destacaram entregas como desenhos de processos, indicadores e planos de ação. A avaliação, contudo, registra satisfação com a experiência e seus produtos.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Satisfação mostra que a solução fez sentido para quem a utilizou; continuidade mostra se ela se tornou capacidade organizacional.</p></div></div></div></div><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Padronização, qualidade e indicadores</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">Os ganhos mais citados envolveram padronização, melhoria da qualidade, uso de indicadores e redução de desperdícios.</p><p class="text-[15px] leading-relaxed text-muted-foreground">Essas respostas apontam os efeitos operacionais percebidos após a aplicação. Também apareceram controle da execução, redução de prazos, produtividade e maior clareza sobre papéis.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">A transformação ganha credibilidade quando o desenho se traduz em padrões, medidas e decisões no cotidiano.</p></div></div></div></div></div></section><section id="sustentabilidade" aria-labelledby="sustentabilidade-titulo"><div class="flex items-baseline gap-4"><span class="font-display text-3xl text-ochre">05</span><div><h2 id="sustentabilidade-titulo" class="text-2xl font-semibold">O desafio de sustentar a transformação</h2><p class="mt-1 text-sm text-muted-foreground">O principal limite não aparece na compreensão do método, mas na permanência das ações ao longo do tempo.</p></div></div><figure class="mt-6 overflow-hidden rounded-xl border bg-card shadow-[var(--shadow-soft)]"><img src="/__l5e/assets-v1/ade8edff-14fd-437d-9a5c-d2511e611a22/bpm-pmes-figura-11.jpg" alt="Ilustração da perda de continuidade das ações de transformação ao longo do tempo." loading="lazy" class="aspect-video w-full object-cover"/><figcaption class="border-t px-5 py-4 text-sm leading-relaxed text-muted-foreground">Entre 55% e 60% das ações planejadas não foram executadas ou foram realizadas apenas parcialmente; proporção semelhante abandonou indicadores.<span class="mt-1 block text-xs text-muted-foreground/80">Figura extraída da apresentação do artigo.</span></figcaption></figure><div class="mt-6 space-y-3"><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">A assimilação não garante continuidade</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">Uma única aplicação não foi suficiente para muitas empresas replicarem melhorias em outros processos.</p><p class="text-[15px] leading-relaxed text-muted-foreground">O contraste entre aceitação elevada e baixa persistência mostra que a introdução técnica precisa ser acompanhada por governança, repetição e aprendizagem continuada.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Um projeto bem recebido pode desaparecer se não alterar a forma como a empresa decide e acompanha o trabalho.</p></div></div></div></div><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Liderança e equipes são fatores críticos</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">A falta de envolvimento da liderança foi a barreira mais citada, seguida por baixa participação operacional.</p><p class="text-[15px] leading-relaxed text-muted-foreground">Sem patrocínio dos sócios e gestores, as ações perdem prioridade. Sem quem executa o processo, o redesenho deixa de incorporar o conhecimento cotidiano e encontra resistência na prática.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Transformação imposta de cima falha na operação; transformação sem liderança perde espaço para a urgência diária.</p></div></div></div></div><div class="overflow-hidden rounded-xl border bg-card transition-shadow shadow-[var(--shadow-soft)]"><button type="button" aria-expanded="false" class="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-sage"></span><span class="flex-1 font-medium leading-snug">Maturidade e rotatividade condicionam o resultado</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="grid transition-all duration-300 ease-out grid-rows-[0fr] opacity-0"><div class="overflow-hidden"><div class="space-y-4 border-t px-5 py-5 pl-11"><p class="text-[15px] leading-relaxed text-muted-foreground">Limitações de gestão e troca frequente de pessoas enfraquecem o conhecimento acumulado.</p><p class="text-[15px] leading-relaxed text-muted-foreground">O artigo aponta que condições típicas das PMEs podem facilitar decisões rápidas, mas também dificultar a institucionalização de indicadores, responsabilidades e rotinas de melhoria.</p><p class="rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Sustentar BPM exige transformar conhecimento de projeto em memória da organização.</p></div></div></div></div></div></section></div><section aria-labelledby="matriz-bpm" class="mt-16 rounded-2xl border bg-secondary/50 p-7"><h2 id="matriz-bpm" class="text-2xl font-semibold">A síntese: técnica e cultura precisam avançar juntas</h2><p class="mt-3 leading-relaxed text-muted-foreground">A figura reúne a principal reflexão extraída dos resultados: conhecer o método não basta. O BPM sustentável aparece quando assimilação técnica encontra liderança e engajamento humano.</p><figure class="mt-6 overflow-hidden rounded-xl border bg-card shadow-[var(--shadow-soft)]"><img src="/__l5e/assets-v1/771ae4ef-2d77-4d96-8cbd-5f7d6ef26199/bpm-pmes-figura-13.jpg" alt="Matriz que cruza assimilação metodológica com engajamento humano e liderança." loading="lazy" class="aspect-video w-full object-cover"/><figcaption class="border-t px-5 py-4 text-sm leading-relaxed text-muted-foreground">A matriz distingue caos operacional, esforço sem direção, ilusão metodológica e BPM sustentável.<span class="mt-1 block text-xs text-muted-foreground/80">Figura extraída da apresentação do artigo.</span></figcaption></figure></section></main><footer class="border-t bg-card"><div class="mx-auto max-w-3xl px-6 py-10 text-sm text-muted-foreground"><p class="font-display text-base text-foreground">Aplicação de um Framework para Implementação de BPM em Empresas de Pequeno e Médio Porte</p><p class="mt-2">Carlos Hernane de Oliveira · Nivaldo Morais · Eliomar Araujo de Lima</p><p class="mt-4">Palavras-chave: gestão de processos de negócio; transformação organizacional; fatores críticos de sucesso; PMEs.</p></div></footer></div><script>(function(a,f){let l;try{l=JSON.parse(sessionStorage.getItem(a)||"{}")}catch{return}const n=l?.[f||history.state?.__TSR_key];let c=!1;for(const t in n){const e=n[t],o=e?.scrollX,s=e?.scrollY;if(Number.isFinite(o)&&Number.isFinite(s)){if(t==="window")scrollTo(o,s),c=!0;else if(t)try{const r=document.querySelector(t);r&&(r.scrollLeft=o,r.scrollTop=s)}catch{}}}if(c)return;const i=location.hash.slice(1);if(i){const t=history.state?.__hashScrollIntoViewOptions??!0;if(t){const e=document.getElementById(i);e&&e.scrollIntoView(t)}return}scrollTo(0,0)})("tsr-scroll-restoration-v1_3");document.currentScript.remove()</script><!--/$--><script class="$tsr" id="$tsr-stream-barrier">(self.$R=self.$R||{})["tsr"]=[];self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&&this.streamEnded&&(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]};$_TSR.router=($R=>$R[0]={manifest:$R[1]={routes:$R[2]={__root__:$R[3]={preloads:$R[4]=["/assets/index-8CUfEUWm.js"],scripts:$R[5]=[$R[6]={attrs:$R[7]={type:"module",async:!0,src:"/assets/index-8CUfEUWm.js"}}]},"/bpm-em-pmes":$R[8]={preloads:$R[9]=["/assets/bpm-em-pmes-BryhaDWO.js","/assets/utils-1yxa3YOX.js","/assets/figura-13.jpg.asset-DEkMSDUe.js"]}}},matches:$R[10]=[$R[11]={i:"__root__ ",u:1790777272637,s:"success",ssr:!0},$R[12]={i:" bpm-em-pmes bpm-em-pmes",u:1790777272637,s:"success",ssr:!0}],lastMatchId:" bpm-em-pmes bpm-em-pmes"})($R["tsr"]);$_TSR.e();document.currentScript.remove()</script><script type="module" async="" src="/assets/index-8CUfEUWm.js"></script>
+<aside
+	id="lovable-badge"
+	role="complementary"
+	dir="ltr"
+	lang="en"
+	aria-label="Made with Lovable">
+	<a
+		id="lovable-badge-cta" 
+		target="_blank" 
+		href="https://lovable.dev/projects/lovp_06g6z7rd079e9bd29b3654mcdy?utm_source=lovable-badge&utm_campaign=badge-wording-enabled"
+		rel="noopener nofollow"
+		aria-label="Made with Lovable">
+		<span id="lovable-badge-text">Made with</span>
+		<span id="lovable-badge-logo"><svg xmlns="http://www.w3.org/2000/svg" width="52" height="16" fill="none" viewBox="0 0 52 16">
+  <path fill="#FCFBF8" fill-rule="evenodd" d="M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z" clip-rule="evenodd"/>
+  <path fill="#FCFBF8" d="m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z"/>
+  <path fill="url(#a)" fill-rule="evenodd" d="M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z" clip-rule="evenodd"/>
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)" gradientUnits="userSpaceOnUse">
+      <stop offset=".106" stop-color="#FE7B02"/>
+      <stop offset=".394" stop-color="#FE3F21"/>
+      <stop offset=".608" stop-color="#F858BC"/>
+      <stop offset=".929" stop-color="#575ECF"/>
+    </radialGradient>
+  </defs>
+</svg>
+
+</span>
+	</a>
+	
+	<span id="lovable-badge-divider" aria-hidden="true"></span>
+	
+	<button 
+		id="lovable-badge-close"
+		aria-label="Dismiss"
+		title="Dismiss"
+		type="button">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+			<path d="M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z"/>
+		</svg>
+	</button>
+</aside>
+<script>
+	(() => {
+		if (window.self !== window.top || navigator.userAgent.includes('puppeteer')) {
+			const badge = document.querySelector('#lovable-badge');
+			if (badge) {
+				badge.style.display = 'none';
+			}
+			return;
+		}
+
+		const closeButton = document.querySelector('#lovable-badge-close');
+		if (closeButton) {
+			closeButton.addEventListener('click', function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+				const badge = document.querySelector('#lovable-badge');
+				if (badge) {
+					badge.classList.add('closing');
+					setTimeout(function() {
+						if (badge) {
+							badge.style.display = 'none';
+						}
+					}, 240);
+				}
+			});
+		}
+	})();
+</script>
+</body></html>
