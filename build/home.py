@@ -38,7 +38,7 @@ home = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/home.css"></head><body>'
         + nav +
         '<header class="home-hero"><div class="home-wrap"><p class="home-eyebrow">Coleção de artigos · Goiânia, 2026</p>'
-        '<h1>Três ensaios,<br>uma <span>leitura por vez</span></h1><p>Escolha o artigo do seu interesse.</p>'
+        '<h1>Três ensaios, uma <span>leitura por vez</span></h1><p>Escolha o artigo do seu interesse.</p>'
         '<p class="home-author">Carlos Hernane de Oliveira</p></div></header>'
         '<main class="home-list"><h2>Escolha um artigo</h2>' + cards + '</main>'
         '<footer class="home-foot"><div class="home-wrap">Carlos Hernane de Oliveira · Goiânia, 2026.</div></footer></body></html>')

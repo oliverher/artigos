@@ -1,7 +1,8 @@
 .home-hero{background-image:var(--gradient-deep);color:#fff;padding:64px 24px 56px}
 .home-wrap{max-width:48rem;margin:0 auto}
 .home-eyebrow{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre)}
-.home-hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.1;margin-top:20px}
+.home-hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(2rem,5.5vw,2.6rem);line-height:1.15;margin-top:20px}
+@media(min-width:560px){.home-hero h1{white-space:nowrap}}
 .home-hero h1 span{background-image:var(--gradient-warm);-webkit-background-clip:text;background-clip:text;color:transparent}
 .home-hero p{margin-top:16px;color:rgba(255,255,255,.8);font-size:1.1rem}
 .home-hero .home-eyebrow{color:var(--ochre);margin-top:0;font-size:12px}
