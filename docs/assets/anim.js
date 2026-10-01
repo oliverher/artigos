@@ -14,6 +14,7 @@
     setTimeout(function () { requestAnimationFrame(step); }, delay);
   }
 
+  if (reduce) document.querySelectorAll('animateMotion').forEach(function (m) { m.remove(); });
   if (reduce || !('IntersectionObserver' in window)) {
     els.forEach(function (el) { el.classList.add('is-in'); });
     return;

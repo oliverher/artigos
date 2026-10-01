@@ -20,3 +20,21 @@
 .art-go{color:#0f3d2a;font-size:20px;transition:transform .2s}
 .art:hover .art-go{transform:translateX(4px)}
 @media(max-width:520px){.art{gap:12px;padding-right:12px}.art-tile{flex-basis:72px;height:72px}.art-tile svg{width:28px;height:28px}.art-title{font-size:1rem}}
+
+/* Animações da página inicial (só CSS) */
+@keyframes home-rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes home-fade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.home-hero .home-eyebrow,.home-hero h1,.home-hero p{animation:home-fade .7s cubic-bezier(.2,.7,.2,1) both}
+.home-hero h1{animation-delay:.12s}.home-hero p:last-child{animation-delay:.24s}
+.home-list h2{animation:home-fade .6s ease .3s both}
+.art{animation:home-rise .7s cubic-bezier(.2,.7,.2,1) both}
+.art:nth-of-type(1){animation-delay:.35s}.art:nth-of-type(2){animation-delay:.47s}
+.art:nth-of-type(3){animation-delay:.59s}.art:nth-of-type(4){animation-delay:.71s}
+.art-tile{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.art:hover .art-tile,.art:focus-visible .art-tile{transform:scale(1.06) rotate(-3deg)}
+.art-go{transition:transform .3s ease}
+.art:hover .art-go,.art:focus-visible .art-go{transform:translateX(6px)}
+@media(prefers-reduced-motion:reduce){
+ .home-hero *,.home-list h2,.art{animation:none!important}
+ .art-tile,.art-go{transition:none!important}.art:hover .art-tile{transform:none}
+}
