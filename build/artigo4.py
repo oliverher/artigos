@@ -228,7 +228,9 @@ def build(pages):
 
 
 def patch_nav_and_assets(pages_other):
-    new = ('<a href="../%s/" class="shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors text-muted-foreground hover:bg-secondary">Transformação de Serviço</a>' % SLUG)
+    pill = 'shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors text-muted-foreground hover:bg-secondary'
+    new = ('<a href="../%s/" class="%s">Transformação de Serviço</a>' % (SLUG, pill)
+           + '<a href="../pmbok-dialetica/" class="%s">Evolução do PMBOK</a>' % pill)
     for slug in pages_other:
         f = '%s/%s/index.html' % (S, slug)
         h = open(f, encoding='utf8').read()
