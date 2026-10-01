@@ -1,4 +1,5 @@
 import re, shutil, html
+import infograficos
 
 S = 'docs'
 SLUG = 'passaporte-pessoa-idosa'
@@ -26,14 +27,19 @@ def acc(title, paras, quote=None):
             '<div class="space-y-4 border-t border-border/70 px-5 py-5 pl-11">%s</div></div></div></div>') % (e(title, quote=False), CHEV, body)
 
 
-def fig(img, alt, cap, fit=False):
+def fig(img, alt, cap, fit=False, ig=None):
     style = ' style="object-fit:contain;background:#fff"' if fit else ''
-    return ('<figure class="mt-6 overflow-hidden rounded-xl border bg-card shadow-[var(--shadow-soft)]">'
-            '<a href="../assets/img/%s" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original">'
-            '<img src="../assets/img/%s" alt="%s" loading="lazy" class="aspect-video w-full object-cover"%s/></a>'
+    if ig:
+        body = ig()
+        orig = (' <a class="underline underline-offset-2" href="../assets/img/%s" target="_blank" rel="noopener">Ver a imagem original</a>' % img)
+    else:
+        body = ('<a href="../assets/img/%s" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original">'
+                '<img src="../assets/img/%s" alt="%s" loading="lazy" class="aspect-video w-full object-cover"%s/></a>' % (img, img, e(alt), style))
+        orig = ''
+    return ('<figure class="reveal mt-6 overflow-hidden rounded-xl border bg-card shadow-[var(--shadow-soft)]">%s'
             '<figcaption class="border-t px-5 py-4 text-sm leading-relaxed text-muted-foreground">%s'
-            '<span class="mt-1 block text-xs text-muted-foreground/80">%s</span></figcaption></figure>'
-            % (img, img, e(alt), style, e(cap[0], quote=False), e(cap[1], quote=False)))
+            '<span class="mt-1 block text-xs text-muted-foreground/80">%s%s</span></figcaption></figure>'
+            % (body, e(cap[0], quote=False), e(cap[1], quote=False), orig))
 
 
 def section(num, sid, title, sub, figs, accs):
@@ -96,7 +102,7 @@ sections = [
     section('04', 'as-is', 'Diagnóstico AS IS: o labirinto burocrático',
             'Um processo fragmentado, com seis categorias de pontos de dor.',
             [fig('passaporte-as-is-labirinto.jpg', 'Diagnóstico da jornada atual: descoberta difusa, solicitação presencial, caça aos papéis, caixa preta de até 60 dias e retirada presencial.',
-                 ('Da informação dispersa à retirada do papel: cada etapa exigia deslocamento, documentos e espera.', FONTE_SLIDE))],
+                 ('Da informação dispersa à retirada do papel: cada etapa exigia deslocamento, documentos e espera.', FONTE_SLIDE), ig=infograficos.labirinto)],
             [acc('Informação dispersa e documentos difíceis de reunir',
                  ['As informações sobre o benefício eram obtidas na rodoviária, com conhecidos, no CRAS ou no Vapt Vupt, o que gerava incerteza sobre o direito e sobre os procedimentos.',
                   'Os idosos tinham dificuldade para identificar e obter os documentos, em especial o comprovante de renda familiar (extrato do INSS e espelho do CadÚnico), o que levava a idas a lan houses e a cópias desnecessárias.'],
@@ -127,9 +133,9 @@ sections = [
     section('06', 'resultados', 'Resultados: do labirinto à linha expressa',
             'O que mudou entre a jornada AS IS e a jornada TO BE.',
             [fig('passaporte-matriz-as-is-to-be.jpg', 'Matriz de transformação estrutural comparando a situação atual (AS IS) e a desejada (TO BE) em informação, documentos, canais, prazo e retirada.',
-                 ('Da informação difusa à comunicação proativa; do papel à validação automática; do presencial obrigatório ao multicanal.', FONTE_SLIDE)),
+                 ('Da informação difusa à comunicação proativa; do papel à validação automática; do presencial obrigatório ao multicanal.', FONTE_SLIDE), ig=infograficos.matriz),
              fig('passaporte-impacto-operacional.jpg', 'Impacto operacional: tempo de emissão de 60 dias para 24 horas na emissão automática ou 5 dias úteis com análise.',
-                 ('O tempo de emissão do passaporte digital passou de até 60 dias para até 24 horas (emissão automática) ou até 5 dias úteis (com análise).', FONTE_SLIDE))],
+                 ('O tempo de emissão do passaporte digital passou de até 60 dias para até 24 horas (emissão automática) ou até 5 dias úteis (com análise).', FONTE_SLIDE), ig=infograficos.impacto)],
             [acc('Prazo de emissão',
                  ['O passaporte digital é emitido em até 24 horas na emissão automática, ou em até 5 dias úteis quando há análise documental. O passaporte físico fica disponível para retirada em até 30 dias.'],
                  'De até 60 dias para até 5 dias úteis no passaporte digital.'),
@@ -212,9 +218,10 @@ def build(pages):
             '<title>Passaporte da Pessoa Idosa: transformação digital e design de serviços</title>'
             '<meta name="description" content="Artigo sobre o redesenho do Passaporte da Pessoa Idosa em Goiás com Design de Serviços: tópicos, resultados e limites do estudo."/>'
             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap"/>'
-            '<link rel="stylesheet" href="../assets/styles.css"/></head><body>'
+            '<link rel="stylesheet" href="../assets/styles.css"/><link rel="stylesheet" href="../assets/anim.css"/>'
+            '<script>document.documentElement.classList.add("js")</script></head><body>'
             + nav_html(pages, SLUG) + '<div class="min-h-screen">' + header + main + footer + '</div>'
-            '<script src="../assets/app.js"></script></body></html>')
+            '<script src="../assets/app.js"></script><script src="../assets/anim.js"></script></body></html>')
     import os
     os.makedirs('%s/%s' % (S, SLUG), exist_ok=True)
     open('%s/%s/index.html' % (S, SLUG), 'w', encoding='utf8').write(page)
@@ -228,4 +235,6 @@ def patch_nav_and_assets(pages_other):
         if SLUG not in h:
             h = h.replace('BPM em PMEs</a>', 'BPM em PMEs</a>' + new, 1)
             open(f, 'w', encoding='utf8').write(h)
+    shutil.copy('build/anim.css', S + '/assets/anim.css')
+    shutil.copy('build/anim.js', S + '/assets/anim.js')
     shutil.copy('src/orig/Passaporte_da_Pessoa_Idosa.pdf', S + '/assets/pdf/Passaporte_da_Pessoa_Idosa.pdf')
