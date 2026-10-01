@@ -30,7 +30,7 @@ F3 = (shot(3, 4, 'A tese (6ª edição): a predominância processual, código T'
            'Estrutura cúbica de vigas azuis e cinza representando a 6ª edição, com 10 áreas de conhecimento, 5 grupos de processos e 49 processos descritos por entradas, ferramentas e técnicas e saídas.')
       + shot(4, 5, 'A antítese (7ª edição): o deslocamento para princípios, código A', 'Fonte: elaborado pelo autor, com base em PMI (2021a, 2021b).',
              'Rede de nós e linhas em tons de laranja representando a 7ª edição, com 12 princípios, 8 domínios de desempenho e tailoring no centro da arquitetura; os grupos de processos passam a ser um dos modelos possíveis.')
-      + shot(5, 6, 'A síntese (8ª edição): a recomposição arquitetural, código S', 'Fonte: elaborado pelo autor, com base em PMI (2025).',
+      + shot(5, 7, 'A síntese (8ª edição): a recomposição arquitetural, código S', 'Fonte: elaborado pelo autor, com base em PMI (2025).',
              'Rede verde-azulada sobre uma estrutura translúcida representando a 8ª edição, com 6 princípios, 7 domínios de desempenho e reintrodução da orientação de processos ao lado de tailoring.')
       + shot(6, 9, 'Matriz de evolução estrutural do PMBOK® Guide (6ª a 8ª edição)', 'Fonte: elaborado pelo autor, com base em PMI (2017, 2021a, 2025).',
              'Matriz comparando as três edições em arquitetura central, estatuto dos processos e abordagens de entrega, concluindo que o padrão é de recomposição em camadas e não de substituição linear.'))
@@ -38,7 +38,7 @@ F4 = (shot(7, 8, 'Ambidestria metodológica: o núcleo teórico da nova arquitet
            'Quadrante com os eixos padronização (exploitation) e adaptação (exploration), com a ambidestria metodológica da 8ª edição destacada; ao lado, a distinção entre pluralismo e hibridismo, no nível do projeto, e ambidestria metodológica, no nível da arquitetura do standard.')
       + shot(8, 10, 'Tailoring como a regra de decisão', 'Fonte: elaborado pelo autor, com base em PMI (2025).',
              'Esquema em que os princípios (o porquê) passam por um mecanismo chamado tailoring, a regra de decisão conforme o contexto do projeto, e resultam em orientações práticas e processos (o como).'))
-F6 = shot(9, 7, 'A refutação da leitura pendular', 'Fonte: elaborado pelo autor, com base em PMI (2025).',
+F6 = shot(9, 6, 'A refutação da leitura pendular', 'Fonte: elaborado pelo autor, com base em PMI (2025).',
           'Pêndulo entre processos e agilidade riscado por um X, ao lado de uma hélice que combina estrutura e rede; a conclusão é que a 8ª edição não é um retorno pendular, e sim uma recomposição dialética.')
 F8 = shot(11, 11, 'Sustentabilidade como princípio arquitetural', 'Fonte: elaborado pelo autor, com base em Elkington (1997), Silvius e Schipper (2014) e PMI (2025).',
           'Pilar de concreto destacado em verde-azulado, rotulado sustentabilidade, sustentando uma estrutura; ao lado, três blocos de texto sobre o novo status normativo, a evolução do conceito e o alinhamento estratégico.')
