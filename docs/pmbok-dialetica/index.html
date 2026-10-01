@@ -60,7 +60,9 @@ th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px sol
 th{background:#f1efe8;font-weight:600;font-size:14px}
 tr:last-child td{border-bottom:0}
 .tablewrap{overflow-x:auto}
-figure.fig{margin:22px 0 26px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 12px}
+figure.fig,figure.shot{margin:22px 0 26px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 12px}
+figure.shot img{display:block;width:100%;height:auto;border-radius:8px}
+figure.shot>a{display:block;overflow:hidden;border-radius:8px}
 figcaption.cap{font-weight:600;font-size:15px;margin-bottom:8px}
 figcaption.src{font-size:13px;color:var(--muted);margin-top:6px}
 .replay{margin-top:8px;font:inherit;font-size:13px;padding:5px 12px;border:1px solid #b4b2a9;border-radius:8px;background:#fff;color:var(--ink);cursor:pointer}
@@ -95,8 +97,10 @@ ol.refs li{margin-bottom:8px;padding-left:4px}
 .conclusion{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:20px 0}
 footer{margin-top:56px;padding:28px 0 56px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
 footer strong{color:var(--ink)}
-@media print{.nav,.replay,.btn{display:none}.fig .an-pop,.fig .an-fade{opacity:1}figure.fig{break-inside:avoid}}
+@media print{.nav,.replay,.btn{display:none}.js .reveal{opacity:1!important;transform:none!important}.fig .an-pop,.fig .an-fade{opacity:1}figure.fig{break-inside:avoid}}
 </style>
+<link rel="stylesheet" href="../assets/anim.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <nav class="nav" aria-label="Principal">
@@ -143,33 +147,10 @@ footer strong{color:var(--ink)}
 <h2>Prescrição e adaptação</h2>
 <p class="lead">O ponto central é como mecanismos de coordenação distintos se combinam; a oposição absoluta entre processos e adaptação explica pouco.</p>
 <p>Em ambientes estáveis e muito regulados, estruturas padronizadas favorecem a comparabilidade, a governança e a rastreabilidade. Em ambientes incertos, a adaptação permite responder a mudanças, a dependências e ao aprendizado que ocorre durante a execução.</p>
-<figure class="fig" id="figura-1">
-<figcaption class="cap">Figura 1. Prescrição e adaptação como eixo de análise</figcaption>
-<svg viewBox="0 0 680 270" role="img"><title>Prescrição e adaptação</title><desc>Dois blocos, prescrição e adaptação, ligados por setas nos dois sentidos, com a questão central de como combiná-los.</desc>
-<defs><marker id="arrow1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-<g class="c-purple">
-<rect x="40" y="40" width="240" height="124" rx="12" stroke-width="0.5"/>
-<text class="th" x="160" y="68" text-anchor="middle" dominant-baseline="central">Prescrição</text>
-<text class="ts" x="160" y="96" text-anchor="middle" dominant-baseline="central">Processos sequenciáveis</text>
-<text class="ts" x="160" y="116" text-anchor="middle" dominant-baseline="central">Padronização e governança</text>
-<text class="ts" x="160" y="136" text-anchor="middle" dominant-baseline="central">Rastreabilidade</text>
-</g>
-<g class="c-teal">
-<rect x="400" y="40" width="240" height="124" rx="12" stroke-width="0.5"/>
-<text class="th" x="520" y="68" text-anchor="middle" dominant-baseline="central">Adaptação</text>
-<text class="ts" x="520" y="96" text-anchor="middle" dominant-baseline="central">Princípios e resultados</text>
-<text class="ts" x="520" y="116" text-anchor="middle" dominant-baseline="central">Escolha contextual</text>
-<text class="ts" x="520" y="136" text-anchor="middle" dominant-baseline="central">Tailoring</text>
-</g>
-<line x1="288" y1="92" x2="392" y2="92" class="arr" marker-end="url(#arrow1)"/>
-<line x1="392" y1="114" x2="288" y2="114" class="arr" marker-end="url(#arrow1)"/>
-<g class="c-gray">
-<rect x="170" y="200" width="340" height="44" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="222" text-anchor="middle" dominant-baseline="central">Como esses mecanismos se combinam?</text>
-</g>
-</svg>
-<figcaption class="src">Fonte: elaborado pelo autor.</figcaption>
-<button class="replay" type="button" data-replay>Repetir animação</button>
+<figure class="shot reveal" id="slide-1">
+<figcaption class="cap">Figura 1. O dilema executivo contemporâneo: governança e rastreabilidade contra inovação e velocidade</figcaption>
+<a href="../assets/img/pmbok-slide-02.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-02.jpg" width="1376" height="768" loading="lazy" alt="Dois lados em tensão: à esquerda uma coluna de concreto representando exploitation, governança e rastreabilidade; à direita fitas orgânicas representando exploration, inovação e velocidade; abaixo, a síntese de que a evolução do PMBOK busca reconciliar essa tensão."></a>
+<figcaption class="src">Fonte: elaborado pelo autor, com base em March (1991) e O’Reilly e Tushman (2013).</figcaption>
 </figure>
 <p>O PMI já tratava dessa lógica no Agile Practice Guide, que faz da escolha do ciclo de vida uma decisão dependente do contexto (PMI; AGILE ALLIANCE, 2017). A 7ª edição ampliou essa orientação ao colocar o tailoring no centro da arquitetura, e a 8ª a preserva, sem retomar a ideia de que todos os projetos devam seguir o mesmo conjunto de processos.</p>
 </section>
@@ -179,32 +160,10 @@ footer strong{color:var(--ink)}
 <h2>A dialética como lente</h2>
 <p class="lead">Três movimentos analíticos, construídos pelo pesquisador, e não categorias oficiais do PMI.</p>
 <p>A dialética entra como lente interpretativa, útil para examinar contradições, deslocamentos e recomposições. O artigo recorre a Hegel (1977), para quem a superação combina negação e preservação em outro nível, e a Seo e Creed (2002), que aplicam a perspectiva dialética à mudança institucional.</p>
-<figure class="fig" id="figura-2">
-<figcaption class="cap">Figura 2. A dialética como lente: três movimentos analíticos</figcaption>
-<svg viewBox="0 0 680 230" role="img"><title>Dialética como lente</title><desc>Três movimentos analíticos: predominância processual, deslocamento e recomposição, associados às edições 6, 7 e 8 e aos códigos T, A e S.</desc>
-<defs><marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-<g class="c-purple">
-<rect x="40" y="40" width="170" height="80" rx="8" stroke-width="0.5"/>
-<text class="th" x="125" y="68" text-anchor="middle" dominant-baseline="central">Predominância</text>
-<text class="ts" x="125" y="92" text-anchor="middle" dominant-baseline="central">6ª edição · código T</text>
-</g>
-<g class="c-teal">
-<rect x="255" y="40" width="170" height="80" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="68" text-anchor="middle" dominant-baseline="central">Deslocamento</text>
-<text class="ts" x="340" y="92" text-anchor="middle" dominant-baseline="central">7ª edição · código A</text>
-</g>
-<g class="c-gray">
-<rect x="470" y="40" width="170" height="80" rx="8" stroke-width="0.5"/>
-<text class="th" x="555" y="68" text-anchor="middle" dominant-baseline="central">Recomposição</text>
-<text class="ts" x="555" y="92" text-anchor="middle" dominant-baseline="central">8ª edição · código S</text>
-</g>
-<line x1="214" y1="80" x2="251" y2="80" class="arr" marker-end="url(#arrow2)"/>
-<line x1="429" y1="80" x2="466" y2="80" class="arr" marker-end="url(#arrow2)"/>
-<rect x="40" y="150" width="600" height="44" rx="8" fill="none" stroke="var(--arrow)" stroke-width="0.5" stroke-dasharray="4 4"/>
-<text class="ts" x="340" y="172" text-anchor="middle" dominant-baseline="central">Tese, antítese e síntese: referência heurística, sem peso na conclusão</text>
-</svg>
+<figure class="shot reveal" id="slide-2">
+<figcaption class="cap">Figura 2. A dialética como lente: da estrutura rígida à arquitetura adaptativa</figcaption>
+<a href="../assets/img/pmbok-slide-01.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-01.jpg" width="1376" height="768" loading="lazy" alt="Ilustração em que uma estrutura geométrica rígida, à esquerda, se dissolve em uma rede orgânica laranja e se recompõe em uma estrutura em módulos, à direita, representando a trajetória das edições 6, 7 e 8 do PMBOK."></a>
 <figcaption class="src">Fonte: elaborado pelo autor, com base em Hegel (1977) e Seo e Creed (2002).</figcaption>
-<button class="replay" type="button" data-replay>Repetir animação</button>
 </figure>
 <div class="caution">O estudo não afirma que o desenvolvimento do PMBOK® reproduza uma estrutura hegeliana objetiva. “Tese, antítese e síntese” aparecem só como referência heurística, e nenhuma conclusão depende desses termos.</div>
 </section>
@@ -218,40 +177,25 @@ footer strong{color:var(--ink)}
 <div class="card a"><span class="tag">7ª edição · 2021 · código A</span><h3>Deslocamento para princípios</h3><p>12 princípios e 8 Performance Domains, com ênfase em resultados, adaptação e tailoring.</p><p>O FAQ oficial esclarece que os Process Groups seguem como um dos modelos disponíveis (PMI, 2021b).</p></div>
 <div class="card s"><span class="tag">8ª edição · 2025 · código S</span><h3>Recomposição</h3><p>6 princípios e 7 Performance Domains, com orientação de processos reintroduzida de forma evoluída e não prescritiva (PMI, 2025).</p><p>Não é retorno à 6ª edição: a orientação processual aparece junto de princípios, domínios e tailoring.</p></div>
 </div>
-<figure class="fig" id="figura-3">
-<figcaption class="cap">Figura 3. Evolução estrutural do PMBOK® Guide (6ª a 8ª edição)</figcaption>
-<svg viewBox="0 0 680 280" role="img"><title>Evolução estrutural do PMBOK</title><desc>Unidades estruturais das edições 6, 7 e 8 do PMBOK Guide.</desc>
-<defs><marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-<g class="c-purple">
-<rect x="40" y="40" width="180" height="170" rx="12" stroke-width="0.5"/>
-<text class="th" x="130" y="66" text-anchor="middle" dominant-baseline="central">6ª edição</text>
-<text class="ts" x="130" y="86" text-anchor="middle" dominant-baseline="central">2017</text>
-<text class="ts" x="130" y="124" text-anchor="middle" dominant-baseline="central">10 Knowledge Areas</text>
-<text class="ts" x="130" y="146" text-anchor="middle" dominant-baseline="central">5 Process Groups</text>
-<text class="ts" x="130" y="168" text-anchor="middle" dominant-baseline="central">49 processos</text>
-</g>
-<g class="c-teal">
-<rect x="250" y="40" width="180" height="170" rx="12" stroke-width="0.5"/>
-<text class="th" x="340" y="66" text-anchor="middle" dominant-baseline="central">7ª edição</text>
-<text class="ts" x="340" y="86" text-anchor="middle" dominant-baseline="central">2021</text>
-<text class="ts" x="340" y="124" text-anchor="middle" dominant-baseline="central">12 princípios</text>
-<text class="ts" x="340" y="146" text-anchor="middle" dominant-baseline="central">8 domínios</text>
-<text class="ts" x="340" y="168" text-anchor="middle" dominant-baseline="central">Tailoring central</text>
-</g>
-<g class="c-gray">
-<rect x="460" y="40" width="180" height="170" rx="12" stroke-width="0.5"/>
-<text class="th" x="550" y="66" text-anchor="middle" dominant-baseline="central">8ª edição</text>
-<text class="ts" x="550" y="86" text-anchor="middle" dominant-baseline="central">2025</text>
-<text class="ts" x="550" y="124" text-anchor="middle" dominant-baseline="central">6 princípios</text>
-<text class="ts" x="550" y="146" text-anchor="middle" dominant-baseline="central">7 domínios</text>
-<text class="ts" x="550" y="168" text-anchor="middle" dominant-baseline="central">Orientação não prescritiva</text>
-</g>
-<line x1="224" y1="125" x2="246" y2="125" class="arr" marker-end="url(#arrow3)"/>
-<line x1="434" y1="125" x2="456" y2="125" class="arr" marker-end="url(#arrow3)"/>
-<text class="ts" x="340" y="240" text-anchor="middle" dominant-baseline="central">Processos: arquitetura dominante, depois modelo opcional, depois orientação</text>
-</svg>
+<figure class="shot reveal" id="slide-3">
+<figcaption class="cap">Figura 3. A tese (6ª edição): a predominância processual, código T</figcaption>
+<a href="../assets/img/pmbok-slide-04.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-04.jpg" width="1376" height="768" loading="lazy" alt="Estrutura cúbica de vigas azuis e cinza representando a 6ª edição, com 10 áreas de conhecimento, 5 grupos de processos e 49 processos descritos por entradas, ferramentas e técnicas e saídas."></a>
+<figcaption class="src">Fonte: elaborado pelo autor, com base em PMI (2017).</figcaption>
+</figure>
+<figure class="shot reveal" id="slide-4">
+<figcaption class="cap">Figura 4. A antítese (7ª edição): o deslocamento para princípios, código A</figcaption>
+<a href="../assets/img/pmbok-slide-05.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-05.jpg" width="1376" height="768" loading="lazy" alt="Rede de nós e linhas em tons de laranja representando a 7ª edição, com 12 princípios, 8 domínios de desempenho e tailoring no centro da arquitetura; os grupos de processos passam a ser um dos modelos possíveis."></a>
+<figcaption class="src">Fonte: elaborado pelo autor, com base em PMI (2021a, 2021b).</figcaption>
+</figure>
+<figure class="shot reveal" id="slide-5">
+<figcaption class="cap">Figura 5. A síntese (8ª edição): a recomposição arquitetural, código S</figcaption>
+<a href="../assets/img/pmbok-slide-06.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-06.jpg" width="1376" height="768" loading="lazy" alt="Rede verde-azulada sobre uma estrutura translúcida representando a 8ª edição, com 6 princípios, 7 domínios de desempenho e reintrodução da orientação de processos ao lado de tailoring."></a>
+<figcaption class="src">Fonte: elaborado pelo autor, com base em PMI (2025).</figcaption>
+</figure>
+<figure class="shot reveal" id="slide-6">
+<figcaption class="cap">Figura 6. Matriz de evolução estrutural do PMBOK® Guide (6ª a 8ª edição)</figcaption>
+<a href="../assets/img/pmbok-slide-09.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-09.jpg" width="1376" height="768" loading="lazy" alt="Matriz comparando as três edições em arquitetura central, estatuto dos processos e abordagens de entrega, concluindo que o padrão é de recomposição em camadas e não de substituição linear."></a>
 <figcaption class="src">Fonte: elaborado pelo autor, com base em PMI (2017, 2021a, 2025).</figcaption>
-<button class="replay" type="button" data-replay>Repetir animação</button>
 </figure>
 <div class="takeaway">Entre a 7ª e a 8ª edição, os princípios caem de 12 para 6 (redução de 50%) e os domínios, de 8 para 7 (redução de 12,5%). A contagem isolada não revela o conteúdo mantido ou descartado e não implica correspondência semântica entre os conjuntos.</div>
 <p>O que mudou, portanto, foi o <em>estatuto</em> dos processos: de arquitetura dominante na 6ª, a modelo possível na 7ª, e a orientação não prescritiva na 8ª. É uma continuidade com mudança de estatuto.</p>
@@ -263,79 +207,19 @@ footer strong{color:var(--ink)}
 <p class="lead">A contribuição teórica do artigo, formulada como hipótese interpretativa.</p>
 <p>March (1991) distingue <em>exploration</em>, a busca de novas possibilidades, de <em>exploitation</em>, o refinamento e o uso de conhecimentos existentes. O’Reilly e Tushman (2013) tratam a ambidestria organizacional como a capacidade de sustentar as duas atividades ao mesmo tempo.</p>
 <p>O artigo define <strong>ambidestria metodológica</strong> como a presença simultânea, na arquitetura de um standard, de elementos voltados à padronização e ao aproveitamento de práticas estabelecidas e de elementos voltados à adaptação e à experimentação, acompanhada de uma regra explícita para escolher entre eles.</p>
-<figure class="fig" id="figura-4">
-<figcaption class="cap">Figura 4. Ambidestria metodológica na arquitetura do standard</figcaption>
-<svg viewBox="0 0 680 330" role="img"><title>Ambidestria metodológica</title><desc>Dentro da arquitetura normativa do standard, padronização e adaptação convergem para uma regra de escolha, o tailoring.</desc>
-<defs><marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-<rect x="40" y="30" width="600" height="260" rx="20" fill="none" stroke="var(--arrow)" stroke-width="0.5" stroke-dasharray="4 4"/>
-<text class="th" x="340" y="56" text-anchor="middle" dominant-baseline="central">Arquitetura normativa do standard</text>
-<g class="c-purple">
-<rect x="70" y="90" width="220" height="90" rx="12" stroke-width="0.5"/>
-<text class="th" x="180" y="122" text-anchor="middle" dominant-baseline="central">Padronização</text>
-<text class="ts" x="180" y="148" text-anchor="middle" dominant-baseline="central">Exploitation · processos</text>
-</g>
-<g class="c-teal">
-<rect x="390" y="90" width="220" height="90" rx="12" stroke-width="0.5"/>
-<text class="th" x="500" y="122" text-anchor="middle" dominant-baseline="central">Adaptação</text>
-<text class="ts" x="500" y="148" text-anchor="middle" dominant-baseline="central">Exploration · princípios</text>
-</g>
-<line x1="180" y1="182" x2="250" y2="203" class="arr" marker-end="url(#arrow4)"/>
-<line x1="500" y1="182" x2="430" y2="203" class="arr" marker-end="url(#arrow4)"/>
-<g class="c-gray">
-<rect x="210" y="205" width="260" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="224" text-anchor="middle" dominant-baseline="central">Regra de escolha</text>
-<text class="ts" x="340" y="244" text-anchor="middle" dominant-baseline="central">Tailoring conforme o contexto</text>
-</g>
-</svg>
+<figure class="shot reveal" id="slide-7">
+<figcaption class="cap">Figura 7. Ambidestria metodológica: o núcleo teórico da nova arquitetura</figcaption>
+<a href="../assets/img/pmbok-slide-08.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-08.jpg" width="1376" height="768" loading="lazy" alt="Quadrante com os eixos padronização (exploitation) e adaptação (exploration), com a ambidestria metodológica da 8ª edição destacada; ao lado, a distinção entre pluralismo e hibridismo, no nível do projeto, e ambidestria metodológica, no nível da arquitetura do standard."></a>
 <figcaption class="src">Fonte: elaborado pelo autor, com base em March (1991) e O’Reilly e Tushman (2013).</figcaption>
-<button class="replay" type="button" data-replay>Repetir animação</button>
+</figure>
+<figure class="shot reveal" id="slide-8">
+<figcaption class="cap">Figura 8. Tailoring como a regra de decisão</figcaption>
+<a href="../assets/img/pmbok-slide-10.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-10.jpg" width="1376" height="768" loading="lazy" alt="Esquema em que os princípios (o porquê) passam por um mecanismo chamado tailoring, a regra de decisão conforme o contexto do projeto, e resultam em orientações práticas e processos (o como)."></a>
+<figcaption class="src">Fonte: elaborado pelo autor, com base em PMI (2025).</figcaption>
 </figure>
 <div class="caution">A unidade de análise é a arquitetura normativa do standard, e não a organização PMI nem as organizações usuárias. O estudo não demonstra que a 8ª edição produza ambidestria nas organizações; afirma apenas que a arquitetura atual oferece mecanismos compatíveis com a coexistência das duas orientações.</div>
 <h3>Por que não basta falar em tailoring, hibridismo ou pluralismo</h3>
 <p>Os três descrevem fenômenos reais, mas respondem a perguntas diferentes e operam sobretudo no nível do projeto ou do campo profissional. A ambidestria metodológica opera no nível da arquitetura do standard e acrescenta a regra que estabelece como escolher ou combinar os mecanismos.</p>
-<figure class="fig" id="figura-5">
-<figcaption class="cap">Figura 5. Tailoring, hibridismo, pluralismo e ambidestria metodológica por nível de análise</figcaption>
-<svg viewBox="0 0 680 350" role="img"><title>Quatro conceitos próximos por nível de análise</title><desc>Pluralismo no campo profissional, ambidestria metodológica na arquitetura do standard, hibridismo no projeto ou organização e tailoring no projeto.</desc>
-<g class="c-gray">
-<rect x="40" y="40" width="190" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="135" y="68" text-anchor="middle" dominant-baseline="central">Campo profissional</text>
-</g>
-<g class="c-purple">
-<rect x="250" y="40" width="390" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="445" y="58" text-anchor="middle" dominant-baseline="central">Pluralismo</text>
-<text class="ts" x="445" y="78" text-anchor="middle" dominant-baseline="central">Coexistência, sem critério de seleção</text>
-</g>
-<g class="c-gray">
-<rect x="40" y="112" width="190" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="135" y="140" text-anchor="middle" dominant-baseline="central">Arquitetura do standard</text>
-</g>
-<g class="c-teal">
-<rect x="250" y="112" width="390" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="445" y="130" text-anchor="middle" dominant-baseline="central">Ambidestria metodológica</text>
-<text class="ts" x="445" y="150" text-anchor="middle" dominant-baseline="central">Padronização e adaptação, com regra</text>
-</g>
-<g class="c-gray">
-<rect x="40" y="184" width="190" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="135" y="212" text-anchor="middle" dominant-baseline="central">Projeto ou organização</text>
-</g>
-<g class="c-purple">
-<rect x="250" y="184" width="390" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="445" y="202" text-anchor="middle" dominant-baseline="central">Hibridismo</text>
-<text class="ts" x="445" y="222" text-anchor="middle" dominant-baseline="central">Combina abordagens, sem regra</text>
-</g>
-<g class="c-gray">
-<rect x="40" y="256" width="190" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="135" y="284" text-anchor="middle" dominant-baseline="central">Projeto</text>
-</g>
-<g class="c-purple">
-<rect x="250" y="256" width="390" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="445" y="274" text-anchor="middle" dominant-baseline="central">Tailoring</text>
-<text class="ts" x="445" y="294" text-anchor="middle" dominant-baseline="central">Adapta a abordagem ao contexto</text>
-</g>
-</svg>
-<figcaption class="src">Fonte: elaborado pelo autor.</figcaption>
-<button class="replay" type="button" data-replay>Repetir animação</button>
-</figure>
 <div class="tablewrap"><table>
 <thead><tr><th>Conceito</th><th>O que explica</th><th>O que não explica</th></tr></thead>
 <tbody>
@@ -351,37 +235,15 @@ footer strong{color:var(--ink)}
 <h2>Leituras concorrentes e legitimidade</h2>
 <p class="lead">Para reduzir o risco de viés de confirmação, a hipótese é confrontada com três explicações alternativas.</p>
 <p>A tese da <strong>continuidade</strong> explica bem a 7ª edição, mas não a reintrodução da orientação de processos na 8ª. A <strong>leitura pendular</strong> pressupõe que a 8ª retorne à posição da 6ª, o que contraria a descrição do PMI de uma orientação processual não prescritiva. A <strong>adequação ao ambiente</strong>, em linha com a teoria institucional, é compatível com a ambidestria metodológica, mas o corpus não permite testá-la.</p>
-<figure class="fig" id="figura-6">
-<figcaption class="cap">Figura 6. Leituras concorrentes sobre a trajetória do PMBOK®</figcaption>
-<svg viewBox="0 0 680 240" role="img"><title>Leituras concorrentes</title><desc>Quatro leituras sobre a trajetória do PMBOK: continuidade, pendular, adequação ao ambiente e ambidestria metodológica, cada uma com sua limitação principal.</desc>
-<g class="c-gray">
-<rect x="40" y="40" width="270" height="70" rx="8" stroke-width="0.5"/>
-<text class="th" x="175" y="64" text-anchor="middle" dominant-baseline="central">Continuidade</text>
-<text class="ts" x="175" y="88" text-anchor="middle" dominant-baseline="central">Não explica a 8ª edição</text>
-</g>
-<g class="c-gray">
-<rect x="370" y="40" width="270" height="70" rx="8" stroke-width="0.5"/>
-<text class="th" x="505" y="64" text-anchor="middle" dominant-baseline="central">Leitura pendular</text>
-<text class="ts" x="505" y="88" text-anchor="middle" dominant-baseline="central">Pressupõe retorno à 6ª</text>
-</g>
-<g class="c-gray">
-<rect x="40" y="130" width="270" height="70" rx="8" stroke-width="0.5"/>
-<text class="th" x="175" y="154" text-anchor="middle" dominant-baseline="central">Adequação ao ambiente</text>
-<text class="ts" x="175" y="178" text-anchor="middle" dominant-baseline="central">Compatível, mas não testável</text>
-</g>
-<g class="c-teal">
-<rect x="370" y="130" width="270" height="70" rx="8" stroke-width="0.5"/>
-<text class="th" x="505" y="154" text-anchor="middle" dominant-baseline="central">Ambidestria metodológica</text>
-<text class="ts" x="505" y="178" text-anchor="middle" dominant-baseline="central">Continuidade, mudança e regra</text>
-</g>
-</svg>
-<figcaption class="src">Fonte: elaborado pelo autor.</figcaption>
-<button class="replay" type="button" data-replay>Repetir animação</button>
+<figure class="shot reveal" id="slide-9">
+<figcaption class="cap">Figura 9. A refutação da leitura pendular</figcaption>
+<a href="../assets/img/pmbok-slide-07.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-07.jpg" width="1376" height="768" loading="lazy" alt="Pêndulo entre processos e agilidade riscado por um X, ao lado de uma hélice que combina estrutura e rede; a conclusão é que a 8ª edição não é um retorno pendular, e sim uma recomposição dialética."></a>
+<figcaption class="src">Fonte: elaborado pelo autor, com base em PMI (2025).</figcaption>
 </figure>
 <h3>Teoria institucional</h3>
 <p>DiMaggio e Powell (1983) ajudam a discutir por que standards profissionais incorporam elementos associados a expectativas diversas do ambiente: pressões regulatórias (coercitivo), imitação de práticas legitimadas (mimético) e profissionalização (normativo).</p>
 <figure class="fig" id="figura-7">
-<figcaption class="cap">Figura 7. Isomorfismo institucional e legitimidade do standard</figcaption>
+<figcaption class="cap">Figura 10. Isomorfismo institucional e legitimidade do standard</figcaption>
 <svg viewBox="0 0 680 300" role="img"><title>Teoria institucional e isomorfismo</title><desc>Três tipos de isomorfismo, coercitivo, mimético e normativo, ligados por associação interpretativa a um standard profissional que busca legitimidade.</desc>
 <defs><marker id="arrow7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <g class="c-purple">
@@ -420,43 +282,10 @@ footer strong{color:var(--ink)}
 <h2>Sustentabilidade na arquitetura</h2>
 <p class="lead">Um componente da arquitetura contemporânea do gerenciamento de projetos, sem vínculo formal comprovado com os ODS.</p>
 <p>A literatura discute a integração das dimensões econômica, social e ambiental às decisões de projeto (ELKINGTON, 1997; SILVIUS; SCHIPPER, 2014; MARTENS; CARVALHO, 2017). Na 8ª edição, o PMI inclui a sustentabilidade entre os princípios (PMI, 2025).</p>
-<figure class="fig" id="figura-8">
-<figcaption class="cap">Figura 8. Sustentabilidade na arquitetura contemporânea do gerenciamento de projetos</figcaption>
-<svg viewBox="0 0 680 430" role="img"><title>Sustentabilidade em gerenciamento de projetos</title><desc>As dimensões econômica, social e ambiental convergem para a integração nas decisões de projeto, que aparece entre os princípios da 8ª edição; a relação com os ODS é apenas possibilidade analítica.</desc>
-<defs><marker id="arrow8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-<g class="c-teal">
-<rect x="40" y="30" width="180" height="44" rx="8" stroke-width="0.5"/>
-<text class="th" x="130" y="52" text-anchor="middle" dominant-baseline="central">Econômica</text>
-</g>
-<g class="c-teal">
-<rect x="250" y="30" width="180" height="44" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="52" text-anchor="middle" dominant-baseline="central">Social</text>
-</g>
-<g class="c-teal">
-<rect x="460" y="30" width="180" height="44" rx="8" stroke-width="0.5"/>
-<text class="th" x="550" y="52" text-anchor="middle" dominant-baseline="central">Ambiental</text>
-</g>
-<line x1="130" y1="76" x2="130" y2="128" class="arr" marker-end="url(#arrow8)"/>
-<line x1="340" y1="76" x2="340" y2="128" class="arr" marker-end="url(#arrow8)"/>
-<line x1="550" y1="76" x2="550" y2="128" class="arr" marker-end="url(#arrow8)"/>
-<g class="c-teal">
-<rect x="40" y="130" width="600" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="148" text-anchor="middle" dominant-baseline="central">Integração nas decisões de projeto</text>
-<text class="ts" x="340" y="168" text-anchor="middle" dominant-baseline="central">Criação e preservação de valor</text>
-</g>
-<line x1="340" y1="188" x2="340" y2="228" class="arr" marker-end="url(#arrow8)"/>
-<g class="c-purple">
-<rect x="140" y="230" width="400" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="248" text-anchor="middle" dominant-baseline="central">8ª edição do PMBOK</text>
-<text class="ts" x="340" y="268" text-anchor="middle" dominant-baseline="central">Sustentabilidade entre os seis princípios</text>
-</g>
-<line x1="340" y1="288" x2="340" y2="328" class="arr" stroke-dasharray="4 4" marker-end="url(#arrow8)"/>
-<rect x="140" y="330" width="400" height="56" rx="8" fill="none" stroke="var(--arrow)" stroke-width="0.5" stroke-dasharray="4 4"/>
-<text class="th" x="340" y="348" text-anchor="middle" dominant-baseline="central">ODS 9 e 12 da Agenda 2030</text>
-<text class="ts" x="340" y="368" text-anchor="middle" dominant-baseline="central">Possibilidade analítica, não alinhamento formal</text>
-</svg>
+<figure class="shot reveal" id="slide-11">
+<figcaption class="cap">Figura 11. Sustentabilidade como princípio arquitetural</figcaption>
+<a href="../assets/img/pmbok-slide-11.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-11.jpg" width="1376" height="768" loading="lazy" alt="Pilar de concreto destacado em verde-azulado, rotulado sustentabilidade, sustentando uma estrutura; ao lado, três blocos de texto sobre o novo status normativo, a evolução do conceito e o alinhamento estratégico."></a>
 <figcaption class="src">Fonte: elaborado pelo autor, com base em Elkington (1997), Silvius e Schipper (2014) e PMI (2025).</figcaption>
-<button class="replay" type="button" data-replay>Repetir animação</button>
 </figure>
 <div class="caution">O estudo não encontrou base suficiente para afirmar que a 8ª edição se estruture em torno dos ODS 9 e 12 da Agenda 2030. A relação permanece como possibilidade de pesquisa futura, e não como conclusão documental.</div>
 </section>
@@ -466,6 +295,11 @@ footer strong{color:var(--ink)}
 <h2>Método, proposições e limites</h2>
 <p class="lead">O desenho torna a interpretação examinável por outros pesquisadores.</p>
 <p>O corpus principal reúne seis documentos: PMBOK® Guide 6ª, 7ª e 8ª edições, o FAQ da 7ª, o Agile Practice Guide e o Scrum Guide 2020. A codificação seguiu três categorias (T, A e S) com definições operacionais e critérios de exclusão, e quatro proposições foram avaliadas por critérios explícitos de consistência e de refutação.</p>
+<figure class="shot reveal" id="slide-12">
+<figcaption class="cap">Figura 12. O rigor metodológico da análise: corpus, delineamento e códigos T, A e S</figcaption>
+<a href="../assets/img/pmbok-slide-03.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-03.jpg" width="1376" height="768" loading="lazy" alt="Fluxo em que o corpus principal (guias PMBOK, Agile Practice Guide e Scrum Guide) passa por análise documental qualitativa e é classificado em três códigos: T, predominância da prescrição; A, deslocamento para princípios; S, recomposição."></a>
+<figcaption class="src">Fonte: elaborado pelo autor, com base em Bowen (2009), Gioia, Corley e Hamilton (2013) e Whetten (1989).</figcaption>
+</figure>
 <div class="tablewrap"><table>
 <thead><tr><th>Proposição</th><th>Avaliação</th></tr></thead>
 <tbody>
@@ -487,10 +321,20 @@ footer strong{color:var(--ink)}
 
 <section class="sec">
 <h2>Considerações finais</h2>
+<figure class="shot reveal" id="slide-13">
+<figcaption class="cap">Figura 13. Implicações práticas: da conformidade rígida à governança contextual</figcaption>
+<a href="../assets/img/pmbok-slide-12.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-12.jpg" width="1376" height="768" loading="lazy" alt="À esquerda, uma grade uniforme representando o isomorfismo engessado; à direita, um conjunto de formas diversas em um mesmo recipiente representando a governança contextual; abaixo, implicações para diretores de PMO, competências de liderança e o fim da oposição entre métodos."></a>
+<figcaption class="src">Fonte: elaborado pelo autor.</figcaption>
+</figure>
 <div class="conclusion">
 <p>A comparação das três edições indica uma <strong>reconfiguração da relação entre prescrição e adaptação</strong>. A 6ª colocou a arquitetura processual no centro; a 7ª deslocou a estrutura normativa para princípios, domínios e tailoring; a 8ª manteve essa base e reincorporou a orientação de processos de maneira não prescritiva.</p>
 <p>A ambidestria metodológica é uma conclusão interpretativa que exige validação empírica. A 8ª edição pode ser entendida como uma arquitetura que conecta o “porquê”, o “quê” e o “como” do gerenciamento de projetos, preservando a flexibilidade sem abandonar a orientação prática.</p>
 </div>
+<figure class="shot reveal" id="slide-14">
+<figcaption class="cap">Figura 14. Conclusão: da prescrição à habilitação</figcaption>
+<a href="../assets/img/pmbok-slide-13.jpg" target="_blank" rel="noopener" title="Abrir a imagem em tamanho original"><img src="../assets/img/pmbok-slide-13.jpg" width="1376" height="768" loading="lazy" alt="Torre em estrutura de treliça que muda de azul-acinzentado na base para laranja e verde-azulado no topo, ao lado do texto de conclusão sobre a trajetória dialética do PMBOK."></a>
+<figcaption class="src">Fonte: elaborado pelo autor.</figcaption>
+</figure>
 </section>
 
 <section class="sec">
@@ -566,6 +410,7 @@ footer strong{color:var(--ink)}
   });
 })();
 </script>
+<script src="../assets/anim.js"></script>
 <noscript><style>.fig .an-pop,.fig .an-fade{opacity:1}</style></noscript>
 </body>
 </html>

@@ -11,6 +11,8 @@ for _s in others:
 import os, shutil
 os.makedirs('docs/pmbok-dialetica', exist_ok=True)
 shutil.copy('src/orig/pmbok-dialetica/index.html', 'docs/pmbok-dialetica/index.html')
+for _f in os.listdir('src/orig/pmbok-dialetica/img'):
+    shutil.copy('src/orig/pmbok-dialetica/img/' + _f, 'docs/assets/img/' + _f)
 shutil.copy('src/orig/pmbok-dialetica/Evolucao_Dialetica_Gerenciamento_Projetos_v3.pdf', 'docs/assets/pdf/')
 runpy.run_path('build/home.py')
 open('docs/.nojekyll','w').close()
