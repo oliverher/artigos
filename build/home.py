@@ -1,4 +1,6 @@
-import shutil
+import shutil, sys
+sys.path.insert(0, 'build')
+import shell
 S = 'docs'
 shutil.copy('build/app.js', S + '/assets/app.js')
 shutil.copy('build/home.css', S + '/assets/home.css')
@@ -37,30 +39,13 @@ for slug, tag, title, color, ic, stats in arts:
               '<span class="art-stats">%s</span></span>'
               '<span class="art-go" aria-hidden="true">→</span></a>') % (slug, color, ICONS[ic], tag, title, st)
 
-side_links = ''.join('<a href="%s/" class="side-link"><span class="side-dot" style="background:%s"></span>'
-                     '<span><small>%s</small>%s</span></a>' % (s, c, t.replace('ARTIGO ', 'Artigo '), n)
-                     for (s, t, _, c, _, _), n in zip(arts, ['Propósito de vida', 'Mente e corpo', 'BPM em PMEs', 'Transformação de Serviço', 'Evolução do PMBOK']))
-sidebar = ('<aside class="sidebar" aria-label="Menu lateral"><div class="side-brand"><span>Coleção de artigos</span>'
-           '<strong>Carlos Hernane de Oliveira</strong></div>'
-           '<nav class="side-nav"><a href="./" class="side-link is-active" aria-current="page"><span class="side-dot side-home"></span><span>Início</span></a>'
-           '<p class="side-label">Artigos</p>' + side_links + '</nav>'
-           '<p class="side-foot">Goiânia, 2026</p></aside>')
-pill = 'shrink-0 rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary'
-nav = ('<nav class="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur">'
-       '<div class="mx-auto flex max-w-3xl items-center gap-2 overflow-x-auto px-6 py-3">'
-       '<a href="./" class="shrink-0 rounded-full px-4 py-1.5 text-sm font-medium bg-primary text-primary-foreground" aria-current="page">Início</a>'
-       '<a href="proposito-de-vida/" class="%s">Propósito de vida</a>'
-       '<a href="mente-e-corpo/" class="%s">Mente e corpo</a>'
-       '<a href="bpm-em-pmes/" class="%s">BPM em PMEs</a>'
-       '<a href="passaporte-pessoa-idosa/" class="%s">Transformação de Serviço</a>'
-       '<a href="pmbok-dialetica/" class="%s">Evolução do PMBOK</a></div></nav>') % (pill, pill, pill, pill, pill)
 home = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>Artigos de Carlos Hernane de Oliveira</title>'
         '<meta name="description" content="Coleção de artigos de Carlos Hernane de Oliveira: propósito de vida, relações mente-corpo, gestão de processos em PMEs e design de serviços públicos.">'
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap">'
         '<link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/home.css"></head><body>'
-        + sidebar + '<div class="home-main">' + nav +
+        + shell.sidebar('home', '') + '<div class="home-main">' + shell.nav('home', '') +
         '<header class="home-hero"><div class="home-wrap"><p class="home-eyebrow">Coleção de artigos · Goiânia, 2026</p>'
         '<h1>Cinco ensaios, uma <span>leitura por vez</span></h1><p>Escolha o artigo do seu interesse.</p></div></header>'
         '<main class="home-list"><h2>Escolha um artigo</h2>' + cards + '</main></div></body></html>')

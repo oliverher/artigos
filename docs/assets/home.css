@@ -57,3 +57,27 @@
 .side-dot{flex:0 0 10px;height:10px;border-radius:50%}
 .side-home{background:currentColor}
 .side-foot{margin-top:auto;padding:16px 10px 0;font-size:12px;color:rgba(255,255,255,.5)}
+
+/* Página de projetos */
+.proj-wrap{max-width:64rem}
+.proj-main{max-width:64rem;margin:0 auto;padding:22px 24px 56px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:#fff;color:var(--foreground);border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:500;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.chip b{font-weight:600;font-size:12px;color:var(--muted-foreground)}
+.chip:hover{border-color:var(--ochre)}
+.chip.is-on{background:#0f3d2a;border-color:#0f3d2a;color:#fff}
+.chip.is-on b{color:rgba(255,255,255,.7)}
+.chip:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:14px}
+.proj{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--foreground);background:#fff;border:1px solid var(--border);border-top:4px solid var(--c,#137d5c);border-radius:14px;padding:16px 18px;transition:transform .2s,box-shadow .2s}
+.proj[hidden]{display:none}
+.proj:hover,.proj:focus-visible{transform:translateY(-2px);box-shadow:var(--shadow-soft);outline:none}
+.proj-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.proj-cat{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--c,#137d5c);font-weight:600}
+.proj-plat{font-size:11.5px;color:var(--muted-foreground);border:1px solid var(--border);border-radius:999px;padding:1px 9px;white-space:nowrap}
+.proj-name{font-family:var(--font-display);font-size:1.15rem;line-height:1.25;font-weight:600;color:#0f3d2a}
+.proj-desc{font-size:14px;line-height:1.55;color:var(--muted-foreground);flex:1}
+.proj-go{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:13.5px;font-weight:600;color:#0f3d2a}
+.proj-go svg{transition:transform .25s}
+.proj:hover .proj-go svg{transform:translate(2px,-2px)}
+@media(prefers-reduced-motion:reduce){.proj,.proj-go svg{transition:none!important}.proj:hover{transform:none}}
