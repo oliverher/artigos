@@ -20,7 +20,7 @@ def sidebar(active, base):
         d = '<span class="side-dot" style="background:%s"></span>' % dot if dot else '<span class="side-dot side-home"></span>'
         s = '<small>%s</small>' % small if small else ''
         return '<a href="%s" class="%s"%s>%s<span>%s%s</span></a>' % (href, cls, cur, d, s, label)
-    items = (link(base or './', 'Início', 'home') + link(base + 'projetos/', 'Projetos', 'projetos')
+    items = (link(base or './', 'Início', 'home') + link(base + 'projetos/', 'Projetos - Aplicativos desenvolvidos com IA', 'projetos')
              + '<p class="side-label">Artigos</p>'
              + ''.join(link(base + s + '/', n, s, c, t) for s, t, n, c in ARTS))
     return ('<aside class="sidebar" aria-label="Menu lateral"><div class="side-brand"><span>Coleção de artigos</span>'
