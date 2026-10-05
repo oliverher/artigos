@@ -41,17 +41,4 @@ os.makedirs(S + '/projetos', exist_ok=True)
 open(S + '/projetos/index.html', 'w', encoding='utf8').write(page)
 shutil.copy('build/home.css', S + '/assets/home.css')
 
-# link "Projetos" no menu das páginas dos artigos (idempotente)
-for slug, _, _, _ in shell.ARTS:
-    f = '%s/%s/index.html' % (S, slug)
-    h = open(f, encoding='utf8').read()
-    if 'href="../projetos/"' in h:
-        continue
-    m = re.search(r'<a href="\.\./pmbok-dialetica/"[^>]*>Evolução do PMBOK</a>', h)
-    cls = re.search(r'<a href="\.\./pmbok-dialetica/" class="([^"]*)"', h)
-    if cls:  # páginas com menu em pílulas
-        new = '<a href="../projetos/" class="%s">Projetos</a>' % cls.group(1).replace('bg-primary text-primary-foreground', 'text-muted-foreground hover:bg-secondary')
-    else:  # artigo 05, menu simples
-        new = '\n<a href="../projetos/">Projetos</a>'
-    h = h.replace(m.group(0), m.group(0) + new, 1)
-    open(f, 'w', encoding='utf8').write(h)
+shell.patch_menus(S)

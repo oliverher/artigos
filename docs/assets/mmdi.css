@@ -1,0 +1,91 @@
+/* Galeria animada do artigo 06 (MMDI-GO).
+   Sem JS (ou com prefers-reduced-motion) a imagem aparece estática e inteira. */
+.gfig-stage{position:relative;overflow:hidden;background:#07131f;perspective:1400px;--mx:50%;--my:50%}
+.gfig-zoom{position:relative;transform-origin:50% 50%;will-change:transform}
+.gfig-img{display:block;width:100%;height:auto}
+.gfig-fx{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.gfig-fx i{position:absolute;display:block}
+
+/* varredura de luz e linha de leitura */
+.gfig-sweep{inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.14) 50%,transparent 62%);transform:translateX(-120%);mix-blend-mode:screen}
+.gfig-scan{left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,transparent,#3df2b5 30%,#ffd36b 70%,transparent);opacity:0;filter:blur(.4px);box-shadow:0 0 14px 2px rgba(61,242,181,.55)}
+.gfig-glare{inset:0;background:radial-gradient(420px circle at var(--mx) var(--my),rgba(255,235,170,.16),transparent 60%);opacity:0;transition:opacity .4s}
+.gfig-stage:hover .gfig-glare{opacity:1}
+
+/* partículas de dados */
+.gfig-p{width:var(--s,3px);height:var(--s,3px);border-radius:50%;left:var(--x);bottom:-6px;background:var(--c,#ffd36b);
+  box-shadow:0 0 8px 2px var(--c,#ffd36b);opacity:0}
+
+/* holofote */
+.gfig-spot{position:absolute;left:var(--l,0%);top:var(--t,0%);width:var(--w,100%);height:var(--h,100%);border-radius:10px;
+  border:2px solid #ffd36b;box-shadow:0 0 0 100vmax rgba(2,9,20,.7),0 0 26px 3px rgba(255,211,107,.65),inset 0 0 22px rgba(255,211,107,.22);
+  opacity:0;pointer-events:none;transition:left .9s cubic-bezier(.65,0,.25,1),top .9s cubic-bezier(.65,0,.25,1),width .9s cubic-bezier(.65,0,.25,1),height .9s cubic-bezier(.65,0,.25,1),opacity .6s ease}
+.gfig-spot.on{opacity:1;animation:gfig-pulse 2.2s ease-in-out infinite}
+.gfig-spot::after{content:attr(data-n);position:absolute;left:-2px;top:-2px;transform:translate(-35%,-35%);min-width:26px;height:26px;padding:0 6px;border-radius:999px;
+  background:#ffd36b;color:#1a1200;font:700 13px/26px var(--font-sans,system-ui);text-align:center;box-shadow:0 0 14px rgba(255,211,107,.9)}
+@keyframes gfig-pulse{50%{border-color:#3df2b5;box-shadow:0 0 0 100vmax rgba(2,9,20,.7),0 0 34px 6px rgba(61,242,181,.55),inset 0 0 26px rgba(61,242,181,.2)}}
+
+/* barra de controle */
+.gfig-bar{display:none;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 16px;border-top:1px solid var(--border);background:var(--secondary)}
+.js .gfig-bar{display:flex}
+.gfig-play{flex:none;width:34px;height:34px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--primary);display:grid;place-items:center;cursor:pointer;transition:background .2s,transform .2s}
+.gfig-play:hover{background:var(--accent);transform:scale(1.06)}
+.gfig-play:focus-visible,.gfig-dot:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.gfig-play svg{width:14px;height:14px}
+.gfig-play .i-play{display:none}
+.gfig-play[data-state=paused] .i-play{display:block}
+.gfig-play[data-state=paused] .i-pause{display:none}
+.gfig-dots{display:flex;gap:6px;align-items:center}
+.gfig-dot{width:26px;height:26px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--muted-foreground);font:600 12px/1 var(--font-sans,system-ui);cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.gfig-dot:hover{border-color:var(--ochre)}
+.gfig-dot[aria-current=true]{background:var(--primary);border-color:var(--primary);color:var(--primary-foreground);transform:scale(1.12)}
+.gfig-live{flex:1 1 220px;min-width:0;margin:0;font-size:13.5px;line-height:1.45;color:var(--foreground);min-height:1.45em}
+.gfig-live b{color:var(--primary)}
+.gfig-live span{display:inline-block;animation:gfig-in .5s ease both}
+@keyframes gfig-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+/* entrada: cortina que revela a imagem + flash */
+.js .gfig .gfig-stage{clip-path:inset(0 100% 0 0)}
+.js .gfig .gfig-img{filter:brightness(2.2) saturate(.2)}
+.js .gfig.is-in .gfig-stage{clip-path:inset(0 0 0 0);transition:clip-path 1.3s cubic-bezier(.65,0,.25,1)}
+.js .gfig.is-in .gfig-img{filter:none;transition:filter 1.8s ease .2s}
+.gfig-wipe{top:0;bottom:0;left:0;width:3px;background:linear-gradient(180deg,transparent,#ffd36b,#3df2b5,transparent);box-shadow:0 0 18px 4px rgba(255,211,107,.7);opacity:0}
+.js .gfig.is-in .gfig-wipe{animation:gfig-wipe 1.3s cubic-bezier(.65,0,.25,1) both}
+@keyframes gfig-wipe{0%{left:0;opacity:1}92%{opacity:1}100%{left:calc(100% - 3px);opacity:0}}
+
+/* ambiente (só enquanto visível) */
+.gfig.is-live .gfig-zoom{animation:gfig-drift 24s ease-in-out infinite alternate}
+.gfig.is-live .gfig-scan{animation:gfig-scan 9s linear 3s infinite}
+.gfig.is-live .gfig-sweep{animation:gfig-sweep 8s ease-in-out 2.4s infinite}
+.gfig.is-live .gfig-p{animation:gfig-float var(--d,9s) linear var(--dl,0s) infinite}
+@keyframes gfig-scan{0%{top:0;opacity:0}8%{opacity:.4}45%{top:100%;opacity:.4}50%,100%{top:100%;opacity:0}}
+@keyframes gfig-drift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.04) translate(-.5%,-.6%)}}
+@keyframes gfig-sweep{0%{transform:translateX(-120%)}55%,100%{transform:translateX(120%)}}
+@keyframes gfig-float{0%{opacity:0;transform:translateY(0)}12%{opacity:.85}85%{opacity:.6}100%{opacity:0;transform:translateY(calc(var(--r,300px) * -1))}}
+
+/* gráfico animado dos pesos */
+.wchart{display:grid;gap:12px;margin-top:22px}
+.wrow{display:grid;grid-template-columns:minmax(8.5rem,12rem) 1fr 3.2rem;gap:12px;align-items:center;font-size:14px}
+.wrow b{font-weight:500;line-height:1.3}
+.wtrack{height:14px;border-radius:999px;background:var(--secondary);overflow:hidden}
+.wtrack i{display:block;height:100%;width:var(--w);border-radius:999px;background:linear-gradient(90deg,var(--c),color-mix(in oklab,var(--c) 55%,#fff))}
+.wval{font-family:var(--font-display);font-weight:600;text-align:right;color:var(--primary)}
+.js .wchart .wtrack i{width:0;transition:width 1.4s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.js .wchart.is-in .wtrack i{width:var(--w)}
+@media(max-width:520px){.wrow{grid-template-columns:1fr 2.6rem;grid-template-areas:"l v" "t t"}.wrow b{grid-area:l}.wval{grid-area:v}.wtrack{grid-area:t}}
+
+/* degraus de maturidade */
+.lvls{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;align-items:end;margin-top:22px;min-height:190px}
+.lvl{border-radius:10px 10px 4px 4px;padding:10px 10px 12px;color:#fff;font-size:12.5px;line-height:1.35;height:var(--h);background:linear-gradient(180deg,var(--c),color-mix(in oklab,var(--c) 70%,#000))}
+.lvl b{display:block;font-family:var(--font-display);font-size:15px}
+.js .lvls .lvl{transform:scaleY(.15);transform-origin:bottom;opacity:0;transition:transform .8s cubic-bezier(.2,.8,.2,1) var(--d),opacity .5s ease var(--d)}
+.js .lvls.is-in .lvl{transform:none;opacity:1}
+@media(max-width:640px){.lvls{grid-template-columns:1fr;min-height:0}.lvl{height:auto!important}}
+
+@media print{.gfig-bar,.gfig-fx,.gfig-spot{display:none!important}.js .gfig .gfig-stage{clip-path:none!important}.js .gfig .gfig-img{filter:none!important}}
+@media(prefers-reduced-motion:reduce){
+ .js .gfig .gfig-stage{clip-path:none}.js .gfig .gfig-img{filter:none}
+ .gfig .gfig-fx,.gfig-zoom{animation:none!important}
+ .gfig-spot{transition:none}.gfig-spot.on{animation:none}
+ .js .wchart .wtrack i,.js .lvls .lvl{transition:none;width:var(--w);transform:none;opacity:1}
+}

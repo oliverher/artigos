@@ -16,6 +16,7 @@ ICONS = {
     'heart': icon('<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>'),
     'factory': icon('<path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/>'),
     'layers': icon('<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>'),
+    'gauge': icon('<path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/>'),
     'users': icon('<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'),
 }
 
@@ -30,6 +31,8 @@ arts = [
      [('126', 'pessoas idosas'), ('60 → 5', 'dias de emissão'), ('3', 'canais de acesso')]),
     ('pmbok-dialetica', 'ARTIGO 05', 'A evolução dialética do gerenciamento de projetos: PMBOK® 6ª, 7ª e 8ª edições', '#a8483a', 'layers',
      [('3', 'edições comparadas'), ('4', 'proposições avaliadas'), ('3', 'leituras concorrentes')]),
+    ('mmdi-go', 'ARTIGO 06', 'Framework de maturidade para a transformação digital e de serviços no setor público goiano', '#1f8a8a', 'gauge',
+     [('6', 'dimensões'), ('5', 'níveis'), ('18', 'itens diagnósticos')]),
 ]
 import projetos_data
 GRID = icon('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>')
@@ -41,7 +44,7 @@ for slug, tag, title, color, ic, stats in arts:
               '<span class="art-stats">%s</span></span></a>') % (slug, color, ICONS[ic], tag, title, st)
 n_proj, n_cat = len(projetos_data.PROJ), len(projetos_data.CATS)
 cards += ('<a class="gcard gcard-proj" href="projetos/"><span class="gcard-tile" style="background:#0f3d2a">%s</span>'
-          '<span class="gcard-body"><span class="art-tag">PROJETOS</span><span class="gcard-title">Aplicativos e ferramentas que desenvolvi</span>'
+          '<span class="gcard-body"><span class="art-tag">PROJETOS</span><span class="gcard-title">Aplicativos desenvolvidos com IA</span>'
           '<span class="art-stats"><span><b>%d</b> projetos</span><span><b>%d</b> temas</span></span></span></a>') % (GRID, n_proj, n_cat)
 
 home = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
@@ -52,6 +55,6 @@ home = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/home.css"></head><body>'
         + shell.sidebar('home', '') + '<div class="home-main">' + shell.nav('home', '') +
         '<header class="home-hero"><div class="home-wrap proj-wrap"><p class="home-eyebrow">Coleção de artigos · Goiânia, 2026</p>'
-        '<h1>Cinco ensaios, uma <span>leitura por vez</span></h1><p>Escolha o artigo do seu interesse.</p></div></header>'
+        '<h1>Seis ensaios, uma <span>leitura por vez</span></h1><p>Escolha o artigo do seu interesse.</p></div></header>'
         '<main class="home-list"><h2>Artigos e projetos</h2><div class="gallery">' + cards + '</div></main></div></body></html>')
 open(S + '/index.html', 'w', encoding='utf8').write(home)
