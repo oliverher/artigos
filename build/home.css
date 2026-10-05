@@ -81,3 +81,17 @@
 .proj-go svg{transition:transform .25s}
 .proj:hover .proj-go svg{transform:translate(2px,-2px)}
 @media(prefers-reduced-motion:reduce){.proj,.proj-go svg{transition:none!important}.proj:hover{transform:none}}
+
+/* Galeria da página inicial */
+.home-list{max-width:64rem;display:block}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:16px;margin-top:14px}
+.gcard{display:flex;flex-direction:column;text-decoration:none;color:var(--foreground);background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s;animation:home-rise .7s cubic-bezier(.2,.7,.2,1) both}
+.gcard:nth-child(1){animation-delay:.35s}.gcard:nth-child(2){animation-delay:.45s}.gcard:nth-child(3){animation-delay:.55s}.gcard:nth-child(4){animation-delay:.65s}.gcard:nth-child(5){animation-delay:.75s}.gcard:nth-child(6){animation-delay:.85s}
+.gcard:hover,.gcard:focus-visible{transform:translateY(-3px);border-color:var(--ochre);box-shadow:var(--shadow-soft);outline:none}
+.gcard-tile{display:flex;align-items:center;justify-content:center;height:120px;color:#fff}
+.gcard-tile svg{width:44px;height:44px;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.gcard:hover .gcard-tile svg{transform:scale(1.12) rotate(-4deg)}
+.gcard-body{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px;flex:1}
+.gcard-title{font-family:var(--font-display);font-size:1.12rem;line-height:1.28;font-weight:600;color:#0f3d2a;flex:1}
+.gcard-proj{border-style:dashed;border-color:#0f3d2a}
+@media(prefers-reduced-motion:reduce){.gcard{animation:none!important}.gcard,.gcard-tile svg{transition:none!important}.gcard:hover{transform:none}}

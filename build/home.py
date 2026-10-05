@@ -31,13 +31,18 @@ arts = [
     ('pmbok-dialetica', 'ARTIGO 05', 'A evolução dialética do gerenciamento de projetos: PMBOK® 6ª, 7ª e 8ª edições', '#a8483a', 'layers',
      [('3', 'edições comparadas'), ('4', 'proposições avaliadas'), ('3', 'leituras concorrentes')]),
 ]
+import projetos_data
+GRID = icon('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>')
 cards = ''
 for slug, tag, title, color, ic, stats in arts:
     st = ''.join('<span><b>%s</b> %s</span>' % s for s in stats)
-    cards += ('<a class="art" href="%s/"><span class="art-tile" style="background:%s">%s</span>'
-              '<span class="art-body"><span class="art-tag">%s</span><span class="art-title">%s</span>'
-              '<span class="art-stats">%s</span></span>'
-              '<span class="art-go" aria-hidden="true">→</span></a>') % (slug, color, ICONS[ic], tag, title, st)
+    cards += ('<a class="gcard" href="%s/"><span class="gcard-tile" style="background:%s">%s</span>'
+              '<span class="gcard-body"><span class="art-tag">%s</span><span class="gcard-title">%s</span>'
+              '<span class="art-stats">%s</span></span></a>') % (slug, color, ICONS[ic], tag, title, st)
+n_proj, n_cat = len(projetos_data.PROJ), len(projetos_data.CATS)
+cards += ('<a class="gcard gcard-proj" href="projetos/"><span class="gcard-tile" style="background:#0f3d2a">%s</span>'
+          '<span class="gcard-body"><span class="art-tag">PROJETOS</span><span class="gcard-title">Aplicativos e ferramentas que desenvolvi</span>'
+          '<span class="art-stats"><span><b>%d</b> projetos</span><span><b>%d</b> temas</span></span></span></a>') % (GRID, n_proj, n_cat)
 
 home = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
@@ -46,7 +51,7 @@ home = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap">'
         '<link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/home.css"></head><body>'
         + shell.sidebar('home', '') + '<div class="home-main">' + shell.nav('home', '') +
-        '<header class="home-hero"><div class="home-wrap"><p class="home-eyebrow">Coleção de artigos · Goiânia, 2026</p>'
+        '<header class="home-hero"><div class="home-wrap proj-wrap"><p class="home-eyebrow">Coleção de artigos · Goiânia, 2026</p>'
         '<h1>Cinco ensaios, uma <span>leitura por vez</span></h1><p>Escolha o artigo do seu interesse.</p></div></header>'
-        '<main class="home-list"><h2>Escolha um artigo</h2>' + cards + '</main></div></body></html>')
+        '<main class="home-list"><h2>Artigos e projetos</h2><div class="gallery">' + cards + '</div></main></div></body></html>')
 open(S + '/index.html', 'w', encoding='utf8').write(home)
