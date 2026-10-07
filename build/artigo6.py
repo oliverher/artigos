@@ -12,7 +12,7 @@ from artigo4 import acc, e, BOOK
 S = 'docs'
 SLUG = 'mmdi-go'
 SRC = 'src/orig/mmdi-go'
-PDF = 'MMDI-GO_artigo_final.pdf'
+PDF = 'MMDI-GO_artigo_ABNT.pdf'
 
 
 def gfig(n, title, alt, tour, cap=None):
@@ -59,13 +59,32 @@ levels = ('<div class="lvls reveal mt-6" role="list" aria-label="Os cinco nívei
                     % (h, c, .12 * i, n, e(t), e(d)) for i, (n, t, d, c, h) in enumerate(LEVELS))
           + '</div>')
 
+EX = [('Liderança e Estratégia Digital', '3,0', '0,25', '0,75'), ('Dados e Interoperabilidade', '2,0', '0,20', '0,40'),
+      ('Processos e Serviços (CVI)', '3,0', '0,20', '0,60'), ('Cultura e Competências', '2,0', '0,15', '0,30'),
+      ('Experiência do Cidadão', '2,0', '0,12', '0,24'), ('Infraestrutura e Tecnologia', '4,0', '0,08', '0,32')]
+_td = 'padding:8px 10px;border-top:1px solid var(--border)'
+_th = 'padding:8px 10px;font-weight:500'
+example = ('<div class="reveal mt-6 rounded-xl border bg-card p-5 shadow-[var(--shadow-soft)]" role="group" aria-label="Exemplo ilustrativo de cálculo do índice global">'
+           '<p class="text-sm font-medium">Exemplo ilustrativo de cálculo do índice global</p>'
+           '<p class="mt-1 text-xs text-muted-foreground">Dados fictícios, de um órgão hipotético, apenas para mostrar a conta.</p>'
+           '<div style="overflow-x:auto;margin-top:14px"><table class="text-sm" style="width:100%%;border-collapse:collapse;min-width:420px">'
+           '<thead><tr class="text-xs text-muted-foreground" style="text-align:right"><th style="%s;text-align:left">Dimensão</th>'
+           '<th style="%s">Pontuação (1 a 5)</th><th style="%s">Peso</th><th style="%s">Contribuição</th></tr></thead><tbody>' % ((_th,) * 4)
+           + ''.join('<tr style="text-align:right"><td style="%s;text-align:left">%s</td><td style="%s">%s</td><td style="%s">%s</td><td style="%s">%s</td></tr>'
+                     % (_td, e(n), _td, p, _td, w, _td, c) for n, p, w, c in EX)
+           + ('<tr style="text-align:right;font-weight:600"><td style="%s;text-align:left">Índice global informativo (média ponderada)</td><td style="%s"></td><td style="%s">1,00</td><td style="%s">2,61</td></tr>'
+              '<tr style="text-align:right"><td style="%s;text-align:left">Média simples (pesos iguais)</td><td style="%s"></td><td style="%s"></td><td style="%s">2,67</td></tr>'
+              '<tr style="text-align:right"><td style="%s;text-align:left">Menor pontuação por dimensão (regra preliminar de limitação do nível)</td><td style="%s">2,0</td><td style="%s"></td><td style="%s"></td></tr>'
+              % ((_td,) * 12))
+           + '</tbody></table></div></div>')
+
 # ---------- figuras ----------
-F1 = gfig(2, 'O abismo subnacional: nenhum instrumento nacional combina visão do órgão, cadeia de valor pública e esfera estadual.',
+F1 = gfig(2, 'A lacuna subnacional: entre os instrumentos examinados, nenhum combina visão do órgão, cadeia de valor pública e esfera estadual.',
           'Tabela comparando NMDSP, MMD, ITDBr e MMDI-GO em unidade de análise, escopo temático, ancoragem na cadeia de valor e consideração de barreiras culturais; só o MMDI-GO é estadual, holístico e ancorado na cadeia de valor.',
           [[7.5, 44, 85, 24, 'Unidade de análise e escopo: serviço, órgão federal, empresa ou, no MMDI-GO, o órgão público estadual com seis dimensões.'],
            [7.5, 68, 85, 11, 'Ancoragem na cadeia de valor: NMDSP, MMD e ITDBr não têm; o MMDI-GO se apoia na CVI de Goiás.'],
            [7.5, 79, 85, 12, 'Barreiras culturais: ausentes no NMDSP, parciais no MMD, presentes no ITDBr e numa dimensão dedicada no MMDI-GO.'],
-           [75, 34, 18, 57, 'A coluna do MMDI-GO: o único desenhado para a esfera estadual, ainda sem validação empírica.']])
+           [75, 34, 18, 57, 'A coluna do MMDI-GO: desenhado para a esfera estadual, entre os instrumentos comparados, e ainda sem validação empírica. O quadro é um mapeamento descritivo de escopo, e não prova de superioridade.']])
 
 F2 = gfig(3, 'Uma ponte entre a teoria acadêmica e a prática da gestão pública.',
           'Ponte luminosa ligando a teoria acadêmica à prática da gestão pública, com o MMDI-GO ao centro e, abaixo, três blocos: Design Science Research, fatores críticos e barreiras, e neutralidade tecnológica.',
@@ -153,7 +172,7 @@ F12 = gfig(13, 'Do diagnóstico estratégico ao plano de ação estruturado.',
 F13 = gfig(14, 'A agenda futura: refinamento e empírica institucional.',
            'Caminho luminoso ligando três plataformas: calibração por especialistas, consistência interna e aplicação piloto.',
            [[11, 43, 26, 36, 'Calibração por especialistas: método Delphi para refinar os pesos percentuais das dimensões.'],
-            [41, 39, 22, 33, 'Consistência interna: ampliar os itens e validar o questionário psicometricamente.'],
+            [41, 39, 22, 33, 'Validade do instrumento: ampliar os itens e avaliar medidas de qualidade adequadas a indicadores formativos.'],
             [65, 31, 22, 34, 'Aplicação piloto: execução controlada em secretarias de perfis e complexidades diferentes.']])
 
 F14 = gfig(15, 'Tecnologia é o meio; o valor público é o fim.',
@@ -162,40 +181,43 @@ F14 = gfig(15, 'Tecnologia é o meio; o valor público é o fim.',
             [23, 55, 55, 21, 'A transformação acontece na reformulação dos fluxos de poder, da cultura e dos serviços que facilitam a vida do cidadão.']])
 
 sections = [
-    section('01', 'abismo', 'O abismo subnacional na medição da maturidade',
-            'O Brasil tem instrumentos de excelência, mas nenhum desenhado para o órgão público estadual.',
+    section('01', 'abismo', 'A lacuna subnacional na medição da maturidade',
+            'O Brasil tem instrumentos consolidados, mas nenhum, entre os examinados, desenhado para o órgão público estadual.',
             [F1],
             [acc('Três referências nacionais',
                  ['O Nível de Maturidade Digital de Serviços Públicos (NMDSP), instituído pela Portaria SGD/MGI nº 1.083/2025, tem o serviço público como unidade de análise e é aplicado a mais de cinco mil serviços do Poder Executivo federal, com reavaliação semestral.',
                   'O Modelo de Maturidade de Dados (MMD) orienta órgãos federais na governança e na gestão de dados, por autoavaliação.',
                   'O Índice Transformação Digital Brasil (ITDBr), da PwC com a Fundação Dom Cabral, mede a maturidade de empresas em dez dimensões, numa escala de 1 a 6.']),
              acc('A lacuna que o artigo identifica',
-                 ['Cada instrumento trata de uma unidade de análise diferente: o serviço, o domínio de dados ou a empresa. Nenhum oferece, ao mesmo tempo, visão organizacional integrada, ancoragem em cadeia de valor pública e adaptação ao nível estadual.',
-                  'A literatura de governo digital registra a escassez de instrumentos diagnósticos voltados aos governos estaduais (Dobrolyubova, 2021; Filgueiras, Flávio e Palotti, 2019).'],
-                 'A originalidade não está em criar dimensões novas, e sim em integrá-las a uma arquitetura de processos públicos estaduais.'),
+                 ['Cada instrumento trata de uma unidade de análise diferente: o serviço, o domínio de dados ou a empresa. Entre os examinados no estudo, nenhum oferece, ao mesmo tempo, visão organizacional integrada, ancoragem em cadeia de valor pública e adaptação ao nível estadual.',
+                  'A literatura consultada trata da mensuração de resultados da transformação digital (Dobrolyubova, 2021) e da entrega de serviços públicos no Brasil (Filgueiras, Flávio e Palotti, 2019), sem apresentar um instrumento diagnóstico de maturidade para órgãos estaduais.',
+                  'O artigo não afirma que inexistam outros instrumentos, nacionais ou internacionais, aplicáveis a governos subnacionais. Essa verificação, por revisão sistemática com protocolo explícito, fica como pesquisa futura.'],
+                 'A contribuição é de integração: dimensões de maturidade articuladas a uma arquitetura de processos públicos estaduais, e não dimensões inéditas.'),
              acc('Transformação digital não é digitalização',
                  ['Digitalizar converte processos analógicos em digitais. A transformação digital altera o modelo de operação do Estado, promove a desburocratização e coloca o cidadão no centro.',
                   'Goiás tem posição de destaque em rankings de oferta de serviços digitais, com mais de 700 serviços na Carta de Serviços. Ainda assim, o artigo lembra que digitalizar serviços isoladamente não basta: é preciso mudar cultura, processos e governança.']),
              acc('Complementar, e não substituto',
-                 ['O MMDI-GO não pretende substituir os instrumentos federais. Os atributos técnicos do NMDSP podem servir de evidência na dimensão Experiência do Cidadão, e os resultados do MMD podem subsidiar a dimensão Dados e Interoperabilidade.'])]),
+                 ['O MMDI-GO não pretende substituir os instrumentos federais. Os atributos técnicos do NMDSP podem servir de evidência na dimensão Experiência do Cidadão, e os resultados do MMD podem subsidiar a dimensão Dados e Interoperabilidade.',
+                  'O Modelo de Maturidade em Governo Digital (ENAP; MGI, 2023) e o GovTech Maturity Index (Banco Mundial, 2025) são referências conceituais, mas não entram no quadro comparativo, o que o artigo registra como limitação.'])]),
 
     section('02', 'metodo', 'Método: Design Science Research',
             'Uma ponte entre a teoria e a prática, construída em seis passos e cinco critérios.',
             [F2],
             [acc('Seis atividades de Peffers',
                  ['O processo segue as seis atividades de Peffers et al. (2007): identificar o problema, definir os objetivos da solução, projetar o artefato, demonstrar, avaliar e comunicar.',
-                  'Neste artigo, a avaliação é teórica, por argumentação informada e análise comparativa com instrumentos existentes. A validação empírica não foi realizada e fica como etapa futura em órgãos-piloto.'],
+                  'Neste artigo, a demonstração é um exemplo ilustrativo de cálculo, com dados fictícios, e a avaliação é teórica, ex ante e formativa: argumentação informada, análise comparativa com instrumentos existentes e o exemplo. A validação empírica não foi realizada e fica como etapa futura em órgãos-piloto.'],
                  'O MMDI-GO é tratado como modelo proposto, instrumento preliminar e artefato a validar, e não como instrumento validado.'),
              acc('Como o artefato foi construído',
-                 ['Seis passos: levantar fatores críticos de sucesso e barreiras na literatura; analisar a estrutura da CVI; agrupar os fatores em dimensões; definir a escala de maturidade; atribuir pesos iniciais; e formular os itens do questionário.',
+                 ['Seis passos: levantar fatores críticos de sucesso e barreiras na literatura; analisar a estrutura da CVI; agrupar os fatores em dimensões; definir a escala de maturidade; atribuir pesos iniciais e definir regras de agregação; e formular os itens do questionário.',
                   'Cinco critérios guiaram o desenho: rastreabilidade, aderência à CVI, gradação (sem critérios absolutos que penalizem órgãos por razões legais, de segurança ou de inclusão), parcimônia e neutralidade tecnológica.']),
              acc('Referenciais teóricos',
                  ['A perspectiva de valor público (Moore, 1995) fundamenta a dimensão Experiência do Cidadão. As capacidades dinâmicas (Teece, Pisano e Shuen, 1997) e os estudos sobre estratégia e cultura (Kane et al., 2015) fundamentam Liderança e Cultura.',
                   'A governança da era digital (Dunleavy et al., 2006) sustenta a ênfase na integração entre processos e entre bases de dados, e a literatura de modelos de maturidade (Paulk et al., 1993; Pöppelbuß e Röglinger, 2011) sustenta a escala em níveis e o propósito descritivo e prescritivo.',
                   'O artigo registra que esses vínculos são uma proposta de articulação do autor, e não resultado de teste empírico.']),
-             acc('Seleção da literatura e dos casos',
-                 ['A literatura priorizou periódicos indexados, repositórios institucionais e relatórios do Banco Mundial e da OCDE, com foco em publicações de 2020 a 2025.',
-                  'Os casos de referência, entre eles Reino Unido e Indonésia, foram escolhidos de forma intencional, e não probabilística. As lições são consideradas potencialmente transferíveis ao contexto estadual brasileiro, mediante adaptação.'])]),
+             acc('Seleção da literatura',
+                 ['A literatura foi selecionada de forma intencional e não sistemática: periódicos, relatórios do Banco Mundial e da OCDE e documentos oficiais brasileiros, em sua maioria de 2020 a 2025, além de obras fundacionais sobre modelos de maturidade, design science e governança pública.',
+                  'Não foram analisados casos de outros países como unidade de estudo: as referências internacionais servem de fundamentação conceitual. A falta de protocolo sistemático limita a reprodutibilidade e a abrangência da revisão, e as lições são consideradas transferíveis ao contexto estadual brasileiro apenas mediante adaptação institucional.'],
+                 'Seleção das dimensões, pesos e redação dos itens resultam de julgamento do pesquisador fundamentado na literatura, e não de consenso empírico.')]),
 
     section('03', 'cvi', 'Ancoragem na Cadeia de Valor Integrada',
             'O mapa de processos do Estado serve de base para o diagnóstico.',
@@ -219,28 +241,42 @@ sections = [
                  ['Cada dimensão se associa a fontes da literatura, a um elemento da CVI e a uma justificativa. Liderança e Estratégia Digital liga-se aos processos gerenciais. Cultura e Competências e Infraestrutura e Tecnologia, aos processos de suporte.',
                   'Processos e Serviços cobre as três camadas da CVI. Dados e Interoperabilidade é transversal às camadas. Experiência do Cidadão vincula-se aos processos finalísticos e à Carta de Serviços.']),
              acc('Pesos iniciais, sujeitos ao método Delphi',
-                 ['Os pesos são propostos pelo autor, por julgamento fundamentado na literatura, e não derivados de procedimento empírico. O peso de 25% da dimensão Liderança, em particular, ainda não tem validação.',
-                  'A pontuação de cada dimensão é a média dos seus itens, e o índice global é a média das dimensões ponderada pelos pesos. Os pontos de corte que convertem o índice em nível serão definidos na fase piloto.'],
-                 'Tecnologia é condição necessária, mas não suficiente: por isso pesa 8%, enquanto liderança pesa 25%.')]),
+                 ['Os pesos são propostos pelo autor, por julgamento fundamentado na literatura, e não derivados de procedimento empírico. A frequência com que um fator aparece na literatura não equivale à sua contribuição relativa para a maturidade, razão pela qual os pesos são hipótese de trabalho. O peso de 25% da dimensão Liderança, em particular, ainda não tem validação.',
+                  'A calibração será feita por método Delphi, com número de rodadas, critério de consenso e perfil dos especialistas definidos em protocolo prévio.'],
+                 'Tecnologia é condição necessária, mas não suficiente: por isso pesa 8%, enquanto liderança pesa 25%.'),
+             acc('Regras de cálculo e conversão em nível',
+                 ['A pontuação de cada dimensão é a média dos itens respondidos, excluídos os marcados como "não se aplica", com justificativa registrada. O índice global informativo é a média das dimensões ponderada pelos pesos.',
+                  'Como os níveis são cumulativos, propõe-se, como regra preliminar a testar no piloto, que o nível do órgão seja limitado pela dimensão de menor pontuação: um desempenho elevado numa dimensão não compensa a deficiência em outra.',
+                  'Os pontos de corte que convertem pontuações em níveis não estão definidos no artigo e dependerão da calibração por especialistas e do piloto. Análises de sensibilidade vão comparar o índice com os pesos propostos e com pesos iguais.'],
+                 'A regra do menor valor é não compensatória: é ela que impede que uma nota alta mascare uma lacuna.')]),
 
     section('05', 'escala', 'Escala de maturidade e instrumento de coleta',
-            'Cinco níveis cumulativos e um questionário preliminar de 18 itens.',
-            [F9, levels, F10],
+            'Cinco níveis cumulativos e um questionário preliminar de 24 itens.',
+            [F9, levels],
             [acc('Uma escala inspirada no CMMI, e não uma adaptação formal',
                  ['Foram aproveitados o princípio de níveis cumulativos e a lógica de evolução de processos informais para processos definidos, gerenciados e otimizados, reinterpretados para a administração pública.',
-                  'A escala descreve a evolução da capacidade institucional, e não a adoção de uma tecnologia específica. Serviços preditivos, por exemplo, não são condição para o nível 5.']),
+                  'A escala descreve a evolução da capacidade institucional, e não a adoção de uma tecnologia específica. Serviços preditivos, por exemplo, não são condição para o nível 5. Os descritores são gerais, e os específicos por dimensão virão na validação de conteúdo.',
+                  'A escala de níveis é distinta da escala de resposta dos itens: esta mede o grau de implementação, e a conversão das pontuações em nível segue a regra de cálculo da seção anterior.']),
              acc('O questionário diagnóstico',
-                 ['São 18 afirmativas, três por dimensão, respondidas em escala Likert de 1, discordo totalmente ou não existe, a 5, concordo totalmente ou plenamente implementado.',
-                  'Exemplos: o órgão possui plano formal de transformação digital alinhado à estratégia do Estado; o órgão compartilha e consome dados de outros órgãos, evitando que o cidadão repita informações; o cidadão consegue iniciar e concluir o serviço por mais de um canal, respeitadas as exceções legais.',
-                  'Com apenas três itens por dimensão, a consistência interna ainda precisa ser avaliada em aplicação piloto, por exemplo pelo alfa de Cronbach.'])]),
+                 ['São 24 afirmativas, de três a seis por dimensão, respondidas numa escala ordinal de cinco pontos que mede o grau de implementação, e não a concordância: 1, inexistente; 2, iniciado ou pontual; 3, formalizado em parte; 4, implementado na maior parte do escopo do órgão; 5, plenamente implementado e revisado periodicamente. Há ainda a opção "não se aplica", com justificativa registrada.',
+                  'Exemplos: o órgão possui plano de transformação digital formalizado; o órgão compartilha e consome dados de outros órgãos, evitando que o cidadão repita informações; o cidadão consegue iniciar e concluir o serviço por mais de um canal, respeitadas as exceções legais.',
+                  'Os itens foram redigidos para não combinar condições distintas, e os que as combinavam na versão preliminar foram desdobrados.'],
+                 'Cada item vem com a fonte que sustenta o tema, e não a existência de um item equivalente na fonte.'),
+             acc('Por que não usar só o alfa de Cronbach',
+                 ['As dimensões são concebidas como índices formativos: os indicadores compõem o construto, em vez de refleti-lo. Nesse caso, o alfa de Cronbach pode não ser o indicador adequado, e consistência interna não equivale a validade.',
+                  'Com apenas três a seis itens por dimensão, o conjunto é versão preliminar, passível de ampliação. O piloto avaliará alternativas, como a análise de colinearidade entre itens e a validade de conteúdo por especialistas.'])]),
 
     section('06', 'aplicacao', 'Aplicação: do diagnóstico ao plano de ação',
             'Seis fases cíclicas que fazem da medição uma rotina de melhoria.',
-            [F11, F12],
+            [F11, F12, example],
             [acc('As seis fases',
-                 ['1. Sensibilização: apresentar os objetivos à alta liderança. 2. Mapeamento na CVI: identificar os macroprocessos e processos a avaliar. 3. Coleta de dados: aplicar o questionário e reunir evidências documentais.',
-                  '4. Processamento e pontuação: calcular a média ponderada por dimensão. 5. Relatório de diagnóstico e análise de lacunas: gerar o plano de ação. 6. Monitoramento: reavaliar anualmente.'],
+                 ['1. Sensibilização: apresentar os objetivos à alta liderança. 2. Mapeamento na CVI: identificar os macroprocessos e processos a avaliar. 3. Coleta de dados: aplicar o questionário e reunir evidências documentais, registrando no relatório as divergências relevantes entre respostas e documentos.',
+                  '4. Diagnóstico: calcular a pontuação por dimensão, o índice global e o nível de maturidade. 5. Plano de ação: gerar o relatório de diagnóstico e a análise de lacunas, com as prioridades para subir de nível. 6. Monitoramento: reavaliar anualmente.'],
                  'O diagnóstico não entrega só um selo de maturidade: entrega um mapa de lacunas.'),
+             acc('Exemplo ilustrativo, com dados fictícios',
+                 ['O artigo calcula o índice de um órgão hipotético, sem relação com nenhum órgão do Estado, para mostrar o funcionamento da conta. Com os pesos iniciais o índice global informativo é 2,61, e com pesos iguais é 2,67, o que indica baixa sensibilidade aos pesos neste exemplo.',
+                  'Pela regra do menor valor, o nível do órgão ficaria limitado pela menor pontuação (2,0), cuja correspondência com um nível depende de pontos de corte ainda não definidos. Dados e Interoperabilidade, Cultura e Competências e Experiência do Cidadão seriam as dimensões prioritárias no plano de ação.'],
+                 'O exemplo mostra o funcionamento do cálculo e a diferença entre a regra compensatória e a não compensatória. Não permite inferir a validade do modelo.'),
              acc('Propósito do modelo',
                  ['O MMDI-GO tem propósito descritivo, para diagnosticar a situação atual, e prescritivo, para indicar caminhos de melhoria. Não é comparativo entre órgãos, uso que exigiria validação prévia.'])]),
 
@@ -248,16 +284,19 @@ sections = [
             'O que a proposta permite afirmar, e o que ainda depende de validação.',
             [F13],
             [acc('Três diferenciais propostos',
-                 ['Desenho para a unidade estadual, escala pouco contemplada pelos modelos federais. Ancoragem na CVI de Goiás, que permite capturar a interdependência entre processos finalísticos, gerenciais e de suporte, ponto ainda a verificar em aplicação. E pesos diferenciados por dimensão, calibráveis pelo método Delphi.',
-                  'Em conjunto, configuram uma contribuição de integração, e não a criação de dimensões inéditas.']),
+                 ['Desenho para a unidade estadual, escala pouco contemplada pelos modelos federais analisados. Ancoragem na CVI de Goiás, que nesta versão delimita o escopo e contextualiza os resultados, enquanto a captura da interdependência entre processos finalísticos, gerenciais e de suporte ainda precisa ser verificada em aplicação. E pesos diferenciados por dimensão, calibráveis pelo método Delphi, cuja vantagem sobre pesos iguais será avaliada por análise de sensibilidade.',
+                  'Em conjunto, configuram uma contribuição de integração, e não a criação de dimensões inéditas. Como os critérios do quadro comparativo partem do que o MMDI-GO pretende ter, a comparação pode favorecê-lo e deve ser lida como mapeamento de escopo.']),
              acc('Hipóteses a testar',
                  ['A liderança e a interoperabilidade de dados podem ser motores da evolução entre níveis. Cultura e competências podem ser o principal desafio entre os níveis intermediários e avançados. Tudo isso são expectativas teóricas, que dependem de validação empírica.']),
              acc('Limitações declaradas',
-                 ['O MMDI-GO não foi validado empiricamente. Os pesos são iniciais e propostos pelo autor. O instrumento é curto, com 18 itens, e sua consistência interna não foi testada.',
-                  'A seleção dos casos de referência foi intencional e a transferibilidade das lições não foi demonstrada. Parte da literatura trata de contextos nacionais distintos do brasileiro. E a seleção da literatura não seguiu protocolo formal de revisão sistemática.'],
+                 ['O MMDI-GO não foi validado empiricamente, e o exemplo de cálculo usa dados fictícios. Os pesos são iniciais, propostos pelo autor, e os pontos de corte entre níveis não estão definidos. O instrumento é curto, com 24 itens, e nem a consistência interna nem a adequação de medidas a indicadores formativos foram testadas.',
+                  'A seleção da literatura foi intencional, sem protocolo sistemático, e a transferibilidade das lições internacionais não foi demonstrada. Parte da literatura trata de contextos nacionais distintos do brasileiro.',
+                  'O modelo de governo digital da ENAP e o GovTech Maturity Index ficaram fora do quadro comparativo. O instrumento depende de autorrelato, sujeito a viés de desejabilidade social. A ancoragem na CVI delimita o escopo, e não estrutura a pontuação por processo.',
+                  'Por fim, o autor integra a instituição responsável pelos documentos que sustentam o modelo (SCTP/TransformaLAB, SEAD-GO), o que pode influenciar a interpretação do contexto goiano.'],
                  'O estudo não mediu órgãos: nada se afirma sobre a validade, a confiabilidade ou a efetividade do modelo.'),
              acc('Agenda de pesquisa',
-                 ['Validar o conteúdo e calibrar os pesos por Delphi com especialistas. Aplicar um piloto em secretarias de complexidades diferentes. Ampliar o conjunto de itens por dimensão. Adotar protocolo sistemático de seleção de casos e de revisão da literatura. E desenvolver uma plataforma digital para coletar e processar os dados do diagnóstico.'])]),
+                 ['Validar o conteúdo e calibrar os pesos por Delphi com especialistas. Aplicar um piloto em secretarias de complexidades diferentes, avaliando confiabilidade, validade e pontos de corte. Ampliar os itens, elaborar descritores por dimensão e avaliar a natureza formativa dos indicadores.',
+                  'Fazer análise de sensibilidade dos pesos e avaliar a pontuação por processo ou por camada da CVI. Adotar protocolo sistemático de revisão da literatura, incluindo outros instrumentos nacionais e internacionais. Tratar a ética e a proteção de dados dos respondentes, conforme a LGPD. E desenvolver uma plataforma digital para coletar e processar os dados do diagnóstico.'])]),
 ]
 
 closing = ('<section aria-labelledby="sintese" class="mt-16 rounded-2xl border bg-secondary/50 p-7"><h2 id="sintese" class="text-2xl font-semibold">A síntese</h2>'
@@ -282,29 +321,30 @@ def build():
               % PDF + BOOK + 'Leia o Artigo na Íntegra</a>'
               '<p class="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/70">Abre o PDF completo do artigo em uma nova aba, para leitura direta no navegador.</p></div>'
               '<dl class="reveal mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">'
-              + stat('6', 'dimensões') + stat('5', 'níveis de maturidade') + stat('18', 'itens diagnósticos') + stat('6', 'fases de aplicação')
+              + stat('6', 'dimensões') + stat('5', 'níveis de maturidade') + stat('24', 'itens diagnósticos') + stat('6', 'fases de aplicação')
               + '</dl></div></header>')
     intro = ('<section aria-labelledby="resumo-mm"><h2 id="resumo-mm" class="text-2xl font-semibold">Do que trata o artigo</h2>'
              '<p class="mt-4 leading-relaxed text-muted-foreground">Goiás priorizou a digitalização de serviços, mas não tem um instrumento padronizado para medir a evolução digital dos seus órgãos. O artigo propõe, em caráter preliminar, o Modelo de Maturidade Digital Integrado de Goiás (MMDI-GO), um framework e uma metodologia de medição para a administração pública estadual.</p>'
-             '<p class="mt-4 leading-relaxed text-muted-foreground">Com base na Design Science Research, o modelo integra seis dimensões de maturidade às camadas da Cadeia de Valor Integrada, num contínuo de cinco níveis, e traz um questionário diagnóstico de 18 itens.</p>'
-             '<p class="mt-4 rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] leading-relaxed text-accent-foreground">O artefato passou por avaliação teórica e ainda não foi validado empiricamente. Os pesos das dimensões são iniciais e dependem de calibração por especialistas.</p></section>'
+             '<p class="mt-4 leading-relaxed text-muted-foreground">Com base na Design Science Research, o modelo reúne seis dimensões de maturidade, num contínuo de cinco níveis, e traz regras de cálculo e um questionário diagnóstico de 24 itens. A Cadeia de Valor Integrada delimita o escopo e contextualiza a leitura dos resultados por camada de processos.</p>'
+             '<p class="mt-4 rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] leading-relaxed text-accent-foreground">O artefato passou por avaliação teórica e por um exemplo ilustrativo de cálculo, e ainda não foi validado empiricamente. Os pesos das dimensões são iniciais e dependem de calibração por especialistas.</p></section>'
              '<section aria-labelledby="objetivos-mm" class="mt-10 rounded-2xl border bg-secondary/50 p-7"><h2 id="objetivos-mm" class="text-2xl font-semibold">Pergunta e objetivos</h2>'
              '<div class="mt-6"><h3 class="text-lg font-semibold text-ochre">Pergunta de pesquisa</h3><p class="mt-2 leading-relaxed text-muted-foreground">Como estruturar um modelo de maturidade digital para órgãos públicos estaduais que integre capacidades digitais, arquitetura de processos e entrega de valor público, considerando as especificidades institucionais do Estado de Goiás?</p></div>'
              '<div class="mt-6"><h3 class="text-lg font-semibold text-ochre">Quatro objetivos específicos</h3><ul class="mt-3 space-y-2 text-muted-foreground">'
              + ''.join('<li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sage"></span><span class="leading-relaxed">%s</span></li>' % t for t in [
-                 'Identificar os fatores críticos de sucesso e as barreiras organizacionais da transformação digital no setor público goiano.',
+                 'Sistematizar, a partir da literatura e de documentos institucionais de Goiás, os fatores críticos de sucesso e as barreiras organizacionais da transformação digital no setor público.',
                  'Integrar as dimensões de maturidade digital à Cadeia de Valor Integrada, abrangendo processos finalísticos, gerenciais e de suporte.',
-                 'Desenvolver um instrumento diagnóstico preliminar, com indicadores, itens e uma escala de cinco níveis.',
+                 'Desenvolver um instrumento diagnóstico preliminar, com indicadores, itens, regras de agregação e uma escala de cinco níveis.',
                  'Oferecer uma base teórico-metodológica para uma aplicação piloto futura.'])
              + '</ul></div></section>')
     main = '<main class="mx-auto max-w-3xl px-6 py-16">' + intro + '<div class="mt-14 space-y-14">' + ''.join(sections) + '</div>' + closing + '</main>'
     footer = ('<footer class="border-t bg-card"><div class="mx-auto max-w-3xl px-6 py-10 text-sm text-muted-foreground">'
               '<p class="font-display text-base text-foreground">Framework de maturidade para a transformação digital e de serviços no setor público goiano: proposição de um instrumento de medição</p>'
-              '<p class="mt-2">Carlos Hernane de Oliveira.</p>'
+              '<p class="mt-2">Carlos Hernane de Oliveira. Superintendência Central de Transformação Pública (SCTP/TransformaLAB), Secretaria de Estado da Administração de Goiás (SEAD-GO).</p>'
+              '<p class="mt-2">Conflito de interesses: o autor integra a instituição responsável pelos documentos institucionais citados (Goiás, 2021; 2023). Aspectos éticos: esta etapa usou apenas literatura e documentos institucionais, sem participação de seres humanos.</p>'
               '<p class="mt-4">Palavras-chave: transformação digital; maturidade digital; setor público; cadeia de valor; Design Science Research; Governo de Goiás.</p></div></footer>')
     page = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>'
             '<title>MMDI-GO: maturidade digital no setor público goiano</title>'
-            '<meta name="description" content="Artigo que propõe o Modelo de Maturidade Digital Integrado de Goiás (MMDI-GO): seis dimensões, cinco níveis e um questionário de 18 itens, ancorados na Cadeia de Valor Integrada."/>'
+            '<meta name="description" content="Artigo que propõe o Modelo de Maturidade Digital Integrado de Goiás (MMDI-GO): seis dimensões, cinco níveis e um questionário de 24 itens, delimitado pela Cadeia de Valor Integrada."/>'
             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap"/>'
             '<link rel="stylesheet" href="../assets/styles.css"/><link rel="stylesheet" href="../assets/anim.css"/><link rel="stylesheet" href="../assets/mmdi.css"/>'
             '<script>document.documentElement.classList.add("js")</script></head><body>'

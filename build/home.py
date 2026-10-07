@@ -32,7 +32,7 @@ arts = [
     ('pmbok-dialetica', 'ARTIGO 05', 'A evolução dialética do gerenciamento de projetos: PMBOK® 6ª, 7ª e 8ª edições', '#a8483a', 'layers',
      [('3', 'edições comparadas'), ('4', 'proposições avaliadas'), ('3', 'leituras concorrentes')]),
     ('mmdi-go', 'ARTIGO 06', 'Framework de maturidade para a transformação digital e de serviços no setor público goiano', '#1f8a8a', 'gauge',
-     [('6', 'dimensões'), ('5', 'níveis'), ('18', 'itens diagnósticos')]),
+     [('6', 'dimensões'), ('5', 'níveis'), ('24', 'itens diagnósticos')]),
 ]
 import projetos_data
 GRID = icon('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>')
