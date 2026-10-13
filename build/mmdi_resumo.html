@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resumo executivo: MMDI-GO, metodologia, questionário e classificação</title>
+<meta name="description" content="Resumo executivo do Modelo de Maturidade Digital Integrado de Goiás (MMDI-GO): framework, passo a passo de aplicação, 24 perguntas e simulação da classificação de um órgão.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:oklch(97.5% .014 92); --card:oklch(99.3% .008 92); --ink:oklch(26% .035 158); --muted:oklch(46% .03 150);
+  --line:oklch(89% .02 110); --deep:oklch(32% .05 158); --deep2:oklch(24% .04 172); --soft:oklch(93% .024 120);
+  --ochre:oklch(68% .13 72); --ochre-soft:oklch(92% .06 82); --ochre-ink:oklch(30% .05 60); --clay:oklch(58% .11 45);
+  --good:#137d5c; --blue:#276fa0; --purple:#7a4fa3; --rust:#a8483a; --slate:#5a6b7a;
+  --shadow:0 1px 2px oklch(32% .05 155/.08),0 12px 32px -16px oklch(32% .05 155/.22);
+  --display:Fraunces,Georgia,serif; --sans:"Inter Tight",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.015em;line-height:1.2;margin:0}
+p{margin:0 0 12px}
+a{color:var(--deep)}
+.wrap{max-width:62rem;margin:0 auto;padding:0 24px}
+
+/* menu */
+.top{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+.top a{flex:none;text-decoration:none;color:var(--muted);font-size:13.5px;font-weight:500;padding:5px 14px;border-radius:999px;transition:background .2s,color .2s}
+.top a:hover{background:var(--soft)}
+.top a.on{background:var(--deep);color:#fff}
+
+/* capa */
+header.hero{background:linear-gradient(160deg,var(--deep),var(--deep2));color:#fff;padding:64px 0 48px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(oklch(98% .014 92/.07) 1px,transparent 1px) 0 0/22px 22px;pointer-events:none}
+header.hero .wrap{position:relative}
+.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre);font-weight:600;margin:0 0 14px}
+header.hero h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:600;max-width:20ch}
+header.hero h1 em{font-style:normal;color:var(--ochre)}
+header.hero p.lead{margin:16px 0 0;max-width:46rem;font-size:1.1rem;color:oklch(98% .014 92/.82)}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.badge{border:1px solid oklch(98% .014 92/.25);border-radius:999px;padding:5px 14px;font-size:13px;color:oklch(98% .014 92/.9)}
+.badge b{color:var(--ochre);font-family:var(--display);font-size:1.05rem;margin-right:6px}
+
+.notice{margin:28px 0 0;background:var(--ochre-soft);border-left:3px solid var(--ochre);border-radius:8px;padding:12px 16px;color:var(--ochre-ink);font-size:14.5px}
+
+/* seções */
+section.sec{padding:56px 0 8px}
+.num{font-family:var(--display);color:var(--ochre);font-size:1.9rem;line-height:1;margin-right:14px}
+.sec h2{font-size:1.75rem;display:flex;align-items:baseline}
+.sec .sub{color:var(--muted);margin:6px 0 24px;font-size:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr))}
+.card h3{font-size:1.1rem;margin-bottom:8px}
+.card p:last-child{margin-bottom:0}
+.k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--clay);margin-bottom:6px;display:block}
+.tag{display:inline-block;font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:1px 10px;color:var(--muted);background:var(--bg)}
+.quote{border-left:3px solid var(--ochre);background:var(--ochre-soft);border-radius:8px;padding:12px 16px;color:var(--ochre-ink);margin:18px 0}
+
+/* resumo executivo */
+.exec{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));margin-top:-34px;position:relative;z-index:2}
+.exec .card{border-top:4px solid var(--c,var(--good))}
+.exec .big{font-family:var(--display);font-size:1.35rem;line-height:1.25;color:var(--deep);margin-bottom:6px;display:block}
+
+/* metodologia */
+.steps6{counter-reset:s;display:grid;gap:10px}
+.steps6 li{list-style:none;counter-increment:s;display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.steps6 li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;background:var(--deep);color:#fff;font-weight:600;font-size:14px;display:grid;place-items:center;margin-top:1px}
+ul.plain{padding:0;margin:0}
+table{width:100%;border-collapse:collapse;font-size:14.5px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--soft);font-size:13px;font-weight:600}
+tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto;border-radius:12px}
+
+/* framework */
+.cvi{display:grid;gap:8px;max-width:40rem;margin:0 auto}
+.cvi div{border-radius:12px;padding:14px 18px;color:#fff;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.cvi b{font-family:var(--display);font-size:1.05rem}
+.cvi span{font-size:13.5px;opacity:.92}
+.cvi .l1{background:linear-gradient(90deg,#137d5c,#2aa57d);margin:0 0 0 0}
+.cvi .l2{background:linear-gradient(90deg,#276fa0,#3a8bc2);margin:0 26px}
+.cvi .l3{background:linear-gradient(90deg,#5a6b7a,#78899a);margin:0 52px}
+.cvi .top1{background:var(--ochre);color:var(--ochre-ink);text-align:center;justify-content:center;font-family:var(--display);font-size:1.05rem}
+.dims{display:grid;gap:12px}
+.dim{display:grid;grid-template-columns:minmax(0,1fr) minmax(8rem,14rem);gap:8px 20px;align-items:center;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:12px;padding:14px 18px}
+.dim h3{font-size:1.05rem}
+.dim p{margin:4px 0 0;font-size:14.5px;color:var(--muted)}
+.dim .layer{font-size:12.5px;color:var(--c);font-weight:600}
+.wbar{display:flex;align-items:center;gap:10px}
+.wbar i{display:block;height:12px;border-radius:99px;background:linear-gradient(90deg,var(--c),color-mix(in oklab,var(--c) 55%,#fff));width:var(--w);transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.js .wbar i{width:0}
+.wbar span{font-family:var(--display);font-size:1.3rem;color:var(--c);min-width:3ch}
+.js .in .wbar i{width:var(--w)}
+.levels{display:grid;gap:10px;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end}
+.lv{border-radius:12px 12px 6px 6px;padding:12px 12px 14px;color:#fff;font-size:13.5px;line-height:1.4;min-height:var(--h);background:linear-gradient(180deg,var(--c),color-mix(in oklab,var(--c) 68%,#000))}
+.lv b{display:block;font-family:var(--display);font-size:1.02rem;margin-bottom:4px}
+.lv small{display:block;opacity:.85;font-size:12px;margin-top:6px}
+@media(max-width:760px){.levels{grid-template-columns:1fr}.lv{min-height:0}.dim{grid-template-columns:1fr}.cvi .l2,.cvi .l3{margin:0}}
+
+/* passo a passo */
+.timeline{position:relative;display:grid;gap:14px;margin-left:6px}
+.timeline::before{content:"";position:absolute;left:21px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--good),var(--ochre))}
+.ph{position:relative;display:grid;grid-template-columns:44px 1fr;gap:14px}
+.ph .dot{width:44px;height:44px;border-radius:50%;background:var(--deep);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:1.25rem;border:3px solid var(--bg);z-index:1}
+.ph .body{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;box-shadow:var(--shadow)}
+.ph h3{font-size:1.1rem}
+.ph h3 small{font-family:var(--sans);font-size:12.5px;color:var(--muted);font-weight:500;margin-left:8px}
+.ph dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:8px 0 0;font-size:14.5px}
+.ph dt{color:var(--clay);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-top:3px}
+.ph dd{margin:0}
+.cycle{text-align:center;color:var(--muted);font-size:14px;margin-top:10px}
+
+/* questionário */
+.qbar{position:sticky;top:48px;z-index:20;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;box-shadow:var(--shadow);margin-bottom:16px}
+.qbar .prog{flex:1 1 12rem;min-width:10rem}
+.track{height:10px;border-radius:99px;background:var(--soft);overflow:hidden}
+.track i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--good),var(--ochre));transition:width .4s}
+.btn{font:inherit;font-size:13.5px;font-weight:600;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--deep);padding:6px 16px;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--soft)}
+.btn.pri{background:var(--deep);color:#fff;border-color:var(--deep)}
+.btn.pri:hover{background:var(--deep2)}
+.scale{font-size:13.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 18px;margin-bottom:14px}
+.scale b{color:var(--deep)}
+fieldset.dg{border:1px solid var(--line);border-top:4px solid var(--c);border-radius:14px;background:var(--card);padding:6px 18px 8px;margin:0 0 14px;box-shadow:var(--shadow)}
+fieldset.dg>legend{padding:0 8px;margin-left:-8px;font-family:var(--display);font-size:1.12rem;color:var(--c)}
+fieldset.dg>legend small{font-family:var(--sans);font-size:12.5px;color:var(--muted);margin-left:8px}
+.q{padding:12px 0;border-bottom:1px dashed var(--line)}
+.q:last-child{border-bottom:0}
+.q p{margin:0 0 4px}
+.q .n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--c);color:#fff;font-size:12.5px;font-weight:600;margin-right:8px}
+.q .src{display:block;font-size:12.5px;color:var(--muted);margin-left:32px}
+.opts{display:flex;gap:8px;margin:8px 0 0 32px;flex-wrap:wrap}
+.opts label{position:relative;cursor:pointer}
+.opts input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.opts span{display:grid;place-items:center;width:42px;height:38px;border:1px solid var(--line);border-radius:10px;background:var(--bg);font-weight:600;transition:all .15s}
+.opts label:hover span{border-color:var(--ochre)}
+.opts input:focus-visible+span{outline:2px solid var(--ochre);outline-offset:2px}
+.opts input:checked+span{background:var(--c);border-color:var(--c);color:#fff;transform:scale(1.08)}
+@media(max-width:520px){.opts{margin-left:0}.q .src{margin-left:0}}
+
+/* resultado */
+#res{margin-top:22px}
+.empty{border:2px dashed var(--line);border-radius:14px;padding:26px;text-align:center;color:var(--muted)}
+.result{display:grid;gap:14px}
+.hero-r{display:grid;gap:18px;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;background:linear-gradient(160deg,var(--deep),var(--deep2));color:#fff;border-radius:16px;padding:22px 24px}
+.hero-r .lvl-name{font-family:var(--display);font-size:2rem;line-height:1.1}
+.hero-r .lvl-name small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ochre);margin-bottom:6px}
+.hero-r .idx{margin-top:10px;font-size:15px;color:oklch(98% .014 92/.85)}
+.hero-r .idx b{font-family:var(--display);font-size:1.6rem;color:var(--ochre)}
+.hero-r .desc{margin-top:10px;font-size:14.5px;color:oklch(98% .014 92/.82)}
+.meter{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:14px}
+.meter i{height:10px;border-radius:99px;background:oklch(98% .014 92/.2)}
+.meter i.f{background:var(--ochre)}
+.meter-l{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;font-size:11px;color:oklch(98% .014 92/.65);margin-top:4px;text-align:center}
+svg.radar{width:100%;height:auto;max-width:340px;margin:0 auto;display:block}
+svg.radar text{font-family:var(--sans);font-size:10.5px;fill:#fff}
+@media(max-width:760px){.hero-r{grid-template-columns:1fr}}
+td.nt{font-family:var(--display);font-size:1.1rem}
+.pill{display:inline-block;border-radius:999px;padding:1px 10px;font-size:12.5px;font-weight:600;color:#fff;background:var(--c)}
+.rk{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ochre);color:var(--ochre-ink);font-weight:700;font-size:12.5px}
+.gap-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.gap-item:last-child{border-bottom:0}
+.gap-item b{flex:none;min-width:2.6rem;color:var(--c)}
+.plan{border-left:4px solid var(--c);background:var(--card);border-radius:0 12px 12px 0;padding:12px 16px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.plan h4{margin:0 0 4px;font-family:var(--display);font-size:1.05rem}
+.plan ul{margin:6px 0 0;padding-left:18px;font-size:14.5px}
+
+/* faixas */
+.bands{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin:14px 0}
+.bands div{border-radius:10px;padding:10px 8px;text-align:center;color:#fff;background:var(--c);font-size:13px}
+.bands b{display:block;font-family:var(--display);font-size:1.05rem}
+@media(max-width:620px){.bands{grid-template-columns:1fr 1fr}}
+.formula{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:14px;overflow-x:auto;margin:10px 0}
+
+/* limites */
+.limits{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
+.limits li{list-style:none;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--rust);border-radius:10px;padding:10px 14px;font-size:14.5px}
+.limits ul{padding:0;margin:0;display:contents}
+
+footer{margin-top:56px;border-top:1px solid var(--line);padding:26px 0 48px;font-size:13.5px;color:var(--muted)}
+
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}.js .wbar i{transition:none;width:var(--w)}.opts span{transition:none}}
+
+@media print{
+  .top,.qbar .btn,.noprint{display:none!important}
+  body{background:#fff;font-size:11.5pt}
+  .js .reveal{opacity:1!important;transform:none!important}.js .wbar i{width:var(--w)!important}
+  header.hero{background:var(--deep)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card,.dim,.ph .body,fieldset.dg,.plan{box-shadow:none;break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section.sec{padding-top:28px}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<nav class="top" aria-label="Seções">
+  <div class="wrap">
+    <a href="../">← Artigo completo</a><a href="#resumo">Resumo</a><a href="#metodologia">Metodologia</a><a href="#framework">Framework</a>
+    <a href="#passo">Passo a passo</a><a href="#perguntas">Perguntas</a><a href="#resultado">Análise e classificação</a><a href="#limites">Limites de uso</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Resumo executivo · Goiás</p>
+    <h1>MMDI-GO: como medir a <em>maturidade digital</em> de um órgão público estadual</h1>
+    <p class="lead">Metodologia, framework, passo a passo de aplicação, as 24 perguntas do diagnóstico e a leitura dos resultados para classificar cada órgão. Elaborado a partir da versão 3 do artigo de Carlos Hernane de Oliveira e da apresentação do modelo.</p>
+    <div class="badges">
+      <span class="badge"><b>6</b>dimensões</span><span class="badge"><b>5</b>níveis</span><span class="badge"><b>24</b>perguntas</span><span class="badge"><b>6</b>fases de aplicação</span>
+    </div>
+    <p class="notice" style="background:oklch(98% .014 92/.1);border-left-color:var(--ochre);color:oklch(98% .014 92/.92)">Modelo proposto em caráter preliminar. Passou por avaliação teórica e por um exemplo ilustrativo, e ainda não foi validado empiricamente: pesos e pontos de corte são preliminares e serão calibrados por Delphi e piloto.</p>
+  </div>
+</header>
+
+<main>
+<!-- ============ RESUMO ============ -->
+<section class="sec" id="resumo" style="padding-top:0">
+  <div class="wrap">
+    <div class="exec reveal">
+      <div class="card" style="--c:#7a4fa3"><span class="k">O problema</span><b class="big">Goiás digitaliza serviços, mas não mede a evolução digital dos órgãos.</b><p>Os instrumentos nacionais examinados (NMDSP, MMD, ITDBr) medem o serviço, os dados ou a empresa. Nenhum deles mede o órgão público estadual ancorado em cadeia de valor.</p></div>
+      <div class="card" style="--c:#137d5c"><span class="k">A proposta</span><b class="big">Um modelo de 6 dimensões, 5 níveis e 24 perguntas, delimitado pela Cadeia de Valor Integrada.</b><p>A originalidade está em integrar dimensões já conhecidas a uma arquitetura de processos públicos estaduais, e não em criar dimensões novas.</p></div>
+      <div class="card" style="--c:#cf7638"><span class="k">Como se aplica</span><b class="big">Seis fases cíclicas, da sensibilização da liderança ao monitoramento anual.</b><p>Questionário respondido por gestores e servidores, com evidências documentais, pontuação por dimensão e índice por média ponderada.</p></div>
+      <div class="card" style="--c:#276fa0"><span class="k">O que entrega</span><b class="big">Um nível de maturidade por dimensão e global, e um mapa de lacunas.</b><p>O resultado orienta um plano de ação. Não é um selo nem um ranking entre órgãos.</p></div>
+    </div>
+    <div class="quote reveal"><b>Leitura em 30 segundos:</b> cada órgão responde 24 afirmativas de 1 a 5, que medem o grau de implementação. A nota de cada dimensão é a média dos seus itens (3 a 6). Cada dimensão cai num nível de 1 a 5, e o nível do órgão é o menor deles. O índice global, média ponderada pelos pesos (Liderança 25%, Dados 20%, Processos 20%, Cultura 15%, Experiência do Cidadão 12%, Infraestrutura 8%), é informativo. As menores notas mostram onde agir primeiro.</div>
+  </div>
+</section>
+
+<!-- ============ METODOLOGIA ============ -->
+<section class="sec" id="metodologia">
+  <div class="wrap">
+    <h2><span class="num">01</span>Metodologia</h2>
+    <p class="sub">Design Science Research: construir e avaliar um artefato que resolve um problema prático.</p>
+    <div class="grid g2">
+      <div class="card reveal"><h3>Atividades da pesquisa (Peffers et al., 2007)</h3>
+        <div class="tw"><table>
+          <tr><th>Atividade</th><th>No artigo</th></tr>
+          <tr><td>1. Problema</td><td>Ausência de instrumento padronizado nos órgãos de Goiás</td></tr>
+          <tr><td>2. Objetivos</td><td>Framework ligado à CVI, com dimensões, escala e questionário</td></tr>
+          <tr><td>3. Desenvolvimento</td><td>6 dimensões, 5 níveis, pesos iniciais, regras de agregação, pontos de corte preliminares e instrumento</td></tr>
+          <tr><td>4. Demonstração</td><td>Exemplo ilustrativo de cálculo, com dados fictícios, e análise teórica sobre a CVI</td></tr>
+          <tr><td>5. Avaliação</td><td>Teórica, ex ante e formativa; empírica fica para o piloto</td></tr>
+          <tr><td>6. Comunicação</td><td>O artigo científico</td></tr>
+        </table></div>
+      </div>
+      <div class="card reveal"><h3>Como o artefato foi construído</h3>
+        <ol class="steps6 plain" style="padding:0;margin:0">
+          <li>Levantar na literatura os fatores críticos de sucesso e as barreiras.</li>
+          <li>Analisar a estrutura da CVI de Goiás.</li>
+          <li>Agrupar os fatores em dimensões, com rastreabilidade.</li>
+          <li>Definir a escala de maturidade de cinco níveis.</li>
+          <li>Atribuir pesos iniciais às dimensões e definir as regras de agregação e os pontos de corte preliminares.</li>
+          <li>Formular os itens diagnósticos de cada dimensão.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="grid g3" style="margin-top:14px">
+      <div class="card reveal"><span class="k">Critérios de construção</span><p><b>Rastreabilidade</b> e <b>aderência à CVI</b>: cada dimensão se liga à literatura e a um elemento da cadeia.</p></div>
+      <div class="card reveal"><span class="k">Critérios de construção</span><p><b>Gradação</b>: sem critérios absolutos que penalizem órgãos por razões legais, de segurança ou de inclusão.</p></div>
+      <div class="card reveal"><span class="k">Critérios de construção</span><p><b>Parcimônia</b> e <b>neutralidade tecnológica</b>: instrumento curto, que não confunde maturidade com adoção de uma tecnologia.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRAMEWORK ============ -->
+<section class="sec" id="framework">
+  <div class="wrap">
+    <h2><span class="num">02</span>O framework</h2>
+    <p class="sub">Três camadas da cadeia de valor, seis dimensões ponderadas e cinco níveis cumulativos.</p>
+
+    <h3 style="margin-bottom:12px">Âncora: a Cadeia de Valor Integrada (CVI)</h3>
+    <div class="cvi reveal" aria-label="Camadas da CVI, lidas de baixo para cima">
+      <div class="top1">Valor público e cidadão</div>
+      <div class="l1"><b>Processos finalísticos</b><span>entregam valor direto ao cidadão (saúde, educação, segurança)</span></div>
+      <div class="l2"><b>Processos gerenciais</b><span>medem, monitoram e controlam as metas</span></div>
+      <div class="l3"><b>Processos de suporte</b><span>infraestrutura e recursos humanos</span></div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:10px">A modernização da ponta não pode ser freada por uma retaguarda analógica: por isso o diagnóstico percorre as três camadas.</p>
+
+    <h3 style="margin:34px 0 12px">As seis dimensões e seus pesos iniciais</h3>
+    <div class="dims reveal" id="dims"></div>
+    <p style="font-size:13.5px;color:var(--muted);margin-top:10px">Pesos propostos pelo autor por julgamento fundamentado na literatura e sujeitos à calibração por especialistas (método Delphi, com protocolo preliminar de 10 a 15 especialistas e até três rodadas). O peso de 25% da Liderança ainda não tem validação empírica. Soma dos pesos: 100%.</p>
+
+    <h3 style="margin:34px 0 12px">Escala de maturidade em cinco níveis</h3>
+    <div class="levels reveal" id="levels"></div>
+    <p style="font-size:13.5px;color:var(--muted);margin-top:10px">Inspirada no CMMI, mas não é uma adaptação formal dele: aproveita níveis cumulativos e a evolução de processos informais para processos definidos, gerenciados e otimizados. A escala mede capacidade institucional, e não a adoção de uma tecnologia.</p>
+  </div>
+</section>
+
+<!-- ============ PASSO A PASSO ============ -->
+<section class="sec" id="passo">
+  <div class="wrap">
+    <h2><span class="num">03</span>Passo a passo de aplicação</h2>
+    <p class="sub">Seis fases cíclicas: cada etapa dá suporte à seguinte e o ciclo recomeça todo ano.</p>
+    <div class="timeline reveal">
+      <div class="ph"><div class="dot">1</div><div class="body"><h3>Sensibilização <small>apoio da liderança</small></h3>
+        <dl><dt>O que fazer</dt><dd>Apresentar os objetivos do MMDI-GO à alta liderança do órgão.</dd><dt>Por quê</dt><dd>O apoio da alta gestão é o principal fator crítico de sucesso.</dd><dt>Resultado</dt><dd>Comprometimento institucional.</dd></dl></div></div>
+      <div class="ph"><div class="dot">2</div><div class="body"><h3>Mapeamento na CVI <small>definição do escopo</small></h3>
+        <dl><dt>O que fazer</dt><dd>Identificar os macroprocessos e processos de trabalho do órgão que serão avaliados.</dd><dt>Por quê</dt><dd>Ancora o diagnóstico na estrutura de valor do Estado.</dd><dt>Resultado</dt><dd>Escopo de processos por camada (finalísticos, gerenciais e de suporte).</dd></dl></div></div>
+      <div class="ph"><div class="dot">3</div><div class="body"><h3>Coleta de dados <small>questionário e evidências</small></h3>
+        <dl><dt>O que fazer</dt><dd>Aplicar o questionário de 24 itens a gestores e servidores e reunir a análise documental das evidências, registrando as divergências relevantes.</dd><dt>Por quê</dt><dd>Combina percepção e prova documental.</dd><dt>Resultado</dt><dd>Respostas de 1 a 5 (ou NA, com justificativa) e evidências arquivadas.</dd></dl></div></div>
+      <div class="ph"><div class="dot">4</div><div class="body"><h3>Diagnóstico <small>pontuação e nível</small></h3>
+        <dl><dt>O que fazer</dt><dd>Calcular a nota de cada dimensão, o índice global e o nível de maturidade, conforme as regras do artigo.</dd><dt>Por quê</dt><dd>Transforma respostas em nota por dimensão, índice informativo e nível.</dd><dt>Resultado</dt><dd>Nível de maturidade por dimensão e do órgão.</dd></dl></div></div>
+      <div class="ph"><div class="dot">5</div><div class="body"><h3>Plano de ação <small>relatório e lacunas</small></h3>
+        <dl><dt>O que fazer</dt><dd>Transformar os resultados em relatório de diagnóstico e análise de lacunas, e identificar as prioritárias.</dd><dt>Por quê</dt><dd>O resultado não é um selo: é um mapa de lacunas que direciona investimentos, capacitações e ajustes normativos.</dd><dt>Resultado</dt><dd>Plano de ação para evolução de nível.</dd></dl></div></div>
+      <div class="ph"><div class="dot">6</div><div class="body"><h3>Monitoramento <small>ciclos anuais</small></h3>
+        <dl><dt>O que fazer</dt><dd>Reavaliar o órgão a cada ano.</dd><dt>Por quê</dt><dd>Torna a jornada contínua e mensurável.</dd><dt>Resultado</dt><dd>Série histórica de maturidade e novo ciclo.</dd></dl></div></div>
+    </div>
+    <p class="cycle">↻ Da fase 6 volta-se à fase 3: a reavaliação anual repete coleta, pontuação e análise.</p>
+  </div>
+</section>
+
+<!-- ============ PERGUNTAS ============ -->
+<section class="sec" id="perguntas">
+  <div class="wrap">
+    <h2><span class="num">04</span>As 24 perguntas do diagnóstico</h2>
+    <p class="sub">Afirmativas respondidas pelo grau de implementação, numa escala ordinal de 1 a 5. Responda aqui para simular a classificação de um órgão.</p>
+    <div class="scale"><span><b>1</b> Inexistente</span><span><b>2</b> Iniciado ou pontual</span><span><b>3</b> Formalizado em parte</span><span><b>4</b> Implementado na maior parte do escopo do órgão</span><span><b>5</b> Plenamente implementado e revisado periodicamente</span><span><b>NA</b> Não se aplica, com justificativa registrada</span></div>
+    <div class="qbar">
+      <div class="prog"><div style="font-size:13px;margin-bottom:4px"><b id="qcount">0</b> de 24 respondidas</div><div class="track"><i id="qtrack"></i></div></div>
+      <button class="btn" id="bEx" type="button">Carregar exemplo</button>
+      <button class="btn" id="bClr" type="button">Limpar</button>
+      <button class="btn pri" id="bGo" type="button">Ver classificação ↓</button>
+    </div>
+    <form id="qform" onsubmit="return false"></form>
+    <p style="font-size:13.5px;color:var(--muted)">O texto das afirmativas é o do Quadro 6 do artigo, e a escala é a do Quadro 5. A fundamentação indica a fonte do tema do item, e não a existência de um item equivalente na fonte. As dimensões são índices formativos: com 3 a 6 itens por dimensão, o alfa de Cronbach pode não ser a medida adequada, e a qualidade do instrumento será avaliada em piloto.</p>
+  </div>
+</section>
+
+<!-- ============ ANALISE ============ -->
+<section class="sec" id="resultado">
+  <div class="wrap">
+    <h2><span class="num">05</span>Análise dos resultados e classificação do órgão</h2>
+    <p class="sub">Como as respostas viram nota, índice, nível e prioridades de ação.</p>
+
+    <div class="grid g2">
+      <div class="card reveal"><span class="k">Passo 1 · nota por dimensão</span><h3>Média dos itens respondidos</h3><div class="formula">nota_dimensão = média dos itens (exceto NA)</div><p>Resulta em um valor entre 1,00 e 5,00 para cada uma das seis dimensões. Itens marcados NA, com justificativa registrada, ficam fora da média.</p></div>
+      <div class="card reveal"><span class="k">Passo 2 · índice global</span><h3>Média ponderada</h3><div class="formula">índice = Σ (nota_dimensão × peso) / 100</div><p>Pesos: Liderança 25, Dados 20, Processos 20, Cultura 15, Experiência 12, Infraestrutura 8. É o <b>índice global informativo</b>.</p></div>
+    </div>
+
+    <h3 style="margin:26px 0 6px">Passo 3 · da nota ao nível</h3>
+    <div class="notice" style="margin:6px 0 10px"><b>Atenção:</b> as faixas abaixo são os pontos de corte <b>preliminares do artigo</b> (Seção 4.4.1): cinco faixas equidistantes entre 1 e 5, sem fundamento teórico específico e sem calibração empírica. Leia-as como hipótese de trabalho, a ser recalibrada por Delphi e piloto.</div>
+    <div class="bands reveal" id="bands"></div>
+    <div class="card reveal"><span class="k">Nível do órgão · regra preliminar</span><h3>Vale o menor nível entre as dimensões</h3><p>A regra é não compensatória: um desempenho alto numa dimensão não compensa a deficiência em outra. A análise de sensibilidade do artigo vai compará-la com a regra compensatória, em que o nível corresponde ao índice global ponderado. A simulação abaixo mostra as duas.</p></div>
+
+    <h3 style="margin:26px 0 6px">Passo 4 · lacunas e prioridades</h3>
+    <div class="grid g2">
+      <div class="card reveal"><span class="k">Lacuna ponderada (sugestão de método)</span><div class="formula">lacuna = peso × (5 − nota_dimensão)</div><p>Ordena as dimensões pelo quanto cada uma ainda "custa" no índice: uma nota baixa em uma dimensão de peso alto vem primeiro. É uma operacionalização sugerida para a fase 5, e não uma regra do artigo.</p></div>
+      <div class="card reveal"><span class="k">Itens de atenção</span><p>Afirmativas respondidas com <b>1 ou 2</b> são listadas como pontos a melhorar: dizem exatamente o que o órgão ainda não tem. Cada lacuna deve virar uma ação do plano, com responsável e prazo.</p><p>Exemplo do material: Cultura e Competências com baixa pontuação aponta para orçamento de capacitação continuada e gestão da mudança vinculada à CVI.</p></div>
+    </div>
+
+    <h3 id="res-title" style="margin:34px 0 10px">Resultado da simulação</h3>
+    <div id="res" aria-live="polite"></div>
+
+    <div class="quote reveal" style="margin-top:22px"><b>Como usar a classificação:</b> use-a para descrever a situação atual de cada órgão e priorizar melhorias, sempre lembrando que pesos e pontos de corte são preliminares. O artigo prevê uso descritivo e prescritivo, mas <b>não comparativo</b> (ranking entre órgãos), que exigiria validação prévia do instrumento.</div>
+  </div>
+</section>
+
+<!-- ============ LIMITES ============ -->
+<section class="sec" id="limites">
+  <div class="wrap">
+    <h2><span class="num">06</span>Limites de uso e próximos passos</h2>
+    <p class="sub">O que a proposta permite afirmar, e o que ainda depende de validação.</p>
+    <div class="grid g2">
+      <div class="card reveal"><h3>Limitações declaradas</h3>
+        <ul class="limits" style="display:grid;gap:8px;grid-template-columns:1fr;padding:0;margin:0">
+          <li>Sem validação empírica: nada se afirma sobre validade, confiabilidade ou efetividade.</li>
+          <li>Pesos iniciais, propostos pelo autor; o protocolo Delphi ainda não foi executado.</li>
+          <li>Pontos de corte preliminares e equidistantes, sem calibração empírica.</li>
+          <li>Instrumento curto (24 itens), com qualidade ainda não testada, inclusive a adequação de medidas a indicadores formativos.</li>
+          <li>Literatura selecionada de forma intencional, sem protocolo sistemático; outros instrumentos podem existir.</li>
+          <li>Autorrelato sujeito a viés de desejabilidade social; ancoragem na CVI delimita o escopo, e não pontua por processo.</li>
+        </ul></div>
+      <div class="card reveal"><h3>Agenda de validação</h3>
+        <ol class="plain" style="padding-left:20px;margin:0">
+          <li>Aplicar o protocolo Delphi para calibrar os pesos, com análise ética.</li>
+          <li>Aplicar piloto em órgãos de complexidades diferentes.</li>
+          <li>Avaliar confiabilidade e validade, e validar os pontos de corte entre níveis.</li>
+          <li>Ampliar os itens e elaborar descritores por dimensão.</li>
+          <li>Desenvolver plataforma digital para coleta e processamento.</li>
+        </ol></div>
+    </div>
+    <div class="quote reveal" style="text-align:center;font-family:var(--display);font-size:1.15rem">Tecnologia é o meio; o valor público é o fim.</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Fontes:</b> OLIVEIRA, Carlos Hernane de. <i>Framework de Maturidade para a Transformação Digital e de Serviços no Setor Público Goiano: proposição de um instrumento de medição.</i> 2026; e apresentação <i>Construindo a Arquitetura do Valor Público: o Modelo de Maturidade Digital Integrado de Goiás (MMDI-GO)</i>.</p>
+    <p>Pesos, escala, pontos de corte preliminares, regras de cálculo, questionário e fases seguem a versão 3 do artigo. A fórmula de lacuna ponderada, o plano de ação sugerido e a calculadora interativa são recursos deste resumo para apoiar a leitura, e não fazem parte do modelo validado.</p>
+    <p class="noprint"><a class="btn" href="../" style="text-decoration:none;display:inline-block">← Voltar ao artigo completo</a> <button class="btn" type="button" onclick="window.print()">Imprimir ou salvar em PDF</button></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var DIMS=[
+    {n:'Liderança e Estratégia Digital',s:'Liderança',w:25,c:'#137d5c',layer:'Camada: processos gerenciais',d:'Engajamento da alta gestão e alinhamento do plano de transformação digital com a missão do órgão.'},
+    {n:'Cultura e Competências',s:'Cultura',w:15,c:'#7a4fa3',layer:'Camada: processos de suporte (pessoas)',d:'Alfabetização digital dos servidores, abertura à inovação e ao trabalho colaborativo, gestão da mudança.'},
+    {n:'Processos e Serviços (CVI)',s:'Processos',w:20,c:'#cf7638',layer:'Camada: finalísticos, gerenciais e de suporte',d:'Grau de digitalização e reengenharia dos processos, conforme a Cadeia de Valor Integrada.'},
+    {n:'Infraestrutura e Tecnologia',s:'Infraestrutura',w:8,c:'#5a6b7a',layer:'Camada: processos de suporte',d:'Disponibilidade de ferramentas, conectividade, nuvem, segurança e sistemas estruturadores.'},
+    {n:'Dados e Interoperabilidade',s:'Dados',w:20,c:'#276fa0',layer:'Transversal às camadas',d:'Integração de dados entre órgãos e uso de análise de dados para apoiar a decisão.'},
+    {n:'Experiência do Cidadão',s:'Experiência',w:12,c:'#a8483a',layer:'Camada: processos finalísticos',d:'Eficácia dos canais digitais (multicanalidade) e satisfação do usuário na jornada do serviço.'}
+  ];
+  var LEVELS=[
+    {n:1,t:'Inicial',c:'#5a6b7a',h:120,d:'Processos ad hoc, baixa digitalização e dependência de iniciativas individuais.'},
+    {n:2,t:'Fragmentado',c:'#276fa0',h:150,d:'Algumas áreas digitalizadas, mas sem integração e com processos ainda analógicos.'},
+    {n:3,t:'Definido',c:'#137d5c',h:180,d:'Estratégia digital formalizada, processos mapeados na CVI e serviços essenciais online.'},
+    {n:4,t:'Gerenciado',c:'#cf7638',h:210,d:'Uso intensivo de dados para gestão, alta interoperabilidade e foco na experiência do usuário.'},
+    {n:5,t:'Otimizado',c:'#b8860b',h:240,d:'Transformação digital plena, cultura de inovação contínua e serviços proativos e orientados a dados, quando pertinentes à natureza do órgão.'}
+  ];
+  // pontos de corte preliminares do artigo (Seção 4.4.1): limiar inferior de cada nível, faixas fechadas à esquerda
+  var CUTS=[1.8,2.6,3.4,4.2];
+  var N=24;
+  var Q=[
+    [0,'O órgão possui plano de transformação digital formalizado.','Viana e Araújo (2025)'],
+    [0,'O plano de transformação digital do órgão está alinhado à estratégia do Estado.','Viana e Araújo (2025)'],
+    [0,'A alta gestão participa ativamente das decisões e da priorização de projetos digitais.','Filgueiras, Flávio e Palotti (2019)'],
+    [0,'Existe instância de governança digital formalizada.','Filgueiras, Flávio e Palotti (2019); OCDE (2020)'],
+    [0,'A instância de governança digital tem responsáveis definidos.','Filgueiras, Flávio e Palotti (2019); OCDE (2020)'],
+    [0,'A instância de governança digital conta com recursos previstos de forma contínua.','Filgueiras, Flávio e Palotti (2019); OCDE (2020)'],
+    [1,'Os servidores possuem as competências digitais necessárias para operar os processos digitalizados.','Fitriani et al. (2025)'],
+    [1,'Há incentivo à inovação e tolerância a falhas controladas em projetos experimentais.','Fitriani et al. (2025)'],
+    [1,'O órgão mantém ações contínuas de capacitação e de gestão da mudança vinculadas aos processos da CVI.','Fitriani et al. (2025)'],
+    [2,'Os processos finalísticos do órgão estão mapeados e documentados na estrutura da CVI (macroprocessos e processos de trabalho).','Goiás (2021)'],
+    [2,'Os processos finalísticos estão digitalizados de ponta a ponta, admitidas exceções justificadas por exigência legal, segurança ou inclusão.','Goiás (2021)'],
+    [2,'Os processos gerenciais do órgão (planejamento, monitoramento e controle de metas) utilizam informação digital para acompanhar resultados.','Goiás (2021)'],
+    [2,'Os processos de suporte (por exemplo, gestão de pessoas e compras) estão integrados de forma sistêmica aos processos finalísticos.','Goiás (2021)'],
+    [3,'A infraestrutura tecnológica (rede, nuvem, equipamentos) atende à demanda atual do órgão.','Ferreira e Santos (2025)'],
+    [3,'O órgão utiliza os sistemas estruturadores do Estado.','Goiás (2023)'],
+    [3,'O uso dos sistemas estruturadores é integrado aos fluxos de trabalho do órgão.','Goiás (2023)'],
+    [3,'O órgão monitora e reduz progressivamente as redundâncias de informação entre sistemas.','Goiás (2023)'],
+    [3,'Há políticas e mecanismos de segurança da informação e de continuidade que protegem a infraestrutura e os dados do órgão.','Brasil (2020)'],
+    [4,'O órgão compartilha e consome dados de outros órgãos, evitando que o cidadão repita informações.','Banco Mundial (2025)'],
+    [4,'As decisões estratégicas são apoiadas por análises de dados e indicadores atualizados periodicamente.','Dobrolyubova (2021)'],
+    [4,'Há papéis, padrões e responsabilidades definidos para a governança e a gestão de dados do órgão.','Brasil (2024)'],
+    [5,'O cidadão consegue iniciar e concluir o serviço por mais de um canal, respeitadas as exceções legais.','Rachynskyi e Tytarenko (2024)'],
+    [5,'Existe mecanismo sistemático de coleta e análise da satisfação do usuário do serviço.','Viana e Araújo (2025)'],
+    [5,'Os resultados da satisfação e de indicadores de impacto ao cidadão são utilizados na melhoria dos serviços.','Dobrolyubova (2021); Brasil (2025)']
+  ];
+  // 0 = sem resposta, -1 = não se aplica
+  var EXEMPLO=[4,4,3,3,3,2, 2,2,2, 3,3,4,3, 4,4,3,3,4, 3,2,3, 3,3,2];
+  var KEY='mmdi-resumo-respostas-v3';
+  var ans=new Array(N).fill(0);
+  function $(s){return document.querySelector(s)}
+  function fmt(x){return x.toFixed(2).replace('.',',')}
+  function level(v){for(var i=0;i<CUTS.length;i++){if(v<CUTS[i]-1e-9)return i}return 4}
+  function rng(i){var lo=i===0?'1,00':fmt(CUTS[i-1]),hi=i===4?'5,00':fmt(CUTS[i]);return i===4?lo+' a '+hi:lo+' a menos de '+hi}
+
+  // dimensões
+  $('#dims').innerHTML=DIMS.map(function(d,i){
+    return '<div class="dim" style="--c:'+d.c+'"><div><h3>'+(i+1)+'. '+d.n+'</h3><p>'+d.d+'</p><span class="layer">'+d.layer+'</span></div>'+
+      '<div class="wbar" style="--w:'+(d.w*3.6)+'%"><i></i><span>'+d.w+'%</span></div></div>';
+  }).join('');
+  $('#levels').innerHTML=LEVELS.map(function(l,i){
+    return '<div class="lv" style="--c:'+l.c+';--h:'+l.h+'px"><b>Nível '+l.n+' · '+l.t+'</b>'+l.d+'<small>faixa preliminar: '+rng(i)+'</small></div>';
+  }).join('');
+  $('#bands').innerHTML=LEVELS.map(function(l,i){
+    return '<div style="--c:'+l.c+'"><b>Nível '+l.n+'</b>'+l.t+'<br>'+rng(i)+'</div>';
+  }).join('');
+
+  // questionário
+  var qi=0;
+  $('#qform').innerHTML=DIMS.map(function(d,di){
+    var items=Q.map(function(q,k){return {q:q,k:k}}).filter(function(x){return x.q[0]===di});
+    return '<fieldset class="dg" style="--c:'+d.c+'"><legend>'+d.n+'<small>peso '+d.w+'%</small></legend>'+
+      items.map(function(x){
+        var k=x.k;
+        return '<div class="q"><p><span class="n">'+(k+1)+'</span>'+x.q[1]+'</p><span class="src">Fundamentação: '+x.q[2]+'</span>'+
+          '<div class="opts" role="radiogroup" aria-label="Resposta da pergunta '+(k+1)+'">'+
+          [1,2,3,4,5,'NA'].map(function(v){return '<label><input type="radio" name="q'+k+'" value="'+v+'"><span>'+v+'</span></label>'}).join('')+'</div></div>';
+      }).join('')+'</fieldset>';
+  }).join('');
+
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}}
+  function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.length===N)ans=s}catch(e){}}
+  function paint(){
+    for(var k=0;k<N;k++){var r=document.querySelector('input[name=q'+k+'][value="'+(ans[k]===-1?'NA':ans[k])+'"]');
+      document.querySelectorAll('input[name=q'+k+']').forEach(function(i){i.checked=false});if(r)r.checked=true}
+    var n=ans.filter(Boolean).length;$('#qcount').textContent=n;$('#qtrack').style.width=(n/N*100)+'%';
+    render(n===N);
+  }
+  $('#qform').addEventListener('change',function(e){
+    var m=/^q(\d+)$/.exec(e.target.name);if(!m)return;ans[+m[1]]=e.target.value==='NA'?-1:+e.target.value;save();
+    var n=ans.filter(Boolean).length;$('#qcount').textContent=n;$('#qtrack').style.width=(n/N*100)+'%';render(n===N)});
+  $('#bEx').onclick=function(){ans=EXEMPLO.slice();save();paint()};
+  $('#bClr').onclick=function(){ans=new Array(N).fill(0);save();paint()};
+  $('#bGo').onclick=function(){$('#res-title').scrollIntoView({behavior:'smooth'})};
+
+  // resultado
+  function radar(scores){
+    var cx=170,cy=150,R=100,pts=[],grid='',ax='',lab='';
+    for(var g=1;g<=5;g++){var p=[];for(var i=0;i<6;i++){var a=-Math.PI/2+i*Math.PI/3;p.push((cx+R*g/5*Math.cos(a)).toFixed(1)+','+(cy+R*g/5*Math.sin(a)).toFixed(1))}
+      grid+='<polygon points="'+p.join(' ')+'" fill="none" stroke="rgba(255,255,255,.18)"/>'}
+    DIMS.forEach(function(d,i){var a=-Math.PI/2+i*Math.PI/3,r=R*(scores[i]-0)/5;
+      ax+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+R*Math.cos(a)).toFixed(1)+'" y2="'+(cy+R*Math.sin(a)).toFixed(1)+'" stroke="rgba(255,255,255,.18)"/>';
+      pts.push((cx+r*Math.cos(a)).toFixed(1)+','+(cy+r*Math.sin(a)).toFixed(1));
+      var lx=cx+(R+22)*Math.cos(a),ly=cy+(R+22)*Math.sin(a),anc=Math.cos(a)>.3?'start':(Math.cos(a)<-.3?'end':'middle');
+      lab+='<text x="'+lx.toFixed(1)+'" y="'+(ly+3).toFixed(1)+'" text-anchor="'+anc+'">'+d.s+' '+fmt(scores[i])+'</text>'});
+    return '<svg class="radar" viewBox="0 0 340 300" role="img" aria-label="Radar das seis dimensões">'+grid+ax+
+      '<polygon points="'+pts.join(' ')+'" fill="rgba(240,180,70,.28)" stroke="#f0b446" stroke-width="2.2"/>'+lab+'</svg>';
+  }
+  function render(done){
+    var box=$('#res');
+    if(!done){box.innerHTML='<div class="empty">Responda as 24 perguntas acima para ver as notas, o nível e as prioridades. Se quiser ver um exemplo, use <b>Carregar exemplo</b>.</div>';return}
+    var scores=DIMS.map(function(d,di){var v=[];Q.forEach(function(q,k){if(q[0]===di&&ans[k]>0)v.push(ans[k])});return v.length?v.reduce(function(a,b){return a+b},0)/v.length:null});
+    if(scores.some(function(x){return x===null})){box.innerHTML='<div class="empty">Uma dimensão ficou sem nenhum item aplicável (todos NA). Com a regra do artigo não há como pontuá-la: reveja as respostas ou registre a justificativa.</div>';return}
+    var idx=DIMS.reduce(function(a,d,i){return a+scores[i]*d.w},0)/100;
+    var lvls=scores.map(level),minL=Math.min.apply(null,lvls),L=LEVELS[minL],Lc=LEVELS[level(idx)];
+    var det=DIMS.filter(function(d,i){return lvls[i]===minL}).map(function(d){return d.s}).join(', ');
+    var rows=DIMS.map(function(d,i){return {i:i,gap:d.w*(5-scores[i])}}).sort(function(a,b){return b.gap-a.gap});
+    var rank={};rows.forEach(function(r,k){rank[r.i]=k+1});
+    var tbl=DIMS.map(function(d,i){var lv=LEVELS[lvls[i]];
+      return '<tr><td><b style="color:'+d.c+'">'+d.n+'</b></td><td class="nt">'+fmt(scores[i])+'</td><td><span class="pill" style="--c:'+lv.c+'">N'+lv.n+' · '+lv.t+'</span></td><td>'+d.w+'%</td><td>'+fmt(d.w*(5-scores[i])/100)+'</td><td><span class="rk">'+rank[i]+'</span></td></tr>'}).join('');
+    var low=[];Q.forEach(function(q,k){if(ans[k]>0&&ans[k]<=2)low.push({k:k,q:q,v:ans[k]})});
+    low.sort(function(a,b){return rank[a.q[0]]-rank[b.q[0]]||a.v-b.v});
+    var lowH=low.length?low.map(function(x){return '<div class="gap-item" style="--c:'+DIMS[x.q[0]].c+'"><b>'+DIMS[x.q[0]].s+'</b><span>('+x.v+') '+x.q[1]+'</span></div>'}).join(''):'<p>Nenhuma afirmativa foi respondida com 1 ou 2. Os itens de nota 3 ainda indicam formalização parcial e merecem acompanhamento.</p>';
+    var top3=rows.slice(0,3).map(function(r,k){var d=DIMS[r.i];
+      var its=[];Q.forEach(function(q,j){if(q[0]===r.i&&ans[j]>0)its.push({j:j,v:ans[j],t:q[1]})});its.sort(function(a,b){return a.v-b.v});
+      var extra=r.i===1?'<li>Vincular orçamento a capacitação continuada e a campanhas de gestão da mudança ligadas aos processos da CVI (direcionamento apontado na apresentação).</li>':'';
+      return '<div class="plan" style="--c:'+d.c+'"><h4>'+(k+1)+'º foco: '+d.n+' <span class="tag">nota '+fmt(scores[r.i])+' · peso '+d.w+'%</span></h4>'+
+        '<ul>'+its.slice(0,2).map(function(x){return '<li>Evoluir: '+x.t.replace(/\.$/,'')+' (hoje '+x.v+').</li>'}).join('')+extra+'</ul></div>'}).join('');
+    var meter='<div class="meter">'+[1,2,3,4,5].map(function(n){return '<i class="'+(n<=L.n?'f':'')+'"></i>'}).join('')+'</div><div class="meter-l">'+LEVELS.map(function(l){return '<span>'+l.t+'</span>'}).join('')+'</div>';
+    var strong=DIMS.map(function(d,i){return {i:i,s:scores[i]}}).sort(function(a,b){return b.s-a.s})[0];
+    var cmp=Lc.n===L.n?'A regra compensatória, aplicada ao índice global, daria o mesmo nível.':'A regra compensatória, aplicada ao índice global, indicaria o <b>Nível '+Lc.n+' · '+Lc.t+'</b>: a diferença mostra por que o artigo prevê análise de sensibilidade.';
+    box.innerHTML='<div class="result">'+
+      '<div class="hero-r"><div><div class="lvl-name"><small>Classificação do órgão (regra preliminar)</small>Nível '+L.n+' · '+L.t+'</div>'+
+        '<div class="idx">Menor nível entre as dimensões, determinado por: <b style="font-size:1.05rem">'+det+'</b></div>'+
+        '<div class="idx">Índice global informativo: <b>'+fmt(idx)+'</b> / 5,00</div><div class="desc">'+L.d+'</div><div class="desc">'+cmp+'</div>'+meter+'</div>'+radar(scores)+'</div>'+
+      '<div class="card"><h3>Nota e nível por dimensão, e prioridade</h3><div class="tw"><table><tr><th>Dimensão</th><th>Nota</th><th>Nível da dimensão</th><th>Peso</th><th>Lacuna ponderada</th><th>Prioridade</th></tr>'+tbl+'</table></div>'+
+        '<p style="margin:10px 0 0;font-size:13.5px;color:var(--muted)">Ponto mais forte: <b>'+DIMS[strong.i].n+'</b> ('+fmt(strong.s)+'). Lacuna ponderada em pontos do índice: quanto maior, mais a dimensão ainda pesa para baixo no resultado.</p></div>'+
+      '<div class="card"><h3>Itens de atenção (respostas 1 ou 2)</h3>'+lowH+'</div>'+
+      '<div><h3 style="margin:6px 0 10px">Plano de ação sugerido: três focos prioritários</h3><div class="grid g3">'+top3+'</div></div></div>';
+  }
+
+  load();paint();
+
+  // revelar ao rolar e destacar o menu
+  var rv=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    rv.forEach(function(e){io.observe(e)});
+    var links=[].slice.call(document.querySelectorAll('.top a'));
+    var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=secs.indexOf(e.target);links.forEach(function(a,j){a.classList.toggle('on',j===i)})}})},{rootMargin:'-30% 0px -60% 0px'});
+    secs.forEach(function(s){if(s)so.observe(s)});
+  }else{rv.forEach(function(e){e.classList.add('in')})}
+})();
+</script>
+</body>
+</html>

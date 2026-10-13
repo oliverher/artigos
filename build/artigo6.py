@@ -325,17 +325,24 @@ def build():
               '<p class="mt-5 text-lg leading-relaxed text-primary-foreground/80">O MMDI-GO: proposta de um framework e de um instrumento de medição ancorados na Cadeia de Valor Integrada do Estado.</p>'
               '<p class="mt-4 text-base leading-relaxed text-primary-foreground/70">Construindo a Arquitetura do Valor Público: uma abordagem baseada em processos estruturados, tomada de decisão inteligente e foco absoluto na jornada do cidadão.</p>'
               '<p class="mt-8 text-sm text-primary-foreground/70">Carlos Hernane de Oliveira</p>'
-              '<div class="mt-6"><a href="../assets/pdf/%s" target="_blank" rel="noopener noreferrer" '
+              '<div class="mt-6" style="display:flex;flex-wrap:wrap;gap:12px"><a href="../assets/pdf/%s" target="_blank" rel="noopener noreferrer" '
               'class="inline-flex items-center gap-2 rounded-full bg-ochre px-6 py-3 text-sm font-semibold text-ochre-foreground shadow-lift transition-transform hover:-translate-y-0.5">'
               % PDF + BOOK + 'Leia o Artigo na Íntegra</a>'
-              '<p class="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/70">Abre o PDF completo do artigo em uma nova aba, para leitura direta no navegador.</p></div>'
+              '<a href="resumo/" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5" '
+              'style="border:1.5px solid rgba(255,255,255,.55)">Resumo Executivo Interativo</a></div>'
+              '<p class="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/70">Abre o PDF completo do artigo em uma nova aba, para leitura direta no navegador. O resumo executivo traz o modelo em poucos minutos e uma calculadora para simular a classificação de um órgão.</p>'
               '<dl class="reveal mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">'
               + stat('6', 'dimensões') + stat('5', 'níveis de maturidade') + stat('24', 'itens diagnósticos') + stat('6', 'fases de aplicação')
               + '</dl></div></header>')
     intro = ('<section aria-labelledby="resumo-mm"><h2 id="resumo-mm" class="text-2xl font-semibold">Do que trata o artigo</h2>'
              '<p class="mt-4 leading-relaxed text-muted-foreground">Goiás priorizou a digitalização de serviços, mas não tem um instrumento padronizado para medir a evolução digital dos seus órgãos. O artigo propõe, em caráter preliminar, o Modelo de Maturidade Digital Integrado de Goiás (MMDI-GO), um framework e uma metodologia de medição para a administração pública estadual.</p>'
              '<p class="mt-4 leading-relaxed text-muted-foreground">Com base na Design Science Research, o modelo reúne seis dimensões de maturidade, num contínuo de cinco níveis com pontos de corte preliminares, e traz regras de cálculo, um protocolo Delphi para calibrar os pesos e um questionário diagnóstico de 24 itens. A Cadeia de Valor Integrada delimita o escopo e contextualiza a leitura dos resultados por camada de processos.</p>'
-             '<p class="mt-4 rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] leading-relaxed text-accent-foreground">O artefato passou por avaliação teórica e por um exemplo ilustrativo de cálculo, e ainda não foi validado empiricamente. Os pesos das dimensões são iniciais e dependem de calibração por especialistas.</p></section>'
+             '<p class="mt-4 rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] leading-relaxed text-accent-foreground">O artefato passou por avaliação teórica e por um exemplo ilustrativo de cálculo, e ainda não foi validado empiricamente. Os pesos das dimensões são iniciais e dependem de calibração por especialistas.</p>'
+             '<a href="resumo/" class="mt-6 flex items-center justify-between gap-4 rounded-2xl border bg-card p-5 shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-0.5" style="text-decoration:none;color:inherit">'
+             '<span><span class="text-xs font-semibold uppercase tracking-[0.2em] text-ochre">Leitura rápida</span>'
+             '<span class="mt-1 block font-display text-xl">Resumo executivo interativo</span>'
+             '<span class="mt-1 block text-sm leading-relaxed text-muted-foreground">Metodologia, framework, passo a passo, as 24 perguntas e uma calculadora que classifica o órgão e sugere prioridades.</span></span>'
+             '<span class="text-2xl text-ochre" aria-hidden="true">→</span></a></section>'
              '<section aria-labelledby="objetivos-mm" class="mt-10 rounded-2xl border bg-secondary/50 p-7"><h2 id="objetivos-mm" class="text-2xl font-semibold">Pergunta e objetivos</h2>'
              '<div class="mt-6"><h3 class="text-lg font-semibold text-ochre">Pergunta de pesquisa</h3><p class="mt-2 leading-relaxed text-muted-foreground">Como estruturar um modelo de maturidade digital para órgãos públicos estaduais que integre capacidades digitais, arquitetura de processos e entrega de valor público, considerando as especificidades institucionais do Estado de Goiás?</p></div>'
              '<div class="mt-6"><h3 class="text-lg font-semibold text-ochre">Quatro objetivos específicos</h3><ul class="mt-3 space-y-2 text-muted-foreground">'
@@ -364,6 +371,8 @@ def build():
     for f in os.listdir(SRC + '/img'):
         shutil.copy(SRC + '/img/' + f, S + '/assets/img/' + f)
     shutil.copy(SRC + '/' + PDF, S + '/assets/pdf/' + PDF)
+    os.makedirs('%s/%s/resumo' % (S, SLUG), exist_ok=True)
+    shutil.copy('build/mmdi_resumo.html', '%s/%s/resumo/index.html' % (S, SLUG))
     shutil.copy('build/mmdi.css', S + '/assets/mmdi.css')
     shutil.copy('build/mmdi.js', S + '/assets/mmdi.js')
     shutil.copy('build/anim.css', S + '/assets/anim.css')
