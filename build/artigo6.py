@@ -12,7 +12,7 @@ from artigo4 import acc, e, BOOK
 S = 'docs'
 SLUG = 'mmdi-go'
 SRC = 'src/orig/mmdi-go'
-PDF = 'MMDI-GO_artigo_ABNT.pdf'
+PDF = 'MMDI-GO_artigo_ABNT_v3.pdf'
 
 
 def gfig(n, title, alt, tour, cap=None):
@@ -59,23 +59,23 @@ levels = ('<div class="lvls reveal mt-6" role="list" aria-label="Os cinco nívei
                     % (h, c, .12 * i, n, e(t), e(d)) for i, (n, t, d, c, h) in enumerate(LEVELS))
           + '</div>')
 
-EX = [('Liderança e Estratégia Digital', '3,0', '0,25', '0,75'), ('Dados e Interoperabilidade', '2,0', '0,20', '0,40'),
-      ('Processos e Serviços (CVI)', '3,0', '0,20', '0,60'), ('Cultura e Competências', '2,0', '0,15', '0,30'),
-      ('Experiência do Cidadão', '2,0', '0,12', '0,24'), ('Infraestrutura e Tecnologia', '4,0', '0,08', '0,32')]
+EX = [('Liderança e Estratégia Digital', '3,0', '0,25', '0,75', '3'), ('Dados e Interoperabilidade', '2,0', '0,20', '0,40', '2'),
+      ('Processos e Serviços (CVI)', '3,0', '0,20', '0,60', '3'), ('Cultura e Competências', '2,0', '0,15', '0,30', '2'),
+      ('Experiência do Cidadão', '2,0', '0,12', '0,24', '2'), ('Infraestrutura e Tecnologia', '4,0', '0,08', '0,32', '4')]
 _td = 'padding:8px 10px;border-top:1px solid var(--border)'
 _th = 'padding:8px 10px;font-weight:500'
 example = ('<div class="reveal mt-6 rounded-xl border bg-card p-5 shadow-[var(--shadow-soft)]" role="group" aria-label="Exemplo ilustrativo de cálculo do índice global">'
            '<p class="text-sm font-medium">Exemplo ilustrativo de cálculo do índice global</p>'
            '<p class="mt-1 text-xs text-muted-foreground">Dados fictícios, de um órgão hipotético, apenas para mostrar a conta.</p>'
-           '<div style="overflow-x:auto;margin-top:14px"><table class="text-sm" style="width:100%%;border-collapse:collapse;min-width:420px">'
+           '<div style="overflow-x:auto;margin-top:14px"><table class="text-sm" style="width:100%%;border-collapse:collapse;min-width:520px">'
            '<thead><tr class="text-xs text-muted-foreground" style="text-align:right"><th style="%s;text-align:left">Dimensão</th>'
-           '<th style="%s">Pontuação (1 a 5)</th><th style="%s">Peso</th><th style="%s">Contribuição</th></tr></thead><tbody>' % ((_th,) * 4)
-           + ''.join('<tr style="text-align:right"><td style="%s;text-align:left">%s</td><td style="%s">%s</td><td style="%s">%s</td><td style="%s">%s</td></tr>'
-                     % (_td, e(n), _td, p, _td, w, _td, c) for n, p, w, c in EX)
-           + ('<tr style="text-align:right;font-weight:600"><td style="%s;text-align:left">Índice global informativo (média ponderada)</td><td style="%s"></td><td style="%s">1,00</td><td style="%s">2,61</td></tr>'
-              '<tr style="text-align:right"><td style="%s;text-align:left">Média simples (pesos iguais)</td><td style="%s"></td><td style="%s"></td><td style="%s">2,67</td></tr>'
-              '<tr style="text-align:right"><td style="%s;text-align:left">Menor pontuação por dimensão (regra preliminar de limitação do nível)</td><td style="%s">2,0</td><td style="%s"></td><td style="%s"></td></tr>'
-              % ((_td,) * 12))
+           '<th style="%s">Pontuação (1 a 5)</th><th style="%s">Peso</th><th style="%s">Contribuição</th><th style="%s">Nível da dimensão</th></tr></thead><tbody>' % ((_th,) * 5)
+           + ''.join('<tr style="text-align:right"><td style="%s;text-align:left">%s</td><td style="%s">%s</td><td style="%s">%s</td><td style="%s">%s</td><td style="%s">%s</td></tr>'
+                     % (_td, e(n), _td, p, _td, w, _td, c, _td, l) for n, p, w, c, l in EX)
+           + ('<tr style="text-align:right;font-weight:600"><td style="%s;text-align:left">Índice global informativo (média ponderada)</td><td style="%s"></td><td style="%s">1,00</td><td style="%s">2,61</td><td style="%s">3 (regra compensatória)</td></tr>'
+              '<tr style="text-align:right"><td style="%s;text-align:left">Média simples (pesos iguais)</td><td style="%s"></td><td style="%s"></td><td style="%s">2,67</td><td style="%s"></td></tr>'
+              '<tr style="text-align:right;font-weight:600"><td style="%s;text-align:left">Menor nível entre as dimensões (regra não compensatória preliminar)</td><td style="%s"></td><td style="%s"></td><td style="%s"></td><td style="%s">2</td></tr>'
+              % ((_td,) * 15))
            + '</tbody></table></div></div>')
 
 # ---------- figuras ----------
@@ -242,13 +242,22 @@ sections = [
                   'Processos e Serviços cobre as três camadas da CVI. Dados e Interoperabilidade é transversal às camadas. Experiência do Cidadão vincula-se aos processos finalísticos e à Carta de Serviços.']),
              acc('Pesos iniciais, sujeitos ao método Delphi',
                  ['Os pesos são propostos pelo autor, por julgamento fundamentado na literatura, e não derivados de procedimento empírico. A frequência com que um fator aparece na literatura não equivale à sua contribuição relativa para a maturidade, razão pela qual os pesos são hipótese de trabalho. O peso de 25% da dimensão Liderança, em particular, ainda não tem validação.',
-                  'A calibração será feita por método Delphi, com número de rodadas, critério de consenso e perfil dos especialistas definidos em protocolo prévio.'],
+                  'A calibração será feita por método Delphi, conforme um protocolo preliminar descrito no artigo e a ser submetido à apreciação ética antes da execução.'],
                  'Tecnologia é condição necessária, mas não suficiente: por isso pesa 8%, enquanto liderança pesa 25%.'),
+             acc('Protocolo preliminar do Delphi',
+                 ['Painel de 10 a 15 especialistas, com pelo menos cinco anos de experiência, em três perfis: gestores públicos estaduais de transformação digital e governança; pesquisadores de maturidade digital, governo digital ou administração pública; e profissionais de órgãos de controle ou de planejamento. O tamanho do painel e o tempo mínimo de experiência são decisões de projeto, e não parâmetros extraídos da literatura.',
+                  'Até três rodadas por questionário eletrônico. Na primeira, cada especialista atribui pesos de 0 a 100 às seis dimensões, com a soma normalizada para 100, e justifica. Na segunda, recebe a mediana, o intervalo interquartil e as justificativas do grupo, e revisa a posição. A terceira só ocorre se não houver consenso.',
+                  'Consenso preliminar: coeficiente de variação igual ou inferior a 0,25 em todas as dimensões. Sem consenso na terceira rodada, vale a mediana, com a divergência residual registrada. A concordância é avaliada em cada rodada pelo coeficiente W de Kendall, e os resultados serão publicados como anexo metodológico.'],
+                 'O protocolo não elimina a subjetividade dos julgamentos, e o painel não é uma amostra probabilística. Os pesos calibrados são condição necessária, mas não suficiente, para a validade do índice.'),
              acc('Regras de cálculo e conversão em nível',
                  ['A pontuação de cada dimensão é a média dos itens respondidos, excluídos os marcados como "não se aplica", com justificativa registrada. O índice global informativo é a média das dimensões ponderada pelos pesos.',
                   'Como os níveis são cumulativos, propõe-se, como regra preliminar a testar no piloto, que o nível do órgão seja limitado pela dimensão de menor pontuação: um desempenho elevado numa dimensão não compensa a deficiência em outra.',
-                  'Os pontos de corte que convertem pontuações em níveis não estão definidos no artigo e dependerão da calibração por especialistas e do piloto. Análises de sensibilidade vão comparar o índice com os pesos propostos e com pesos iguais.'],
-                 'A regra do menor valor é não compensatória: é ela que impede que uma nota alta mascare uma lacuna.')]),
+                  'O nível global do órgão é o menor nível atribuído às suas dimensões. A análise de sensibilidade comparará essa regra com a alternativa compensatória, em que o nível corresponde ao índice global ponderado, e os pesos propostos com pesos iguais.'],
+                 'A regra do menor valor é não compensatória: é ela que impede que uma nota alta mascare uma lacuna.'),
+             acc('Pontos de corte preliminares entre níveis',
+                 ['O nível de cada dimensão é o maior nível cujo limiar inferior a pontuação iguala ou supera. Nível 1, Inicial: de 1,00 a menos de 1,80. Nível 2, Fragmentado: de 1,80 a menos de 2,60. Nível 3, Definido: de 2,60 a menos de 3,40. Nível 4, Gerenciado: de 3,40 a menos de 4,20. Nível 5, Otimizado: de 4,20 a 5,00.',
+                  'Os limiares são equidistantes no intervalo de 1 a 5, com amplitude de 0,80 por nível, por parcimônia e transparência. A equidistância não tem fundamento teórico específico nem implica equidistância conceitual entre os níveis.'],
+                 'São hipótese de trabalho, de adoção provisória para estudos exploratórios. Não substituem a calibração por especialistas nem a aplicação piloto.')]),
 
     section('05', 'escala', 'Escala de maturidade e instrumento de coleta',
             'Cinco níveis cumulativos e um questionário preliminar de 24 itens.',
@@ -275,8 +284,8 @@ sections = [
                  'O diagnóstico não entrega só um selo de maturidade: entrega um mapa de lacunas.'),
              acc('Exemplo ilustrativo, com dados fictícios',
                  ['O artigo calcula o índice de um órgão hipotético, sem relação com nenhum órgão do Estado, para mostrar o funcionamento da conta. Com os pesos iniciais o índice global informativo é 2,61, e com pesos iguais é 2,67, o que indica baixa sensibilidade aos pesos neste exemplo.',
-                  'Pela regra do menor valor, o nível do órgão ficaria limitado pela menor pontuação (2,0), cuja correspondência com um nível depende de pontos de corte ainda não definidos. Dados e Interoperabilidade, Cultura e Competências e Experiência do Cidadão seriam as dimensões prioritárias no plano de ação.'],
-                 'O exemplo mostra o funcionamento do cálculo e a diferença entre a regra compensatória e a não compensatória. Não permite inferir a validade do modelo.'),
+                  'Com os pontos de corte preliminares, a regra não compensatória posiciona o órgão no Nível 2, Fragmentado, determinado por Dados e Interoperabilidade, Cultura e Competências e Experiência do Cidadão, que seriam também as dimensões prioritárias no plano de ação. A regra compensatória, aplicada ao índice global de 2,61, indicaria o Nível 3, Definido.'],
+                 'A diferença de um nível entre as duas regras mostra por que a análise de sensibilidade é necessária. O exemplo mostra o funcionamento do cálculo e não permite inferir a validade do modelo.'),
              acc('Propósito do modelo',
                  ['O MMDI-GO tem propósito descritivo, para diagnosticar a situação atual, e prescritivo, para indicar caminhos de melhoria. Não é comparativo entre órgãos, uso que exigiria validação prévia.'])]),
 
@@ -289,14 +298,14 @@ sections = [
              acc('Hipóteses a testar',
                  ['A liderança e a interoperabilidade de dados podem ser motores da evolução entre níveis. Cultura e competências podem ser o principal desafio entre os níveis intermediários e avançados. Tudo isso são expectativas teóricas, que dependem de validação empírica.']),
              acc('Limitações declaradas',
-                 ['O MMDI-GO não foi validado empiricamente, e o exemplo de cálculo usa dados fictícios. Os pesos são iniciais, propostos pelo autor, e os pontos de corte entre níveis não estão definidos. O instrumento é curto, com 24 itens, e nem a consistência interna nem a adequação de medidas a indicadores formativos foram testadas.',
+                 ['O MMDI-GO não foi validado empiricamente, e o exemplo de cálculo usa dados fictícios. Os pesos são iniciais, propostos pelo autor, e o protocolo Delphi não foi executado. Os pontos de corte são preliminares e equidistantes, sem calibração empírica, e sua adoção provisória não substitui a validação por especialistas e o piloto. O instrumento é curto, com 24 itens, e nem a consistência interna nem a adequação de medidas a indicadores formativos foram testadas.',
                   'A seleção da literatura foi intencional, sem protocolo sistemático, e a transferibilidade das lições internacionais não foi demonstrada. Parte da literatura trata de contextos nacionais distintos do brasileiro.',
                   'O modelo de governo digital da ENAP e o GovTech Maturity Index ficaram fora do quadro comparativo. O instrumento depende de autorrelato, sujeito a viés de desejabilidade social. A ancoragem na CVI delimita o escopo, e não estrutura a pontuação por processo.',
                   'Por fim, o autor integra a instituição responsável pelos documentos que sustentam o modelo (SCTP/TransformaLAB, SEAD-GO), o que pode influenciar a interpretação do contexto goiano.'],
                  'O estudo não mediu órgãos: nada se afirma sobre a validade, a confiabilidade ou a efetividade do modelo.'),
              acc('Agenda de pesquisa',
-                 ['Validar o conteúdo e calibrar os pesos por Delphi com especialistas. Aplicar um piloto em secretarias de complexidades diferentes, avaliando confiabilidade, validade e pontos de corte. Ampliar os itens, elaborar descritores por dimensão e avaliar a natureza formativa dos indicadores.',
-                  'Fazer análise de sensibilidade dos pesos e avaliar a pontuação por processo ou por camada da CVI. Adotar protocolo sistemático de revisão da literatura, incluindo outros instrumentos nacionais e internacionais. Tratar a ética e a proteção de dados dos respondentes, conforme a LGPD. E desenvolver uma plataforma digital para coletar e processar os dados do diagnóstico.'])]),
+                 ['Validar o conteúdo e calibrar os pesos por Delphi com especialistas. Aplicar o protocolo Delphi para calibrar os pesos e, em seguida, um piloto em órgãos de complexidades diferentes, para validar os pontos de corte e avaliar confiabilidade e validade do instrumento. Ampliar os itens, elaborar descritores por dimensão e avaliar a natureza formativa dos indicadores.',
+                  'Fazer análise de sensibilidade dos pesos e avaliar a pontuação por processo ou por camada da CVI. Adotar protocolo sistemático de revisão da literatura, incluindo outros instrumentos nacionais e internacionais. Submeter o Delphi e o piloto à análise ética, com proteção dos dados dos participantes conforme a LGPD. E desenvolver uma plataforma digital para coletar e processar os dados do diagnóstico.'])]),
 ]
 
 closing = ('<section aria-labelledby="sintese" class="mt-16 rounded-2xl border bg-secondary/50 p-7"><h2 id="sintese" class="text-2xl font-semibold">A síntese</h2>'
@@ -325,7 +334,7 @@ def build():
               + '</dl></div></header>')
     intro = ('<section aria-labelledby="resumo-mm"><h2 id="resumo-mm" class="text-2xl font-semibold">Do que trata o artigo</h2>'
              '<p class="mt-4 leading-relaxed text-muted-foreground">Goiás priorizou a digitalização de serviços, mas não tem um instrumento padronizado para medir a evolução digital dos seus órgãos. O artigo propõe, em caráter preliminar, o Modelo de Maturidade Digital Integrado de Goiás (MMDI-GO), um framework e uma metodologia de medição para a administração pública estadual.</p>'
-             '<p class="mt-4 leading-relaxed text-muted-foreground">Com base na Design Science Research, o modelo reúne seis dimensões de maturidade, num contínuo de cinco níveis, e traz regras de cálculo e um questionário diagnóstico de 24 itens. A Cadeia de Valor Integrada delimita o escopo e contextualiza a leitura dos resultados por camada de processos.</p>'
+             '<p class="mt-4 leading-relaxed text-muted-foreground">Com base na Design Science Research, o modelo reúne seis dimensões de maturidade, num contínuo de cinco níveis com pontos de corte preliminares, e traz regras de cálculo, um protocolo Delphi para calibrar os pesos e um questionário diagnóstico de 24 itens. A Cadeia de Valor Integrada delimita o escopo e contextualiza a leitura dos resultados por camada de processos.</p>'
              '<p class="mt-4 rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] leading-relaxed text-accent-foreground">O artefato passou por avaliação teórica e por um exemplo ilustrativo de cálculo, e ainda não foi validado empiricamente. Os pesos das dimensões são iniciais e dependem de calibração por especialistas.</p></section>'
              '<section aria-labelledby="objetivos-mm" class="mt-10 rounded-2xl border bg-secondary/50 p-7"><h2 id="objetivos-mm" class="text-2xl font-semibold">Pergunta e objetivos</h2>'
              '<div class="mt-6"><h3 class="text-lg font-semibold text-ochre">Pergunta de pesquisa</h3><p class="mt-2 leading-relaxed text-muted-foreground">Como estruturar um modelo de maturidade digital para órgãos públicos estaduais que integre capacidades digitais, arquitetura de processos e entrega de valor público, considerando as especificidades institucionais do Estado de Goiás?</p></div>'
@@ -340,7 +349,7 @@ def build():
     footer = ('<footer class="border-t bg-card"><div class="mx-auto max-w-3xl px-6 py-10 text-sm text-muted-foreground">'
               '<p class="font-display text-base text-foreground">Framework de maturidade para a transformação digital e de serviços no setor público goiano: proposição de um instrumento de medição</p>'
               '<p class="mt-2">Carlos Hernane de Oliveira. Superintendência Central de Transformação Pública (SCTP/TransformaLAB), Secretaria de Estado da Administração de Goiás (SEAD-GO).</p>'
-              '<p class="mt-2">Conflito de interesses: o autor integra a instituição responsável pelos documentos institucionais citados (Goiás, 2021; 2023). Aspectos éticos: esta etapa usou apenas literatura e documentos institucionais, sem participação de seres humanos.</p>'
+              '<p class="mt-2">Conflito de interesses: o autor integra a instituição responsável pelos documentos institucionais citados (Goiás, 2021; 2023). Aspectos éticos: esta etapa usou apenas literatura e documentos institucionais, sem participação de seres humanos; o Delphi e o piloto previstos serão submetidos à análise ética.</p>'
               '<p class="mt-4">Palavras-chave: transformação digital; maturidade digital; setor público; cadeia de valor; Design Science Research; Governo de Goiás.</p></div></footer>')
     page = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>'
             '<title>MMDI-GO: maturidade digital no setor público goiano</title>'
