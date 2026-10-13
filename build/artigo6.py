@@ -318,12 +318,12 @@ def build():
     stat = lambda n, l: ('<div><dt class="font-display text-2xl text-ochre" data-count data-from="0" data-to="%s">%s</dt>'
                          '<dd class="mt-1 text-xs uppercase tracking-wide text-primary-foreground/70">%s</dd></div>' % (n, n, l))
     header = ('<header class="relative overflow-hidden text-primary-foreground" style="background-image:var(--gradient-deep)">'
-              '<div class="absolute inset-0" style="opacity:.2;background:url(../assets/img/mmdi-slide-01.jpg) 100%% 40%%/auto 150%% no-repeat;mix-blend-mode:screen" aria-hidden="true"></div>'
               '<div class="surface-paper absolute inset-0 opacity-30" aria-hidden="true"></div>'
               '<div class="relative mx-auto max-w-3xl px-6 py-20 sm:py-28">'
               '<p class="text-xs font-semibold uppercase tracking-[0.2em] text-ochre">Design Science Research · Maturidade digital · Goiás</p>'
               '<h1 class="mt-6 text-4xl leading-[1.1] font-semibold sm:text-5xl">Maturidade digital no <span class="text-gradient-warm">setor público goiano</span></h1>'
               '<p class="mt-5 text-lg leading-relaxed text-primary-foreground/80">O MMDI-GO: proposta de um framework e de um instrumento de medição ancorados na Cadeia de Valor Integrada do Estado.</p>'
+              '<p class="mt-4 text-base leading-relaxed text-primary-foreground/70">Construindo a Arquitetura do Valor Público: uma abordagem baseada em processos estruturados, tomada de decisão inteligente e foco absoluto na jornada do cidadão.</p>'
               '<p class="mt-8 text-sm text-primary-foreground/70">Carlos Hernane de Oliveira</p>'
               '<div class="mt-6"><a href="../assets/pdf/%s" target="_blank" rel="noopener noreferrer" '
               'class="inline-flex items-center gap-2 rounded-full bg-ochre px-6 py-3 text-sm font-semibold text-ochre-foreground shadow-lift transition-transform hover:-translate-y-0.5">'
