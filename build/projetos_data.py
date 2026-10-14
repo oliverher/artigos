@@ -22,6 +22,8 @@ PROJ = [
      'Busca nomes nas edições do Diário Oficial de Goiás em períodos de até 12 meses e abre a edição original. As consultas ficam apenas no dispositivo.'),
     ('gov', 'Pesquisar Nome no Diário Oficial de Aparecida', 'ChatGPT', 'https://convoca-aparecida.carlos-hernane-olive.chatgpt.site/',
      'A mesma ideia para o Diário Oficial de Aparecida de Goiânia: pesquisa edições e suplementos de um período e abre os PDFs oficiais.'),
+    ('gov', 'Painel UX WhatsApp Goiás', 'GitHub Pages', 'https://oliverher.github.io/painel-ux-whatsapp/',
+     'Painel de gestão das pesquisas de experiência do usuário do canal WhatsApp do Estado de Goiás: visão geral, jornada do questionário, perfil dos abordados, entrevistas e vozes dos usuários, com filtro por período e atualização da base.'),
     ('gestao', 'Validador de Projetos', 'Lovable', 'https://entrega-de-valor-projetos.lovable.app/',
      'Painel para avaliar fatores críticos de sucesso e benefícios da gestão por projetos em instituições de ensino, alinhado ao PMBOK 7ª e 8ª edições, com quadro de conexões, simulador de cenários e assistente de decisão.'),
     ('dia', 'Controle de Despesas', 'ChatGPT', 'https://controle-de-despesas.carlos-hernane-olive.chatgpt.site/',
