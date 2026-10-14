@@ -32,7 +32,7 @@ PROJ = [
      'Guia sobre o uso realista de telas por crianças, pensado para quem cuida sozinho: orientações por faixa etária, atividades sem custo, plano de quatro semanas e rede pública de apoio.'),
     ('dia', 'Studio Ket', 'ChatGPT', 'https://studio-ketellen-agenda.carlos-hernane-olive.chatgpt.site/',
      'Agendamento online de um estúdio de unhas: a cliente escolhe o serviço e o horário e confirma os dados em três passos, sem precisar ligar.'),
-    ('carreira', 'Currículo', 'Lovable', 'https://curriculo-carlos-hernane-oliveira.lovable.app/',
+    ('carreira', 'Currículo', 'Vercel', 'https://curriculo-carlos-hernane-oliveira.vercel.app/',
      'Currículo online com experiência em governança, gestão de TI, projetos e processos no setor público, formação, certificações, publicações e projetos.'),
     ('carreira', 'Aulas ESPGTI & DSS-BI', 'Claude', 'https://claude.ai/artifact/HqLzXH5JDMQ2BehUu8BeQQ',
      'Biblioteca das aulas gravadas das especializações do Instituto de Informática da UFG, organizada por temporada e disciplina, com busca e marcação das aulas já assistidas.'),
