@@ -16,11 +16,18 @@ def mono(nome):
     w = [x for x in nome.replace('&', ' ').split() if x[0].isalnum() and len(x) > 2] or nome.split()
     return (w[0][0] + (w[1][0] if len(w) > 1 else '')).upper()
 
+# Cards sem captura de tela podem mostrar um texto próprio no lugar das iniciais.
+ART_TEXTO = {'Aulas ESPGTI & DSS-BI': ('Especialização em', ['Governança e Gestão de TI', 'Design de Sistemas e Soluções de BI'])}
+
 def art(n, p):
     img = os.path.join(OUT, 'img', slug(n) + '.jpg')
     if os.path.exists(img):
         return ('<span class="card-art has-img" aria-hidden="true"><img src="img/%s.jpg" alt="" loading="lazy" width="800" height="500">'
                 '<span class="plat">%s</span></span>' % (slug(n), e(p)))
+    if n in ART_TEXTO:
+        t, linhas = ART_TEXTO[n]
+        return ('<span class="card-art" aria-hidden="true"><span class="art-txt"><small>%s</small>%s</span><span class="plat">%s</span></span>'
+                % (e(t), ''.join('<b>%s</b>' % e(x) for x in linhas), e(p)))
     return '<span class="card-art" aria-hidden="true"><span class="mono">%s</span><span class="plat">%s</span></span>' % (e(mono(n)), e(p))
 
 cards = ''.join(
@@ -57,8 +64,9 @@ main{max-width:68rem;margin:0 auto;padding:26px 24px 56px}
 .card{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:color-mix(in srgb,var(--bg) 70%,#fff);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .card[hidden]{display:none}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.card-art{position:relative;height:132px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 45%,#000))}
+.card-art{position:relative;min-height:132px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 45%,#000))}
 .card-art.has-img{height:auto;aspect-ratio:8/5;background:var(--border);border-bottom:1px solid var(--border)}.card-art img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.art-txt{display:flex;flex-direction:column;gap:6px;text-align:center;padding:34px 22px 18px;color:#fff}.art-txt small{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}.art-txt b{font-family:var(--display);font-weight:600;font-size:1.12rem;line-height:1.25}
 .mono{font-family:var(--display);font-weight:600;font-size:3.2rem;color:rgba(255,255,255,.92);letter-spacing:.02em}
 .plat{position:absolute;top:12px;right:12px;font-size:11.5px;color:#fff;background:rgba(0,0,0,.25);border-radius:999px;padding:2px 10px}
 .card-body{display:flex;flex-direction:column;gap:8px;padding:18px 20px 20px;flex:1}
