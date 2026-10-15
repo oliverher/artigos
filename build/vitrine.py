@@ -3,6 +3,7 @@ Uso: python build/vitrine.py [pasta_de_saida]   (padrão: ../projetos-ia)"""
 import html, os, sys
 sys.path.insert(0, 'build')
 from projetos_data import CATS, PROJ
+from slug import slug
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join('..', 'projetos-ia')
 e = html.escape
@@ -15,11 +16,17 @@ def mono(nome):
     w = [x for x in nome.replace('&', ' ').split() if x[0].isalnum() and len(x) > 2] or nome.split()
     return (w[0][0] + (w[1][0] if len(w) > 1 else '')).upper()
 
+def art(n, p):
+    img = os.path.join(OUT, 'img', slug(n) + '.jpg')
+    if os.path.exists(img):
+        return ('<span class="card-art has-img" aria-hidden="true"><img src="img/%s.jpg" alt="" loading="lazy" width="800" height="500">'
+                '<span class="plat">%s</span></span>' % (slug(n), e(p)))
+    return '<span class="card-art" aria-hidden="true"><span class="mono">%s</span><span class="plat">%s</span></span>' % (e(mono(n)), e(p))
+
 cards = ''.join(
     '<a class="card" data-cat="%s" href="%s" target="_blank" rel="noopener noreferrer" style="--c:%s">'
-    '<span class="card-art" aria-hidden="true"><span class="mono">%s</span><span class="plat">%s</span></span>'
-    '<span class="card-body"><span class="cat">%s</span><span class="name">%s</span><span class="desc">%s</span>'
-    '<span class="go">Abrir o projeto %s</span></span></a>' % (c, e(u), COLOR[c], e(mono(n)), e(p), e(LABEL[c]), e(n), e(d), ARROW)
+    '%s<span class="card-body"><span class="cat">%s</span><span class="name">%s</span><span class="desc">%s</span>'
+    '<span class="go">Abrir o projeto %s</span></span></a>' % (c, e(u), COLOR[c], art(n, p), e(LABEL[c]), e(n), e(d), ARROW)
     for c, n, p, u, d in PROJ)
 chips = '<button type="button" class="chip is-on" data-f="all">Todos <b>%d</b></button>' % len(PROJ) + ''.join(
     '<button type="button" class="chip" data-f="%s">%s <b>%d</b></button>' % (k, e(n), sum(1 for x in PROJ if x[0] == k))
@@ -51,6 +58,7 @@ main{max-width:68rem;margin:0 auto;padding:26px 24px 56px}
 .card[hidden]{display:none}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .card-art{position:relative;height:132px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 45%,#000))}
+.card-art.has-img{height:auto;aspect-ratio:8/5;background:var(--border);border-bottom:1px solid var(--border)}.card-art img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .mono{font-family:var(--display);font-weight:600;font-size:3.2rem;color:rgba(255,255,255,.92);letter-spacing:.02em}
 .plat{position:absolute;top:12px;right:12px;font-size:11.5px;color:#fff;background:rgba(0,0,0,.25);border-radius:999px;padding:2px 10px}
 .card-body{display:flex;flex-direction:column;gap:8px;padding:18px 20px 20px;flex:1}
