@@ -87,7 +87,7 @@ page = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta nam
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap">'
         '<style>' + CSS + '</style></head><body>'
         '<header class="hero"><div class="wrap"><p class="eyebrow">Vitrine de projetos</p>'
-        '<h1>Aplicativos feitos com <span>inteligência artificial</span></h1>'
+        '<h1>Aplicativos feitos com <span>Inteligência Artificial</span></h1>'
         '<p>Ferramentas que desenvolvi para resolver problemas reais, do serviço público ao dia a dia. Escolha um tema e abra o projeto.</p>'
         '<p class="by">Por Carlos Hernane de Oliveira · <a href="https://oliverher.github.io/artigos/">Ver os artigos</a></p></div></header>'
         '<main><div class="chips" role="group" aria-label="Filtrar por tema">' + chips + '</div><div class="grid">' + cards + '</div></main>'
