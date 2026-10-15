@@ -34,7 +34,7 @@ page = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta nam
         + shell.sidebar('projetos', '../') + '<div class="home-main">' + shell.nav('projetos', '../') +
         '<header class="home-hero"><div class="home-wrap proj-wrap"><p class="home-eyebrow">Aplicativos e ferramentas</p>'
         '<h1>O que venho <span>construindo</span></h1>'
-        '<p>Projetos que desenvolvi, de serviços públicos a utilidades do dia a dia. Cada um abre em uma nova aba.</p></div></header>'
+        '<p>Projetos que desenvolvi, de serviços públicos a utilidades do dia a dia. Cada um abre em uma nova aba. Prefere uma visão mais visual? Veja a <a href="https://oliverher.github.io/projetos-ia/" target="_blank" rel="noopener noreferrer">vitrine de projetos de IA</a>.</p></div></header>'
         '<main class="proj-main"><div class="chips" role="group" aria-label="Filtrar por tema">' + chips + '</div>'
         '<div class="proj-grid">' + cards + '</div></main></div>' + SCRIPT + '</body></html>')
 os.makedirs(S + '/projetos', exist_ok=True)
