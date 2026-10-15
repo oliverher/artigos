@@ -34,6 +34,8 @@ PROJ = [
      'Agendamento online de um estúdio de unhas: a cliente escolhe o serviço e o horário e confirma os dados em três passos, sem precisar ligar.'),
     ('carreira', 'Currículo', 'Vercel', 'https://curriculo-carlos-hernane-oliveira.vercel.app/',
      'Currículo online com experiência em governança, gestão de TI, projetos e processos no setor público, formação, certificações, publicações e projetos.'),
+    ('carreira', 'Promptoteca', 'GitHub Pages', 'https://oliverher.github.io/promptoteca/',
+     'Biblioteca interativa de Engenharia de Prompts: cards de conceitos e exemplos, checklist de seis peças para montar pedidos (PACREF), visualização de atenção causal, placar de estudos e exercícios para praticar de memória.'),
     ('carreira', 'Aulas ESPGTI & DSS-BI', 'Claude', 'https://claude.ai/artifact/HqLzXH5JDMQ2BehUu8BeQQ',
      'Biblioteca das aulas gravadas das especializações do Instituto de Informática da UFG, organizada por temporada e disciplina, com busca e marcação das aulas já assistidas.'),
 ]
