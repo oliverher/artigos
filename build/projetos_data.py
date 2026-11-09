@@ -24,6 +24,8 @@ PROJ = [
      'Busca nomes nas edições do Diário Oficial de Goiás em períodos de até 12 meses e abre a edição original. As consultas ficam apenas no dispositivo.'),
     ('gov', 'Pesquisar Nome no Diário Oficial de Aparecida', 'ChatGPT', 'https://convoca-aparecida.carlos-hernane-olive.chatgpt.site/',
      'A mesma ideia para o Diário Oficial de Aparecida de Goiânia: pesquisa edições e suplementos de um período e abre os PDFs oficiais.'),
+    ('gov', 'Servidores por Unidade e Hierarquia', 'GitHub Pages', 'https://oliverher.github.io/painel-servidores-hierarquia/',
+     'Painel com a quantidade de servidores do Poder Executivo de Goiás por unidade, na hierarquia do Decreto 10.218, com busca, visão por órgão, exportação em CSV e um chat em linguagem natural. Sem nomes e sem valores de remuneração.'),
     ('gov', 'Painel UX WhatsApp Goiás', 'GitHub Pages', 'https://oliverher.github.io/painel-ux-whatsapp/',
      'Painel de gestão das pesquisas de experiência do usuário do canal WhatsApp do Estado de Goiás: visão geral, jornada do questionário, perfil dos abordados, entrevistas e vozes dos usuários, com filtro por período e atualização da base.'),
     ('gestao', 'Validador de Projetos', 'Lovable', 'https://entrega-de-valor-projetos.lovable.app/',
