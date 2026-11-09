@@ -20,7 +20,7 @@ def sidebar(active, base):
         d = '<span class="side-dot" style="background:%s"></span>' % dot if dot else '<span class="side-dot side-home"></span>'
         s = '<small>%s</small>' % small if small else ''
         return '<a href="%s" class="%s"%s>%s<span>%s%s</span></a>' % (href, cls, cur, d, s, label)
-    items = (link(base or './', 'Início', 'home') + link(base + 'projetos/', 'Projetos - Aplicativos desenvolvidos com IA', 'projetos')
+    items = (link(base or './', 'Início', 'home') + link('https://oliverher.github.io/projetos-ia/', 'Projetos - Aplicativos desenvolvidos com IA', 'projetos')
              + '<p class="side-label">Artigos</p>'
              + ''.join(link(base + s + '/', n, s, c, t) for s, t, n, c in ARTS))
     return ('<aside class="sidebar" aria-label="Menu lateral"><div class="side-brand"><span>Coleção de artigos</span>'
@@ -29,7 +29,7 @@ def sidebar(active, base):
 
 
 def nav(active, base):
-    items = [(base or './', 'Início', 'home')] + [(base + s + '/', n, s) for s, _, n, _ in ARTS] + [(base + 'projetos/', 'Projetos', 'projetos')]
+    items = [(base or './', 'Início', 'home')] + [(base + s + '/', n, s) for s, _, n, _ in ARTS] + [('https://oliverher.github.io/projetos-ia/', 'Projetos', 'projetos')]
     links = ''.join('<a href="%s" class="%s"%s>%s</a>' % (h, ON if k == active else OFF, ' aria-current="page"' if k == active else '', l) for h, l, k in items)
     return ('<nav class="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur">'
             '<div class="mx-auto flex max-w-3xl items-center gap-2 overflow-x-auto px-6 py-3">%s</div></nav>') % links

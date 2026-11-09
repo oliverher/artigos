@@ -43,7 +43,7 @@ for slug, tag, title, color, ic, stats in arts:
               '<span class="gcard-body"><span class="art-tag">%s</span><span class="gcard-title">%s</span>'
               '<span class="art-stats">%s</span></span></a>') % (slug, color, ICONS[ic], tag, title, st)
 n_proj, n_cat = len(projetos_data.PROJ), len(projetos_data.CATS)
-cards += ('<a class="gcard gcard-proj" href="projetos/"><span class="gcard-tile" style="background:#0f3d2a">%s</span>'
+cards += ('<a class="gcard gcard-proj" href="https://oliverher.github.io/projetos-ia/"><span class="gcard-tile" style="background:#0f3d2a">%s</span>'
           '<span class="gcard-body"><span class="art-tag">PROJETOS</span><span class="gcard-title">Aplicativos desenvolvidos com IA</span>'
           '<span class="art-stats"><span><b>%d</b> projetos</span><span><b>%d</b> temas</span></span></span></a>') % (GRID, n_proj, n_cat)
 
