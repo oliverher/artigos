@@ -91,7 +91,7 @@ page = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta nam
         '<p>Ferramentas que desenvolvi para resolver problemas reais, do serviço público ao dia a dia. Escolha um tema e abra o projeto.</p>'
         '<p class="by">Por Carlos Hernane de Oliveira · <a href="https://oliverher.github.io/artigos/">Ver os artigos</a></p></div></header>'
         '<main><div class="chips" role="group" aria-label="Filtrar por tema">' + chips + '</div><div class="grid">' + cards + '</div></main>'
-        '<footer>Carlos Hernane de Oliveira · <a href="https://oliverher.github.io/artigos/projetos/">Lista completa de projetos</a></footer>'
+        '<footer>Carlos Hernane de Oliveira</footer>'
         + SCRIPT + '</body></html>')
 os.makedirs(OUT, exist_ok=True)
 open(os.path.join(OUT, 'index.html'), 'w', encoding='utf8').write(page)

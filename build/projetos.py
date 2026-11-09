@@ -38,7 +38,7 @@ page = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta nam
         '<main class="proj-main"><div class="chips" role="group" aria-label="Filtrar por tema">' + chips + '</div>'
         '<div class="proj-grid">' + cards + '</div></main></div>' + SCRIPT + '</body></html>')
 os.makedirs(S + '/projetos', exist_ok=True)
-open(S + '/projetos/index.html', 'w', encoding='utf8').write(page)
+open(S + '/projetos/index.html', 'w', encoding='utf8').write('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Projetos | Carlos Hernane de Oliveira</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0; url=https://oliverher.github.io/projetos-ia/"><link rel="canonical" href="https://oliverher.github.io/projetos-ia/"><script>location.replace("https://oliverher.github.io/projetos-ia/")</script></head><body><p>Esta página mudou para <a href="https://oliverher.github.io/projetos-ia/">oliverher.github.io/projetos-ia</a>.</p></body></html>')  # redireciona para a vitrine
 shutil.copy('build/home.css', S + '/assets/home.css')
 
 shell.patch_menus(S)
