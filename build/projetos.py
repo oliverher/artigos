@@ -44,6 +44,6 @@ open(OUT + '/index.html', 'w', encoding='utf8').write(page)
 for f in ('styles.css', 'home.css'):
     shutil.copy('build/home.css' if f == 'home.css' else S + '/assets/styles.css', OUT + '/assets/' + f)
 os.makedirs(S + '/projetos', exist_ok=True)
-open(S + '/projetos/index.html', 'w', encoding='utf8').write('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Projetos | Carlos Hernane de Oliveira</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0; url=https://oliverher.github.io/projetos-ia/"><link rel="canonical" href="https://oliverher.github.io/projetos-ia/"><script>location.replace("https://oliverher.github.io/projetos-ia/")</script></head><body><p>Esta página mudou para <a href="https://oliverher.github.io/projetos-ia/">oliverher.github.io/projetos-ia</a>.</p></body></html>')  # redireciona para a vitrine
+open(S + '/projetos/index.html', 'w', encoding='utf8').write('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Projetos | Carlos Hernane de Oliveira</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0; url=https://oliverher.github.io/projetos-ia/"><link rel="canonical" href="https://oliverher.github.io/projetos-ia/"><script>location.replace("https://oliverher.github.io/projetos-ia/")</script></head><body><p>Esta página mudou para <a href="https://oliverher.github.io/projetos-ia/">oliverher.github.io/projetos-ia</a>.</p></body></html>')
 shutil.copy('build/home.css', S + '/assets/home.css')
 
