@@ -10,7 +10,7 @@ CATS = [
 PROJ = [
     ('gov', 'Portal das Jornadas', 'ChatGPT', 'https://portal-jornadas-goias.carlos-hernane-olive.chatgpt.site/',
      'Ponto de partida único para as jornadas de serviços do Governo de Goiás: vida do cidadão, servidor público, investidor, cidadão de Goiânia e atendente omnicanal.'),
-    ('gov', 'Cadeia de Valor Integrada', 'ChatGPT', 'https://cadeia-valor-goias.carlos-hernane-olive.chatgpt.site/',
+    ('gov', 'Cadeia de Valor Integrada', 'ChatGPT', 'https://oliverher.github.io/cadeia-valor-goias/',
      'Mapa navegável de 23 macrofunções, 13 macroprocessos gerenciais e de suporte e 4.261 processos de trabalho do Estado, com filtros por órgão e por situação de digitalização e exportação para Excel e PDF.'),
     ('gov', 'Regulamentos e Estatutos', 'Lovable', 'https://regulamentos-orgaos-go.lovable.app/',
      'Painel de consulta dos regulamentos e estatutos dos órgãos do Estado de Goiás, com busca, filtro por tipo de documento e exportação da lista em PDF.'),
