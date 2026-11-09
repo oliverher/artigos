@@ -34,7 +34,7 @@ page = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta nam
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap">'
         '<link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/home.css"></head><body>'
         + shell.sidebar('projetos', BASE) + '<div class="home-main">' + shell.nav('projetos', BASE) +
-        '<header class="home-hero"><div class="home-wrap proj-wrap"><p class="home-eyebrow">Aplicativos e ferramentas</p>'
+        '<header class="home-hero"><div class="home-wrap proj-wrap"><a class="proj-back" href="https://oliverher.github.io/artigos/">&larr; Voltar</a><p class="home-eyebrow">Aplicativos e ferramentas</p>'
         '<h1>O que venho <span>construindo</span></h1>'
         '<p>Projetos que desenvolvi, de serviços públicos a utilidades do dia a dia. Cada um abre em uma nova aba.</p></div></header>'
         '<main class="proj-main"><div class="chips" role="group" aria-label="Filtrar por tema">' + chips + '</div>'

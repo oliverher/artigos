@@ -97,3 +97,5 @@
 @media(prefers-reduced-motion:reduce){.gcard{animation:none!important}.gcard,.gcard-tile svg{transition:none!important}.gcard:hover{transform:none}}
 
 .proj-wrap .home-eyebrow,.proj-wrap h1,.proj-wrap h1 span,.proj-wrap p,.proj-wrap p a{color:#fff}
+.proj-back{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid rgba(255,255,255,.4);border-radius:999px;color:#fff;font-size:.9rem;font-weight:500;text-decoration:none;transition:background .2s}
+.proj-back:hover,.proj-back:focus-visible{background:rgba(255,255,255,.14)}
