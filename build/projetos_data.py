@@ -16,6 +16,8 @@ PROJ = [
      'Painel de consulta dos regulamentos e estatutos dos órgãos do Estado de Goiás, com busca, filtro por tipo de documento e exportação da lista em PDF.'),
     ('gov', 'Assistente da Carta de Serviços', 'ChatGPT', 'https://carta-servicos-sead-gecart.carlos-hernane-olive.chatgpt.site/',
      'Apoio para reescrever serviços públicos em linguagem mais clara: lê documentos ou links, extrai as informações, devolve perguntas sobre o que falta e deixa a decisão final com o órgão responsável.'),
+    ('gov', 'Carta de Serviços ao Usuário de Goiás', 'GitHub Pages', 'https://oliverher.github.io/carta-de-servicos-ao-usuario/',
+     'Estudo interativo do Decreto nº 10.859/2026 para gestores e pontos focais: quais serviços entram na Carta, o ciclo de cadastro e publicação, a ficha com 13 informações, linguagem simples e calculadoras de prazo.'),
     ('gov', 'Relatório Executivo CLP 2026', 'ChatGPT', 'https://goias-ranking-insight-2026.carlos-hernane-olive.chatgpt.site/#capital',
      'Leitura executiva do Ranking de Competitividade dos Estados (CLP): Goiás comparado aos demais estados em dez pilares e 100 indicadores, com série histórica e projeções para 2026.'),
     ('gov', 'Pesquisar Nome no Diário Oficial do Estado', 'ChatGPT', 'https://consultar-nome-doe-goias.carlos-hernane-olive.chatgpt.site/',
