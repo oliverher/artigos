@@ -95,3 +95,5 @@
 .gcard-title{font-family:var(--font-display);font-size:1.12rem;line-height:1.28;font-weight:600;color:#0f3d2a;flex:1}
 .gcard-proj{border-style:dashed;border-color:#0f3d2a}
 @media(prefers-reduced-motion:reduce){.gcard{animation:none!important}.gcard,.gcard-tile svg{transition:none!important}.gcard:hover{transform:none}}
+
+.proj-wrap .home-eyebrow,.proj-wrap h1,.proj-wrap h1 span,.proj-wrap p,.proj-wrap p a{color:#fff}
