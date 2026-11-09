@@ -52,6 +52,8 @@ h1 span{color:var(--ochre)}
 .hero p{margin-top:14px;max-width:42rem;color:rgba(255,255,255,.85);font-weight:500}
 .hero .by{margin-top:18px;font-size:.9rem;color:rgba(255,255,255,.7)}
 .hero .by a{color:#fff}
+.hero .back{display:inline-flex;align-items:center;gap:6px;margin:0 0 22px;padding:8px 16px;border:1px solid rgba(255,255,255,.4);border-radius:999px;color:#fff;font-size:.9rem;font-weight:500;text-decoration:none;transition:background .2s}
+.hero .back:hover,.hero .back:focus-visible{background:rgba(255,255,255,.14)}
 main{max-width:68rem;margin:0 auto;padding:26px 24px 56px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 .chip{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);background:transparent;color:var(--fg);border-radius:999px;padding:6px 14px;font:inherit;font-size:13.5px;font-weight:500;cursor:pointer}
@@ -86,7 +88,7 @@ page = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta nam
         '<meta name="description" content="Vitrine de aplicativos desenvolvidos com inteligência artificial por Carlos Hernane de Oliveira: serviços públicos, gestão, dia a dia e carreira.">'
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap">'
         '<style>' + CSS + '</style></head><body>'
-        '<header class="hero"><div class="wrap"><p class="eyebrow">Vitrine de projetos</p>'
+        '<header class="hero"><div class="wrap"><a class="back" href="https://oliverher.github.io/artigos/">&larr; Voltar</a><p class="eyebrow">Vitrine de projetos</p>'
         '<h1>Aplicativos feitos com <span>Inteligência Artificial</span></h1>'
         '<p>Ferramentas que desenvolvi para resolver problemas reais, do serviço público ao dia a dia. Escolha um tema e abra o projeto.</p>'
         '<p class="by">Por Carlos Hernane de Oliveira · <a href="https://oliverher.github.io/artigos/">Ver os artigos</a></p></div></header>'
