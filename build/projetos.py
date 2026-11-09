@@ -26,19 +26,24 @@ SCRIPT = ("<script>(function(){var b=document.querySelectorAll('.chip'),c=docume
           "b.forEach(function(x){x.addEventListener('click',function(){b.forEach(function(y){y.classList.toggle('is-on',y===x)});"
           "c.forEach(function(p){p.hidden=x.dataset.f!=='all'&&p.dataset.cat!==x.dataset.f})})})})();</script>")
 
+BASE = 'https://oliverher.github.io/artigos/'
+OUT = os.path.join('..', 'projetos-ia')
 page = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>Projetos | Carlos Hernane de Oliveira</title>'
         '<meta name="description" content="Aplicativos e ferramentas desenvolvidos por Carlos Hernane de Oliveira: serviços públicos, gestão de processos e projetos, e utilidades do dia a dia.">'
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap">'
-        '<link rel="stylesheet" href="../assets/styles.css"><link rel="stylesheet" href="../assets/home.css"></head><body>'
-        + shell.sidebar('projetos', '../') + '<div class="home-main">' + shell.nav('projetos', '../') +
+        '<link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/home.css"></head><body>'
+        + shell.sidebar('projetos', BASE) + '<div class="home-main">' + shell.nav('projetos', BASE) +
         '<header class="home-hero"><div class="home-wrap proj-wrap"><p class="home-eyebrow">Aplicativos e ferramentas</p>'
         '<h1>O que venho <span>construindo</span></h1>'
-        '<p>Projetos que desenvolvi, de serviços públicos a utilidades do dia a dia. Cada um abre em uma nova aba. Prefere uma visão mais visual? Veja a <a href="https://oliverher.github.io/projetos-ia/" target="_blank" rel="noopener noreferrer">vitrine de projetos de IA</a>.</p></div></header>'
+        '<p>Projetos que desenvolvi, de serviços públicos a utilidades do dia a dia. Cada um abre em uma nova aba.</p></div></header>'
         '<main class="proj-main"><div class="chips" role="group" aria-label="Filtrar por tema">' + chips + '</div>'
         '<div class="proj-grid">' + cards + '</div></main></div>' + SCRIPT + '</body></html>')
+os.makedirs(OUT + '/assets', exist_ok=True)
+open(OUT + '/index.html', 'w', encoding='utf8').write(page)
+for f in ('styles.css', 'home.css'):
+    shutil.copy('build/home.css' if f == 'home.css' else S + '/assets/styles.css', OUT + '/assets/' + f)
 os.makedirs(S + '/projetos', exist_ok=True)
 open(S + '/projetos/index.html', 'w', encoding='utf8').write('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Projetos | Carlos Hernane de Oliveira</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0; url=https://oliverher.github.io/projetos-ia/"><link rel="canonical" href="https://oliverher.github.io/projetos-ia/"><script>location.replace("https://oliverher.github.io/projetos-ia/")</script></head><body><p>Esta página mudou para <a href="https://oliverher.github.io/projetos-ia/">oliverher.github.io/projetos-ia</a>.</p></body></html>')  # redireciona para a vitrine
 shutil.copy('build/home.css', S + '/assets/home.css')
 
-shell.patch_menus(S)
