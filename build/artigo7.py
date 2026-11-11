@@ -4,7 +4,7 @@ Gera docs/ia-no-setor-publico/index.html a partir do texto do artigo e de 12 dos
 (src/orig/ia-servidores/img). As imagens ganham a galeria animada de build/mmdi.css e build/mmdi.js.
 Os slides 9, 11 e 12 da apresentação original ficaram de fora por afirmarem mais do que a revisão sustenta.
 """
-import json, os, shutil, sys
+import json, os, re, shutil, sys
 sys.path.insert(0, 'build')
 import shell
 import artigo4
@@ -254,6 +254,10 @@ closing = ('<section aria-labelledby="sintese" class="mt-16 rounded-2xl border b
 
 import questionario_data
 QBTN = questionario_data.TITLE
+CLIP = re.sub(r'(<svg[^>]*>).*?(</svg>)', lambda m: m.group(1) + '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>'
+              '<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>'
+              '<path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path>' + m.group(2),
+              BOOK, flags=re.S).replace('lucide-book-open', 'lucide-clipboard-list').replace('<svg', '<svg style="flex:none"', 1)
 
 
 def build():
@@ -271,8 +275,9 @@ def build():
               'class="inline-flex items-center gap-2 rounded-full bg-ochre px-6 py-3 text-sm font-semibold text-ochre-foreground shadow-lift transition-transform hover:-translate-y-0.5">'
               % PDF + BOOK + 'Leia o Artigo na Íntegra</a></div>'
               '<p class="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/70">Abre o PDF completo do artigo em uma nova aba, para leitura direta no navegador.</p>'
-              '<div class="mt-6"><a href="questionario/" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5" '
-              'style="border:1.5px solid rgba(255,255,255,.55);max-width:100%;line-height:1.35">' + QBTN + '</a></div>'
+              '<div class="mt-6"><a href="questionario/" '
+              'class="inline-flex items-center gap-2 rounded-full bg-ochre px-6 py-3 text-sm font-semibold text-ochre-foreground shadow-lift transition-transform hover:-translate-y-0.5" '
+              'style="max-width:100%;line-height:1.35;text-align:left">' + CLIP + QBTN + '</a></div>'
               '<p class="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/70">Somente as perguntas, separadas por dimensão, com arquivo em Word para baixar. Versão preliminar, ainda sem pré-teste nem apreciação ética.</p>'
               '<dl class="reveal mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">'
               + stat('50', 'estudos na síntese') + stat('13', 'lidos em texto completo') + stat('5', 'fatores organizacionais') + stat('25', 'países, no mínimo')
