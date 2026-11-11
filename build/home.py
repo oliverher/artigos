@@ -17,6 +17,7 @@ ICONS = {
     'factory': icon('<path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/>'),
     'layers': icon('<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>'),
     'gauge': icon('<path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/>'),
+    'landmark': icon('<line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/>'),
     'users': icon('<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'),
 }
 
@@ -33,6 +34,8 @@ arts = [
      [('3', 'edições comparadas'), ('4', 'proposições avaliadas'), ('3', 'leituras concorrentes')]),
     ('mmdi-go', 'ARTIGO 06', 'Framework de maturidade para a transformação digital e de serviços no setor público goiano', '#1f8a8a', 'gauge',
      [('6', 'dimensões'), ('5', 'níveis'), ('24', 'itens diagnósticos')]),
+    ('ia-no-setor-publico', 'ARTIGO 07', 'Fatores organizacionais associados à intenção de servidores públicos de aprender e usar IA: uma revisão de escopo', '#2d5bd1', 'landmark',
+     [('50', 'estudos'), ('5', 'fatores'), ('13', 'textos completos')]),
 ]
 import projetos_data
 GRID = icon('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>')
@@ -55,6 +58,6 @@ home = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/home.css"></head><body>'
         + shell.sidebar('home', '') + '<div class="home-main">' + shell.nav('home', '') +
         '<header class="home-hero"><div class="home-wrap proj-wrap"><p class="home-eyebrow">Coleção de artigos · Goiânia, 2026</p>'
-        '<h1>Seis ensaios, uma <span>leitura por vez</span></h1><p>Escolha o artigo do seu interesse.</p></div></header>'
+        '<h1>Sete ensaios, uma <span>leitura por vez</span></h1><p>Escolha o artigo do seu interesse.</p></div></header>'
         '<main class="home-list"><h2>Artigos e projetos</h2><div class="gallery">' + cards + '</div></main></div></body></html>')
 open(S + '/index.html', 'w', encoding='utf8').write(home)

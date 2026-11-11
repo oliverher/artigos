@@ -7,6 +7,7 @@ ARTS = [
     ('passaporte-pessoa-idosa', 'Artigo 04', 'Transformação de Serviço', '#7a4fa3'),
     ('pmbok-dialetica', 'Artigo 05', 'Evolução do PMBOK', '#a8483a'),
     ('mmdi-go', 'Artigo 06', 'MMDI-GO', '#1f8a8a'),
+    ('ia-no-setor-publico', 'Artigo 07', 'IA no setor público', '#2d5bd1'),
 ]
 PILL = 'shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors '
 OFF = PILL + 'text-muted-foreground hover:bg-secondary'
