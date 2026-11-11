@@ -252,6 +252,10 @@ closing = ('<section aria-labelledby="sintese" class="mt-16 rounded-2xl border b
            '<p class="mt-6 rounded-lg border-l-2 border-ochre bg-accent/50 px-4 py-3 text-[15px] italic leading-relaxed text-accent-foreground">Oferecer a ferramenta é apenas o início; construir a intenção de aprender é a verdadeira transformação.</p></section>')
 
 
+import questionario_data
+QBTN = questionario_data.TITLE
+
+
 def build():
     stat = lambda n, l: ('<div><dt class="font-display text-2xl text-ochre" data-count data-from="0" data-to="%s">%s</dt>'
                          '<dd class="mt-1 text-xs uppercase tracking-wide text-primary-foreground/70">%s</dd></div>' % (n, n, l))
@@ -267,6 +271,9 @@ def build():
               'class="inline-flex items-center gap-2 rounded-full bg-ochre px-6 py-3 text-sm font-semibold text-ochre-foreground shadow-lift transition-transform hover:-translate-y-0.5">'
               % PDF + BOOK + 'Leia o Artigo na Íntegra</a></div>'
               '<p class="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/70">Abre o PDF completo do artigo em uma nova aba, para leitura direta no navegador.</p>'
+              '<div class="mt-6"><a href="questionario/" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5" '
+              'style="border:1.5px solid rgba(255,255,255,.55);max-width:100%;line-height:1.35">' + QBTN + '</a></div>'
+              '<p class="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/70">Somente as perguntas, separadas por dimensão, com arquivo em Word para baixar. Versão preliminar, ainda sem pré-teste nem apreciação ética.</p>'
               '<dl class="reveal mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">'
               + stat('50', 'estudos na síntese') + stat('13', 'lidos em texto completo') + stat('5', 'fatores organizacionais') + stat('25', 'países, no mínimo')
               + '</dl></div></header>')

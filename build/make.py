@@ -16,6 +16,7 @@ for _f in os.listdir('src/orig/pmbok-dialetica/img'):
 shutil.copy('src/orig/pmbok-dialetica/Evolucao_Dialetica_Gerenciamento_Projetos_v3.pdf', 'docs/assets/pdf/')
 runpy.run_path('build/artigo6.py', run_name='__main__')
 runpy.run_path('build/artigo7.py', run_name='__main__')
+runpy.run_path('build/questionario.py', run_name='__main__')
 runpy.run_path('build/home.py')
 runpy.run_path('build/projetos.py')
 open('docs/.nojekyll','w').close()
