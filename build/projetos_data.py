@@ -30,6 +30,8 @@ PROJ = [
      'Painel de gestão das pesquisas de experiência do usuário do canal WhatsApp do Estado de Goiás: visão geral, jornada do questionário, perfil dos abordados, entrevistas e vozes dos usuários, com filtro por período e atualização da base.'),
     ('gestao', 'Validador de Projetos', 'Lovable', 'https://entrega-de-valor-projetos.lovable.app/',
      'Painel para avaliar fatores críticos de sucesso e benefícios da gestão por projetos em instituições de ensino, alinhado ao PMBOK 7ª e 8ª edições, com quadro de conexões, simulador de cenários e assistente de decisão.'),
+    ('gestao', 'Assistente de Melhoria de Processos', 'GitHub Pages', 'https://oliverher.github.io/bpmn-simplificador/',
+     'Protótipo da SEAD/GEPROC para redesenhar um processo em seis etapas (começar, conferir, diagnóstico, simplificar, revisar e entregar): recebe a descrição em texto, planilha, documento ou imagem, confere as informações com o usuário antes da análise por IA e propõe a versão simplificada.'),
     ('dia', 'Controle de Despesas', 'ChatGPT', 'https://controle-de-despesas.carlos-hernane-olive.chatgpt.site/',
      'Controle financeiro pessoal: receitas, despesas, saldo do mês, gastos por categoria e taxa de economia. Funciona no navegador e guarda os dados só no aparelho.'),
     ('dia', 'Tela e Cuidado', 'Lovable', 'https://html-hugger-65.lovable.app/tela-e-cuidado.html',
