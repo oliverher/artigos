@@ -154,6 +154,44 @@ F14 = gfig(14, 'O Estado invisível, mas auditável: tornar a burocracia invisí
             [41, 44, 32, 52, 'Nas mãos do cidadão: o que a governança promete só vale se aparecer na tela e puder ser verificado.']])
 
 
+# ---------- modelo conceitual (figura 1 do artigo) ----------
+MODEL_STEPS = [
+    ('Governança de IA', 'Regras, responsabilidades, dados, riscos e supervisão', '#2d5bd1', '#1d3f9e'),
+    ('Requisitos de UX', 'Utilidade, transparência, confiança e controle', '#0f9d76', '#0a6e53'),
+    ('Interface do serviço público', 'Avisos, explicações, correção, recusa e contestação', '#e8821e', '#b85c0c'),
+    ('Avaliação da experiência', 'Compreensão, resolução, acessibilidade e controle do cidadão', '#8a4fc7', '#5f2f94'),
+]
+
+
+def model_fig():
+    items = []
+    for i, (t, d, c1, c2) in enumerate(MODEL_STEPS):
+        items.append(
+            '<li style="list-style:none;margin:0;padding:0">'
+            '<div style="display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:14px;color:#fff;'
+            'background:linear-gradient(135deg,%s,%s);box-shadow:0 6px 16px -8px %s">'
+            '<span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%%;'
+            'background:rgba(255,255,255,.22);font-weight:700;font-size:1.05rem">%d</span>'
+            '<span><strong style="display:block;font-size:1.08rem;line-height:1.25">%s</strong>'
+            '<span style="display:block;margin-top:2px;font-size:.92rem;line-height:1.4;opacity:.95">%s</span></span></div></li>'
+            % (c1, c2, c2, i + 1, e(t), e(d)))
+        if i < len(MODEL_STEPS) - 1:
+            nxt = MODEL_STEPS[i + 1][2]
+            items.append('<li aria-hidden="true" style="list-style:none;margin:0;padding:0;display:flex;justify-content:center;height:30px">'
+                         '<svg width="26" height="30" viewBox="0 0 26 30"><path d="M13 3v18M5 14l8 9 8-9" fill="none" stroke="%s" stroke-width="3.4" '
+                         'stroke-linecap="round" stroke-linejoin="round"/></svg></li>' % nxt)
+    return ('<figure class="mt-6 rounded-xl border bg-card p-5 shadow-[var(--shadow-soft)]">'
+            '<ol style="margin:0;padding:0" aria-label="Modelo conceitual do estudo, em quatro etapas">%s</ol>'
+            '<p style="margin-top:14px;padding:10px 14px;border:2px dashed #8a4fc7;border-radius:12px;text-align:center;font-size:.9rem;font-weight:500">'
+            '↺ Os resultados da avaliação realimentam os controles de governança</p>'
+            '<figcaption class="mt-4 text-sm leading-relaxed text-muted-foreground"><strong>Figura 1.</strong> Modelo conceitual: da governança de IA à avaliação da experiência do cidadão. '
+            'Os controles de governança entram como insumo, são traduzidos em requisitos de UX, materializam-se na interface do serviço e são verificados por indicadores de experiência.'
+            '</figcaption></figure>' % ''.join(items))
+
+
+MODEL = model_fig()
+
+
 # ---------- tabelas ----------
 T1 = table('Tabela 1 – Serviços monitorados no WhatsApp: atendimentos, avaliações e notas (03/08 a 01/10/2026)',
            ['Serviço', 'Atendimentos', 'Avaliações', 'Nota do canal', 'Nota do serviço', 'Comentários negativos / válidos'],
@@ -271,7 +309,7 @@ sections = [
                   'Na acessibilidade, Barros et al. (2024) avaliaram o portal gov.br com ferramentas automatizadas e apontaram barreiras, e Nunes et al. (2025) analisaram os 80 serviços prioritários da Estratégia de Governo Digital e verificaram que os órgãos frequentemente terceirizam a responsabilidade pelos testes e que falta capacitação específica.'])]),
     section('04', 'matriz', 'A matriz governança × UX',
             'Treze requisitos em quatro dimensões: utilidade, transparência, confiança e controle.',
-            [F5, F6, F7, F8, F9],
+            [MODEL, F5, F6, F7, F8, F9],
             [matriz_acc(d, r) for d, r in MATRIZ] +
             [acc('Como a matriz foi construída',
                  ['A matriz foi construída em cinco passos: (1) extração dos controles de governança de IA do documento do programa; (2) agrupamento em categorias gerais, apoiado nos referenciais de governança; (3) associação de cada categoria a requisitos de UX derivados da literatura, nas quatro dimensões de análise; (4) definição de evidências e indicadores, distinguindo os que constam no programa dos que são propostos pelo estudo; e (5) confronto de cada linha com a linha de base do painel.',
