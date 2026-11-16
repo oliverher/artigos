@@ -19,16 +19,15 @@ def gfig(n, title, alt, tour):
     """Imagem animada: slide n da apresentação, com roteiro de regiões em destaque (x, y, largura, altura em %, texto)."""
     SEQ[n] = len(SEQ) + 1
     img = 'ux-slide-%02d.jpg' % n
-    return ('<figure class="gfig mt-6 overflow-hidden rounded-xl border bg-card shadow-[var(--shadow-soft)]" data-tour=\'%s\'>'
+    return ('<figure class="gfig mt-6 overflow-hidden rounded-xl border bg-card shadow-[var(--shadow-soft)]" data-tour=\'[]\'>'
             '<div class="gfig-stage"><div class="gfig-zoom">'
             '<img class="gfig-img" src="../assets/img/%s" width="1376" height="768" loading="lazy" alt="%s"/>'
             '<div class="gfig-fx" aria-hidden="true"><i class="gfig-sweep"></i><i class="gfig-scan"></i><i class="gfig-glare"></i><i class="gfig-wipe"></i></div>'
-            '<div class="gfig-spot" aria-hidden="true"></div></div></div>'
-            '<div class="gfig-bar"></div>'
+            '</div></div>'
             '<figcaption class="border-t px-5 py-4 text-sm leading-relaxed text-muted-foreground">%s'
             '<span class="mt-1 block text-xs text-muted-foreground/80">Imagem %d da apresentação do artigo. '
             '<a class="underline underline-offset-2" href="../assets/img/%s" target="_blank" rel="noopener">Ver a imagem original</a></span></figcaption></figure>'
-            % (e(json.dumps(tour, ensure_ascii=False), quote=True).replace('&#x27;', '&#39;'), img, e(alt), e(title, quote=False), SEQ[n], img))
+            % (img, e(alt), e(title, quote=False), SEQ[n], img))
 
 
 def section(num, sid, title, sub, blocks, accs):
@@ -319,7 +318,7 @@ closing = ('<section aria-labelledby="sintese" class="mt-16 rounded-2xl border b
 def build():
     stat = lambda n, l, count=True: ('<div><dt class="font-display text-2xl text-ochre"%s>%s</dt>'
                                      '<dd class="mt-1 text-xs uppercase tracking-wide text-primary-foreground/70">%s</dd></div>'
-                                     % (' data-count data-from="0" data-to="%s"' % n if count else '', n if count else n, l))
+                                     % ('', n, l))
     header = ('<header class="relative overflow-hidden text-primary-foreground" style="background-image:var(--gradient-deep)">'
               '<div class="surface-paper absolute inset-0 opacity-30" aria-hidden="true"></div>'
               '<div class="relative mx-auto max-w-3xl px-6 py-20 sm:py-28">'
@@ -329,10 +328,10 @@ def build():
               '<p class="mt-4 text-base leading-relaxed text-primary-foreground/70">O cidadão no controle da IA: o caso do Programa Goiás Cidadão.</p>'
               '<p class="mt-8 text-sm text-primary-foreground/70">Carlos Hernane de Oliveira</p>'
               '<div class="mt-6" style="display:flex;flex-wrap:wrap;gap:12px"><a href="../assets/pdf/%s" target="_blank" rel="noopener noreferrer" '
-              'class="inline-flex items-center gap-2 rounded-full bg-ochre px-6 py-3 text-sm font-semibold text-ochre-foreground shadow-lift transition-transform hover:-translate-y-0.5">'
+              'class="inline-flex items-center gap-2 rounded-full bg-ochre px-6 py-3 text-sm font-semibold text-ochre-foreground shadow-lift">'
               % PDF + BOOK + 'Leia o Artigo na Íntegra</a></div>'
               '<p class="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/70">Abre o PDF completo do artigo em uma nova aba, para leitura direta no navegador.</p>'
-              '<dl class="reveal mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">'
+              '<dl class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">'
               + stat('13', 'requisitos de UX') + stat('4', 'dimensões') + stat('63.282', 'atendimentos analisados', False) + stat('6', 'linhas sem dado')
               + '</dl></div></header>')
     intro = ('<section aria-labelledby="resumo-ux"><h2 id="resumo-ux" class="text-2xl font-semibold">Do que trata o artigo</h2>'
@@ -353,10 +352,10 @@ def build():
             '<title>Da governança à interface: UX para uma IA transparente e contestável</title>'
             '<meta name="description" content="Matriz que traduz controles de governança de IA em 13 requisitos de UX para transparência e contestabilidade, com o caso do Programa Goiás Cidadão e uma linha de base do atendimento por WhatsApp.">'
             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap"/>'
-            '<link rel="stylesheet" href="../assets/styles.css"/><link rel="stylesheet" href="../assets/anim.css"/><link rel="stylesheet" href="../assets/mmdi.css"/>'
+            '<link rel="stylesheet" href="../assets/styles.css"/><link rel="stylesheet" href="../assets/mmdi.css"/>'
             '<script>document.documentElement.classList.add("js")</script></head><body>'
             + shell.nav(SLUG, '../') + '<div class="min-h-screen">' + header + main + footer + '</div>'
-            '<script src="../assets/app.js"></script><script src="../assets/anim.js"></script><script src="../assets/mmdi.js"></script></body></html>')
+            '<script src="../assets/app.js"></script><script src="../assets/mmdi.js"></script></body></html>')
     os.makedirs('%s/%s' % (S, SLUG), exist_ok=True)
     open('%s/%s/index.html' % (S, SLUG), 'w', encoding='utf8').write(page)
     for f in os.listdir(SRC + '/img'):
@@ -364,8 +363,6 @@ def build():
     shutil.copy(SRC + '/' + PDF, S + '/assets/pdf/' + PDF)
     shutil.copy('build/mmdi.css', S + '/assets/mmdi.css')
     shutil.copy('build/mmdi.js', S + '/assets/mmdi.js')
-    shutil.copy('build/anim.css', S + '/assets/anim.css')
-    shutil.copy('build/anim.js', S + '/assets/anim.js')
 
 
 if __name__ == '__main__':
