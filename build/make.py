@@ -17,6 +17,7 @@ shutil.copy('src/orig/pmbok-dialetica/Evolucao_Dialetica_Gerenciamento_Projetos_
 runpy.run_path('build/artigo6.py', run_name='__main__')
 runpy.run_path('build/artigo7.py', run_name='__main__')
 runpy.run_path('build/artigo8.py', run_name='__main__')
+runpy.run_path('build/artigo9.py', run_name='__main__')
 runpy.run_path('build/questionario.py', run_name='__main__')
 runpy.run_path('build/home.py')
 runpy.run_path('build/projetos.py')

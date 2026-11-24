@@ -39,6 +39,8 @@ arts = [
      [('50', 'estudos'), ('5', 'fatores'), ('13', 'textos completos')]),
     ('governanca-ux-ia', 'ARTIGO 08', 'Da governança à interface: requisitos de UX para uma IA transparente e contestável em serviços públicos', '#b8336a', 'eye',
      [('13', 'requisitos de UX'), ('4', 'dimensões'), ('63.282', 'atendimentos')]),
+    ('ciencia-comportamental-orgao', 'ARTIGO 09', 'Ciência comportamental dentro do órgão: pressupostos que falham e um framework para substituí-los', '#4a6b2f', 'users',
+     [('7', 'pressupostos'), ('5', 'camadas'), ('3', 'proposições')]),
 ]
 import projetos_data
 GRID = icon('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>')
@@ -56,11 +58,11 @@ cards += ('<a class="gcard gcard-proj" href="https://oliverher.github.io/projeto
 home = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>Artigos de Carlos Hernane de Oliveira</title>'
-        '<meta name="description" content="Coleção de artigos de Carlos Hernane de Oliveira: propósito de vida, relações mente-corpo, gestão de processos em PMEs, design de serviços públicos, IA no setor público e UX para uma IA transparente.">'
+        '<meta name="description" content="Coleção de artigos de Carlos Hernane de Oliveira: propósito de vida, relações mente-corpo, gestão de processos em PMEs, design de serviços públicos, IA no setor público, UX para uma IA transparente e ciência comportamental dentro do órgão.">'
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap">'
         '<link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/home.css"></head><body>'
         + shell.sidebar('home', '') + '<div class="home-main">' + shell.nav('home', '') +
         '<header class="home-hero"><div class="home-wrap proj-wrap"><p class="home-eyebrow">Coleção de artigos · Goiânia, 2026</p>'
-        '<h1>Oito ensaios, uma <span>leitura por vez</span></h1><p>Escolha o artigo do seu interesse.</p></div></header>'
+        '<h1>Nove ensaios, uma <span>leitura por vez</span></h1><p>Escolha o artigo do seu interesse.</p></div></header>'
         '<main class="home-list"><h2>Artigos e projetos</h2><div class="gallery">' + cards + '</div></main></div></body></html>')
 open(S + '/index.html', 'w', encoding='utf8').write(home)

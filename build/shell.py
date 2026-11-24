@@ -9,6 +9,7 @@ ARTS = [
     ('mmdi-go', 'Artigo 06', 'MMDI-GO', '#1f8a8a'),
     ('ia-no-setor-publico', 'Artigo 07', 'IA no setor público', '#2d5bd1'),
     ('governanca-ux-ia', 'Artigo 08', 'Governança e UX', '#b8336a'),
+    ('ciencia-comportamental-orgao', 'Artigo 09', 'Ciência comportamental', '#4a6b2f'),
 ]
 PILL = 'shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors '
 OFF = PILL + 'text-muted-foreground hover:bg-secondary'
