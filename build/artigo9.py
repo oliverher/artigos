@@ -154,6 +154,8 @@ def build():
               '<p class="font-display text-base text-foreground">Ciência comportamental dentro do órgão: pressupostos que falham e um framework para substituí-los</p>'
               '<p class="mt-2">Carlos Hernane de Oliveira.</p>'
               '<p class="mt-2">Aspectos éticos: o estudo usa apenas literatura publicada e documentos públicos, sem coleta de dados com pessoas.</p>'
+              '<p class="mt-2">Conflito de interesses: o autor declara não haver conflito de interesses.</p>'
+              '<p class="mt-2">Financiamento: esta pesquisa não recebeu financiamento específico de agências públicas, comerciais ou sem fins lucrativos.</p>'
               '<p class="mt-4">Palavras-chave: ciência comportamental; administração pública comportamental; servidores públicos; nudge; framework; ética.</p></div></footer>')
     page = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>'
             '<title>Ciência comportamental dentro do órgão: pressupostos que falham e um framework</title>'
