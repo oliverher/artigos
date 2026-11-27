@@ -16,16 +16,24 @@ OFF = PILL + 'text-muted-foreground hover:bg-secondary'
 ON = PILL + 'bg-primary text-primary-foreground'
 
 
-def sidebar(active, base):
+def sidebar(active, base, apps=None, cats=None):
+    """Com apps/cats (página de projetos), a lista lateral mostra os aplicativos por tema, em vez dos artigos."""
     def link(href, label, key, dot=None, small=None):
         cls = 'side-link' + (' is-active' if key == active else '')
         cur = ' aria-current="page"' if key == active else ''
         d = '<span class="side-dot" style="background:%s"></span>' % dot if dot else '<span class="side-dot side-home"></span>'
         s = '<small>%s</small>' % small if small else ''
         return '<a href="%s" class="%s"%s>%s<span>%s%s</span></a>' % (href, cls, cur, d, s, label)
-    items = (link(base or './', 'Início', 'home') + link('https://oliverher.github.io/projetos-ia/', 'Projetos - Aplicativos desenvolvidos com IA', 'projetos')
-             + '<p class="side-label">Artigos</p>'
-             + ''.join(link(base + s + '/', n, s, c, t) for s, t, n, c in ARTS))
+    topo = link(base or './', 'Início', 'home') + link('https://oliverher.github.io/projetos-ia/', 'Projetos - Aplicativos desenvolvidos com IA', 'projetos')
+    if apps is None:
+        items = topo + '<p class="side-label">Artigos</p>' + ''.join(link(base + s + '/', n, s, c, t) for s, t, n, c in ARTS)
+    else:
+        items = topo
+        for k, nome, cor in cats:
+            lista = [a for a in apps if a[0] == k]
+            items += '<p class="side-label">%s</p>' % nome + ''.join(
+                '<a href="%s" class="side-link" target="_blank" rel="noopener noreferrer"><span class="side-dot" style="background:%s"></span><span>%s</span></a>'
+                % (a[3], cor, a[1]) for a in lista)
     return ('<aside class="sidebar" aria-label="Menu lateral"><div class="side-brand"><span>Coleção de artigos</span>'
             '<strong>Carlos Hernane de Oliveira</strong></div><nav class="side-nav">%s</nav>'
             '<p class="side-foot">Goiânia, 2026</p></aside>') % items
